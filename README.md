@@ -16,3 +16,20 @@ Freemle::Client.api_key = "your_api_key"
 ## Documentation
 
 Check https://www.freemle.com/api-documentatie for more info.
+
+## Development
+
+### Running tests
+
+`bundle install` and then `rake spec` or `rspec spec`.
+
+### Building the gem
+
+`rake build` and then `rake install` to test it locally (`irb` followed
+by `require 'freemle/client'` and do your stuff).
+
+### Releasing the gem
+
+Make a fix, commit and push. Make sure the build is green. Then bump the
+version (edit `lib/freemle/client/version.rb`). Now `rake release` and follow
+the instructions (you need a rubygems.org account and permissions ;-)).
