@@ -6,8 +6,8 @@ require 'freemle/client/version'
 Gem::Specification.new do |spec|
   spec.name          = "freemle-client"
   spec.version       = Freemle::Client::VERSION
-  spec.authors       = ["Bob Forma"]
-  spec.email         = ["bforma@zilverline.com"]
+  spec.authors       = ["Bob Forma", "Steven Weller"]
+  spec.email         = ["bforma@zilverline.com", "suweller@zilverline.com"]
   spec.summary       = %q{Freemle.com REST API client}
   spec.homepage      = "https://www.freemle.com/api-documentatie"
   spec.license       = "MIT"
