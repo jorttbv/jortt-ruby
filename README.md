@@ -1,6 +1,7 @@
 # Freemle REST API client
 
 [![Build Status](https://travis-ci.org/freemle/freemle-ruby.svg)](https://travis-ci.org/freemle/freemle-ruby)
+[![Coverage Status](https://coveralls.io/repos/freemle/freemle-ruby/badge.png)](https://coveralls.io/r/freemle/freemle-ruby)
 [![Code Climate](https://codeclimate.com/github/freemle/freemle-ruby.png)](https://codeclimate.com/github/freemle/freemle-ruby)
 
 A Ruby interface to the [Freemle](https://www.freemle.com/) REST API.
