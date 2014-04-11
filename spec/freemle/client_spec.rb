@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe Freemle::Client do
-
   describe "#initialize" do
     subject { Freemle::Client.new(opts) }
     let(:opts) { Hash.new }
@@ -42,10 +41,5 @@ describe Freemle::Client do
       its(:singular) { should eq(:invoice) }
       its(:plural) { should eq(:invoices) }
     end
-  end
-
-  describe "::VERSION" do
-    subject { Freemle::Client::VERSION }
-    it { should_not be_nil }
   end
 end
