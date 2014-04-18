@@ -18,9 +18,8 @@ freemle = Freemle::Client.new(
 
 ### Customers
 
-Accessing customers:
+Accessing customers (`freemle.customers.search('Freemle')`) returns:
 ```ruby
-freemle.customers.search('Freemle')
 [{
   company_name: 'Freemle',
   address: {
@@ -66,6 +65,7 @@ invoices.create(
   ]
 )
 ```
+
 ## Documentation
 
 Check https://www.freemle.com/api-documentatie for more info.
