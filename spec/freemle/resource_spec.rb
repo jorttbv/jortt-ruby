@@ -7,10 +7,10 @@ describe Freemle::Resource do
   let(:resource) { Freemle::Resource.new(client, :customer, :customers) }
 
   describe "#search" do
-    subject { resource.search("query") }
+    subject { resource.search("terms") }
 
     before do
-      stub_request(:get, "http://app:secret@foo/customers").
+      stub_request(:get, "http://app:secret@foo/customers?query=terms").
         to_return(status: 200, body: '{"customers": []}')
     end
 

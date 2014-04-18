@@ -50,5 +50,6 @@ module Freemle
     def invoices
       @invoices ||= Freemle::Resource.new(self, :invoice, :invoices)
     end
+
   end
 end

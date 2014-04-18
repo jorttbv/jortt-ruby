@@ -6,10 +6,10 @@ module Freemle
     # Performs a search on this resource, given a query.
     #
     # @example
-    #   customers.search(company_name: 'Zilverline')
+    #   customers.search('Zilverline')
     #
     # @example
-    #   customers.search(company_name: 'Zilverline') do |response|
+    #   customers.search('Zilverline') do |response|
     #     # Roll your own response handler
     #   end
     #
@@ -21,7 +21,7 @@ module Freemle
     # @since 1.0.0
     def search(query, &block)
       block = default_handler unless block_given?
-      request.get(params: query, &block)
+      request.get(params: {query: query}, &block)
     end
 
     # Persists a resource on freemle.com, given a payload.
