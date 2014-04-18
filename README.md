@@ -10,7 +10,7 @@ A Ruby interface to the [Freemle](https://www.freemle.com/) REST API.
 
 To create a freemle client:
 ```ruby
-freemle = Freemle::Client.new(
+freemle = Freemle.client(
   app_name: "application-name-as-chosen-on-freemle.com",
   api_key: "api-key-as-provided-by-freemle.com"
 )

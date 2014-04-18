@@ -8,7 +8,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.start
 # Coveralls.wear!
 
-require "rspec"
-require "webmock/rspec"
+require 'rspec'
+require 'webmock/rspec'
 
-require "freemle/client"
+require 'freemle'

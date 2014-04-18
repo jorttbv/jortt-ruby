@@ -29,7 +29,7 @@ describe Freemle::Client do
     describe "#customers" do
       subject { client.customers }
 
-      it { should be_instance_of(Freemle::Resource) }
+      it { should be_instance_of(Freemle::Client::Resource) }
       its(:singular) { should eq(:customer) }
       its(:plural) { should eq(:customers) }
     end
@@ -37,7 +37,7 @@ describe Freemle::Client do
     describe "#invoices" do
       subject { client.invoices }
 
-      it { should be_instance_of(Freemle::Resource) }
+      it { should be_instance_of(Freemle::Client::Resource) }
       its(:singular) { should eq(:invoice) }
       its(:plural) { should eq(:invoices) }
     end

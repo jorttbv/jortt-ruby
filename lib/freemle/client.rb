@@ -1,9 +1,9 @@
-require "freemle/client/version"
-require "freemle/resource"
+require 'freemle/client/resource'
 
 module Freemle
+
   class Client
-    BASE_URL = "https://www.freemle.com/api"
+    BASE_URL = 'https://www.freemle.com/api'
 
     attr_accessor :base_url, :app_name, :api_key
 
@@ -32,11 +32,11 @@ module Freemle
     # @example
     #   client.customers
     #
-    # @return [ Freemle::Resource ] entry to the customer resource.
+    # @return [ Freemle::Client::Resource ] entry to the customer resource.
     #
     # @since 1.0.0
     def customers
-      @customers ||= Freemle::Resource.new(self, :customer, :customers)
+      @customers ||= new_resource(self, :customer, :customers)
     end
 
     # Access the invoice resource.
@@ -44,11 +44,22 @@ module Freemle
     # @example
     #   client.invoices
     #
-    # @return [ Freemle::Resource ] entry to the invoice resource.
+    # @return [ Freemle::Client::Resource ] entry to the invoice resource.
     #
     # @since 1.0.0
     def invoices
-      @invoices ||= Freemle::Resource.new(self, :invoice, :invoices)
+      @invoices ||= new_resource(self, :invoice, :invoices)
+    end
+
+  private
+
+    # Creates a freemle client resource based on the passed configuration
+    #
+    # @return [ Freemle::Client::Resource ] entry to a resource.
+    #
+    # @since 1.0.1
+    def new_resource(*args)
+      Freemle::Client::Resource.new(*args)
     end
 
   end
