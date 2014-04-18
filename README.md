@@ -8,12 +8,57 @@ A Ruby interface to the [Freemle](https://www.freemle.com/) REST API.
 
 ## Usage
 
-```
-Freemle::Client.base_url = "https://www.freemle.com/api"
-Freemle::Client.app_name = "your_application_name"
-Freemle::Client.api_key = "your_api_key"
+To create a freemle client:
+```ruby
+freemle = Freemle::Client.new(
+  app_name: "application-name-as-chosen-on-freemle.com",
+  api_key: "api-key-as-provided-by-freemle.com"
+)
 ```
 
+### Customers
+
+Accessing customers:
+```ruby
+freemle.customers.search('Freemle')
+[{
+  company_name: 'Freemle',
+  address: {
+    street: "Cruquiusweg 109 F",
+    postal_code: "1019 AG",
+    city: "Amsterdam",
+    country_code: "NL"
+  }
+},
+  company_name: 'Elmeerf',
+  address: {
+    street: "Freemleweg",
+    ...
+  }
+}]
+```
+
+Adding customers:
+```ruby
+customers.create(
+  company_name: "Zilverline B.V.",
+  address: {
+    street: "Cruquiusweg 109 F",
+    postal_code: "1019 AG",
+    city: "Amsterdam",
+    country_code: "NL"
+  }
+)
+```
+
+### Invoices
+
+Adding invoices:
+```ruby
+invoices.create(
+  customer_id: "123456789",
+)
+```
 ## Documentation
 
 Check https://www.freemle.com/api-documentatie for more info.
