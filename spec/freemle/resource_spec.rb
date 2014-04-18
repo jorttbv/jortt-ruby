@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe Freemle::Resource do
+describe Freemle::Client::Resource do
   let(:client) do
     double("client", base_url: "foo", app_name: "app", api_key: "secret")
   end
-  let(:resource) { Freemle::Resource.new(client, :customer, :customers) }
+  let(:resource) { Freemle::Client::Resource.new(client, :customer, :customers) }
 
   describe "#search" do
     subject { resource.search("terms") }
