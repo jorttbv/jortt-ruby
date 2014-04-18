@@ -39,7 +39,7 @@ Accessing customers (`freemle.customers.search('Freemle')`) returns:
 
 Adding customers:
 ```ruby
-customers.create(
+freemle.customers.create(
   company_name: "Zilverline B.V.",
   attn: "Vibiemme", # Optional
   extra_information: "The best cofee maker!", # Optional
@@ -56,7 +56,7 @@ customers.create(
 
 Adding invoices:
 ```ruby
-invoices.create(
+freemle.invoices.create(
   customer_id: "123456789", # Optional
   delivery_period: "31-12-1234", # Optional
   reference: "my-reference", # Optional
