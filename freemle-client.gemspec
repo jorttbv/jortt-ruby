@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'freemle/client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "freemle-client"
+  spec.name          = "freemle"
   spec.version       = Freemle::Client::VERSION
   spec.authors       = ["Bob Forma", "Steven Weller"]
   spec.email         = ["bforma@zilverline.com", "suweller@zilverline.com"]
@@ -17,11 +17,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "rest-client"
+
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "coveralls"
-
-  spec.add_dependency "rest-client"
 end
