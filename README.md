@@ -42,6 +42,8 @@ Adding customers:
 ```ruby
 customers.create(
   company_name: "Zilverline B.V.",
+  attn: "Vibiemme", # Optional
+  extra_information: "The best cofee maker!", # Optional
   address: {
     street: "Cruquiusweg 109 F",
     postal_code: "1019 AG",
