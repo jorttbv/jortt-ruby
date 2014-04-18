@@ -56,7 +56,12 @@ customers.create(
 Adding invoices:
 ```ruby
 invoices.create(
-  customer_id: "123456789",
+  customer_id: "123456789", # Optional
+  delivery_period: "31-12-1234", # Optional
+  reference: "my-reference", # Optional
+  line_items: [
+    {vat: 21, amount: 1359.50, quantity: 1, description: "Scrum Training"}
+  ]
 )
 ```
 ## Documentation
