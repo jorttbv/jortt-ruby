@@ -2,6 +2,13 @@ require 'rest-client'
 
 module Freemle
   class Client
+
+    ##
+    # This class is used by {Freemle::Client} internally.
+    # It wraps rest API calls of a single resource,
+    # so they can easily be used using the client DSL.
+    # @see {Freemle::Client.customer}
+
     class Resource < Struct.new(:config, :singular, :plural)
 
       # Performs a search on this resource, given a query.
