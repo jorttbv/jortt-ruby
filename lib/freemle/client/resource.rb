@@ -1,15 +1,14 @@
 require 'rest-client'
 
-module Freemle
-  class Client
-
+module Freemle # :nodoc:
+  class Client # :nodoc:
     ##
     # This class is used by {Freemle::Client} internally.
     # It wraps rest API calls of a single resource,
     # so they can easily be used using the client DSL.
+    #
     # @see {Freemle::Client.customer}
-
-    class Resource < Struct.new(:config, :singular, :plural)
+    Resource = Struct.new(:config, :singular, :plural) do
 
       # Performs a search on this resource, given a query.
       #
@@ -66,7 +65,7 @@ module Freemle
       # @since 1.0.0
       def create(payload, &block)
         block = default_handler unless block_given?
-        request.post(json.generate({singular => payload}), &block)
+        request.post(json.generate(singular => payload), &block)
       end
 
     private
@@ -77,7 +76,7 @@ module Freemle
       #
       # @since 1.0.0
       def default_handler
-        Proc.new { |response| json.parse(response.body) }
+        proc { |response| json.parse(response.body) }
       end
 
       # Returns a new request handler for this resource.
@@ -89,11 +88,11 @@ module Freemle
         RestClient::Resource.new(
           "#{config.base_url}/#{plural}",
           user: config.app_name,
-          password: config.api_key
+          password: config.api_key,
         )
       end
 
-      # Returns the JSON library used in request and default response handling.
+      # Returns the JSON library used in request/default-response handling.
       #
       # @return [ Class ] A JSON library.
       #

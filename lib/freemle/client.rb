@@ -1,11 +1,9 @@
 require 'freemle/client/resource'
 
-module Freemle
-
+module Freemle # :nodoc:
   ##
   # This class is the main interface used to communicate with the Freemle API.
   # It is by the {Freemle} module to create configured instances.
-
   class Client
     BASE_URL = 'https://www.freemle.com/api'
 
