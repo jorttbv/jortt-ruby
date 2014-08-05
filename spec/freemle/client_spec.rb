@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Freemle::Client do
   describe '#initialize' do
-    subject { Freemle::Client.new(opts) }
+    subject { described_class.new(opts) }
     let(:opts) { {} }
 
     specify { expect { subject }.to raise_error(KeyError) }
@@ -14,8 +14,8 @@ describe Freemle::Client do
 
       context 'and api_key' do
         before { opts[:api_key] = 'secret' }
-        it { should be_instance_of(Freemle::Client) }
-        its(:base_url) { should eq(Freemle::Client::BASE_URL) }
+        it { should be_instance_of(described_class) }
+        its(:base_url) { should eq(described_class::BASE_URL) }
         its(:app_name) { should eq('name') }
         its(:api_key) { should eq('secret') }
       end
@@ -23,18 +23,18 @@ describe Freemle::Client do
   end
 
   context 'configured' do
-    let(:client) { Freemle::Client.new(app_name: 'app', api_key: 'secret') }
+    let(:client) { described_class.new(app_name: 'app', api_key: 'secret') }
 
     describe '#customers' do
       subject { client.customers }
-      it { should be_instance_of(Freemle::Client::Resource) }
+      it { should be_instance_of(described_class::Resource) }
       its(:singular) { should eq(:customer) }
       its(:plural) { should eq(:customers) }
     end
 
     describe '#invoices' do
       subject { client.invoices }
-      it { should be_instance_of(Freemle::Client::Resource) }
+      it { should be_instance_of(described_class::Resource) }
       its(:singular) { should eq(:invoice) }
       its(:plural) { should eq(:invoices) }
     end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Freemle::Client::Resource do
   let(:resource) do
-    Freemle::Client::Resource.new(
+    described_class.new(
       double('client', base_url: 'foo', app_name: 'app', api_key: 'secret'),
       :person,
       :people,
