@@ -1,5 +1,6 @@
-module Freemle # :nodoc:
-  class Client # :nodoc:
+module Freemle
+  # Define the version of +Freemle::Client+
+  class Client
     VERSION = '1.0.1'
   end
 end
