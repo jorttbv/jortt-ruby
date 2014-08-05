@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'freemle/client'
 require 'freemle/client/version'
 
