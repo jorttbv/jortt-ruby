@@ -1,31 +1,30 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Freemle::Client::Resource do
-  let(:client) do
-    double("client", base_url: "foo", app_name: "app", api_key: "secret")
+  let(:resource) do
+    Freemle::Client::Resource.new(
+      double('client', base_url: 'foo', app_name: 'app', api_key: 'secret'),
+      :person,
+      :people,
+    )
   end
-  let(:resource) { Freemle::Client::Resource.new(client, :customer, :customers) }
 
-  describe "#search" do
-    subject { resource.search("terms") }
-
+  describe '#search' do
+    subject { resource.search('terms') }
     before do
-      stub_request(:get, "http://app:secret@foo/customers?query=terms").
-        to_return(status: 200, body: '{"customers": []}')
+      stub_request(:get, 'http://app:secret@foo/people?query=terms').
+        to_return(status: 200, body: '{"people": []}')
     end
-
-    it { should eq("customers" => []) }
+    it { should eq('people' => []) }
   end
 
-  describe "#create" do
+  describe '#create' do
     subject { resource.create(foo: :bar) }
-
     before do
-      stub_request(:post, "http://app:secret@foo/customers").
-        with(body: '{"customer":{"foo":"bar"}}').
-        to_return(status: 201, body: '{"customer_id": "123"}')
+      stub_request(:post, 'http://app:secret@foo/people').
+        with(body: '{"person":{"foo":"bar"}}').
+        to_return(status: 201, body: '{"person_id": "123"}')
     end
-
-    it { should eq("customer_id" => "123") }
+    it { should eq('person_id' => '123') }
   end
 end
