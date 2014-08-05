@@ -8,7 +8,24 @@ module Freemle # :nodoc:
     # so they can easily be used using the client DSL.
     #
     # @see {Freemle::Client.customer}
-    Resource = Struct.new(:config, :singular, :plural) do
+    class Resource
+
+      # Details needed to connect to this resource, see
+      # +Freemle::Client#initialize+
+      attr_accessor :config
+
+      # The singular form, posted to and returned when describing
+      # a single member of this resource.
+      attr_accessor :singular
+
+      # Used to describe multiple members of this resource.
+      attr_accessor :plural
+
+      def initialize(config, singular, plural)
+        self.config = config
+        self.singular = singular
+        self.plural = plural
+      end
 
       # Performs a search on this resource, given a query.
       #
