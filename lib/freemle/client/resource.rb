@@ -7,20 +7,34 @@ module Freemle # :nodoc:
     # It wraps rest API calls of a single resource,
     # so they can easily be used using the client DSL.
     #
-    # @see {Freemle::Client.customer}
+    # @see { Freemle::Client.customer }
     class Resource
 
       # Details needed to connect to this resource, see
       # +Freemle::Client#initialize+
+      #
+      # @since 1.0.0
       attr_accessor :config
 
       # The singular form, posted to and returned when describing
       # a single member of this resource.
+      #
+      # @since 1.0.0
       attr_accessor :singular
 
       # Used to describe multiple members of this resource.
+      #
+      # @since 1.0.0
       attr_accessor :plural
 
+      # Creates a new resource instance.
+      #
+      # @see { Freemle::Client#new_resource }
+      #
+      # @returns [ Freemle::Client::Resource ] bound to the resource
+      # defined by +singular+ & +plural+
+      #
+      # @since 1.0.0
       def initialize(config, singular, plural)
         self.config = config
         self.singular = singular
