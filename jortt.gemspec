@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'freemle/client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'freemle'
+  spec.name          = 'jortt'
   spec.version       = Freemle::Client::VERSION
-  spec.authors       = ['Bob Forma', 'Steven Weller']
-  spec.email         = %w(bforma@zilverline.com suweller@zilverline.com)
-  spec.summary       = 'Freemle.com REST API client'
-  spec.homepage      = 'https://www.freemle.com/api-documentatie'
+  spec.authors       = ['Bob Forma', 'Steven Weller', 'Lars Vonk']
+  spec.email         = %w(bforma@zilverline.com suweller@zilverline.com lvonk@zilverline.com)
+  spec.summary       = 'jortt.nl REST API client'
+  spec.homepage      = 'https://www.jortt.nl/api-documentatie'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
