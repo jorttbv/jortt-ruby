@@ -1,46 +1,48 @@
 # Freemle REST API client
 
 [![Inline docs](
-http://inch-ci.org/github/freemle/freemle-ruby.svg?branch=master&style=flat
-)](http://inch-ci.org/github/freemle/freemle-ruby)
+http://inch-ci.org/github/jorttbv/jortr-ruby.svg?branch=master&style=flat
+)](http://inch-ci.org/github/jorttbv/jortt-ruby)
 [![Code Climate](
-http://img.shields.io/codeclimate/github/freemle/freemle-ruby.svg?style=flat
-)](https://codeclimate.com/github/freemle/freemle-ruby)
+http://img.shields.io/codeclimate/github/jorttbv/jortt-ruby.svg?style=flat
+)](https://codeclimate.com/github/jorttbv/jortt-ruby)
 [![Coverage Status](
-http://img.shields.io/coveralls/freemle/freemle-ruby.svg?style=flat
-)](https://coveralls.io/r/freemle/freemle-ruby)
+http://img.shields.io/coveralls/jorttbv/jortt-ruby.svg?style=flat
+)](https://coveralls.io/r/jorttbv/jortt-ruby)
 [![Build Status](
-http://img.shields.io/travis/freemle/freemle-ruby.svg?style=flat
-)](https://travis-ci.org/freemle/freemle-ruby)
+http://img.shields.io/travis/jorttbv/jortt-ruby.svg?style=flat
+)](https://travis-ci.org/jorttbv/jortt-ruby)
 
-A Ruby interface to the [Freemle](https://www.freemle.com/) REST API.
+A Ruby interface to the [Jortt](https://www.jortt.nl/) REST API.
 
 ## Usage
+
+Note: The client is still called Freemle for historic reasons. Name change on its way...
 
 To create a freemle client:
 ```ruby
 freemle = Freemle.client(
-  app_name: "application-name-as-chosen-on-freemle.com",
-  api_key: "api-key-as-provided-by-freemle.com"
+  app_name: "application-name-as-chosen-on-jortt.nl",
+  api_key: "api-key-as-provided-by-jortt.nl"
 )
 ```
 
 ### Customers
 
-Accessing customers (`freemle.customers.search('Freemle')`) returns:
+Accessing customers (`freemle.customers.search('Jortt')`) returns:
 ```ruby
 [{
-  company_name: 'Freemle',
+  company_name: 'Jortt',
   address: {
-    street: "Cruquiusweg 109 F",
-    postal_code: "1019 AG",
-    city: "Amsterdam",
+    street: "Transistorstraat 71C",
+    postal_code: "1322 CK",
+    city: "Almere",
     country_code: "NL"
   }
 },
-  company_name: 'Elmeerf',
+  company_name: 'ttroj',
   address: {
-    street: "Freemleweg",
+    street: "Jorttweg",
     ...
   }
 }]
@@ -49,13 +51,13 @@ Accessing customers (`freemle.customers.search('Freemle')`) returns:
 Adding customers:
 ```ruby
 freemle.customers.create(
-  company_name: "Zilverline B.V.",
+  company_name: "Jortt B.V.",
   attn: "Vibiemme", # Optional
   extra_information: "The best cofee maker!", # Optional
   address: {
-    street: "Cruquiusweg 109 F",
-    postal_code: "1019 AG",
-    city: "Amsterdam",
+    street: "Transistorstraat 71C",
+    postal_code: "1322 CK",
+    city: "Almere",
     country_code: "NL"
   }
 )
@@ -77,7 +79,7 @@ freemle.invoices.create(
 
 ## Documentation
 
-Check https://www.freemle.com/api-documentatie for more info.
+Check https://app.jortt.nl/api-documentatie for more info.
 
 ## Development
 
