@@ -7,7 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = 'jortt'
   spec.version       = Freemle::Client::VERSION
   spec.authors       = ['Bob Forma', 'Steven Weller', 'Lars Vonk']
-  spec.email         = %w(bforma@zilverline.com suweller@zilverline.com lvonk@zilverline.com)
+  spec.email         = [
+    "bforma@zilverline.com",
+    "suweller@zilverline.com",
+    "lvonk@zilverline.com"
+  ]
   spec.summary       = 'jortt.nl REST API client'
   spec.homepage      = 'https://www.jortt.nl/api-documentatie'
   spec.license       = 'MIT'
