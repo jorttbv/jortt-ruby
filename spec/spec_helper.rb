@@ -10,6 +10,7 @@ SimpleCov.start
 # Coveralls.wear!
 
 require 'rspec'
+require 'rspec/its'
 require 'webmock/rspec'
 
 require 'jortt'
