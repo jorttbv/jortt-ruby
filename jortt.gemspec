@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
     'Bob Forma',
     'Steven Weller',
     'Lars Vonk',
-    'Stephan van Diepen'
+    'Stephan van Diepen',
   ]
   spec.email         = [
     'bforma@zilverline.com',
     'suweller@zilverline.com',
     'lvonk@zilverline.com',
-    'svdiepen@zilverline.com'
+    'svdiepen@zilverline.com',
   ]
   spec.summary       = 'jortt.nl REST API client'
   spec.homepage      = 'https://app.jortt.nl/api-documentatie'
