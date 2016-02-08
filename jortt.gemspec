@@ -6,11 +6,17 @@ require 'jortt/client/version'
 Gem::Specification.new do |spec|
   spec.name          = 'jortt'
   spec.version       = Jortt::Client::VERSION
-  spec.authors       = ['Bob Forma', 'Steven Weller', 'Lars Vonk']
+  spec.authors       = [
+    'Bob Forma',
+    'Steven Weller',
+    'Lars Vonk',
+    'Stephan van Diepen'
+  ]
   spec.email         = [
     'bforma@zilverline.com',
     'suweller@zilverline.com',
     'lvonk@zilverline.com',
+    'svdiepen@zilverline.com'
   ]
   spec.summary       = 'jortt.nl REST API client'
   spec.homepage      = 'https://www.jortt.nl/api-documentatie'
