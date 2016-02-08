@@ -1,4 +1,4 @@
-# Freemle REST API client
+# Jortt REST API client
 
 [![Inline docs](
 http://inch-ci.org/github/jorttbv/jortr-ruby.svg?branch=master&style=flat
@@ -17,11 +17,9 @@ A Ruby interface to the [Jortt](https://www.jortt.nl/) REST API.
 
 ## Usage
 
-Note: The client is still called Freemle for historic reasons. Name change on its way...
-
-To create a freemle client:
+To create a jortt client:
 ```ruby
-freemle = Freemle.client(
+jortt = Jortt.client(
   app_name: "application-name-as-chosen-on-jortt.nl",
   api_key: "api-key-as-provided-by-jortt.nl"
 )
@@ -29,7 +27,7 @@ freemle = Freemle.client(
 
 ### Customers
 
-Accessing customers (`freemle.customers.search('Jortt')`) returns:
+Accessing customers (`jortt.customers.search('Jortt')`) returns:
 ```ruby
 [{
   company_name: 'Jortt',
@@ -50,7 +48,7 @@ Accessing customers (`freemle.customers.search('Jortt')`) returns:
 
 Adding customers:
 ```ruby
-freemle.customers.create(
+jortt.customers.create(
   company_name: "Jortt B.V.",
   attn: "Vibiemme", # Optional
   extra_information: "The best cofee maker!", # Optional
@@ -67,7 +65,7 @@ freemle.customers.create(
 
 Adding invoices:
 ```ruby
-freemle.invoices.create(
+jortt.invoices.create(
   customer_id: "123456789", # Optional
   delivery_period: "31-12-1234", # Optional
   reference: "my-reference", # Optional
@@ -90,10 +88,10 @@ Check https://app.jortt.nl/api-documentatie for more info.
 ### Building the gem
 
 `rake build` and then `rake install` to test it locally (`irb` followed
-by `require 'freemle/client'` and do your stuff).
+by `require 'jortt/client'` and do your stuff).
 
 ### Releasing the gem
 
 Make a fix, commit and push. Make sure the build is green. Then bump the
-version (edit `lib/freemle/client/version.rb`). Now `rake release` and follow
+version (edit `lib/jortt/client/version.rb`). Now `rake release` and follow
 the instructions (you need a rubygems.org account and permissions ;-)).

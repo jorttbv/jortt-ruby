@@ -1,18 +1,18 @@
 # encoding: UTF-8
 require 'rest-client'
 
-module Freemle # :nodoc:
+module Jortt # :nodoc:
   class Client # :nodoc:
     ##
-    # This class is used by {Freemle::Client} internally.
+    # This class is used by {Jortt::Client} internally.
     # It wraps rest API calls of a single resource,
     # so they can easily be used using the client DSL.
     #
-    # @see { Freemle::Client.customer }
+    # @see { Jortt::Client.customer }
     class Resource
 
       # Details needed to connect to this resource, see
-      # +Freemle::Client#initialize+
+      # +Jortt::Client#initialize+
       #
       # @since 1.0.0
       attr_accessor :config
@@ -30,9 +30,9 @@ module Freemle # :nodoc:
 
       # Creates a new resource instance.
       #
-      # @see { Freemle::Client#new_resource }
+      # @see { Jortt::Client#new_resource }
       #
-      # @returns [ Freemle::Client::Resource ] bound to the resource
+      # @returns [ Jortt::Client::Resource ] bound to the resource
       # defined by +singular+ & +plural+
       #
       # @since 1.0.0
@@ -63,7 +63,7 @@ module Freemle # :nodoc:
         request.get(params: {query: query}, &block)
       end
 
-      # Persists a resource on freemle.com, given a payload.
+      # Persists a resource on jortt.com, given a payload.
       #
       # @example
       #   customers.create(

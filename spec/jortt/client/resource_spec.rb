@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
 
-describe Freemle::Client::Resource do
+describe Jortt::Client::Resource do
   let(:resource) do
     described_class.new(
       double('client', base_url: 'foo', app_name: 'app', api_key: 'secret'),

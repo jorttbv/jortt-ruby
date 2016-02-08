@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
 
-describe Freemle::Client do
+describe Jortt::Client do
   describe '#initialize' do
     subject { described_class.new(opts) }
     let(:opts) { {} }

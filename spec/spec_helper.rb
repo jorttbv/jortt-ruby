@@ -12,4 +12,4 @@ SimpleCov.start
 require 'rspec'
 require 'webmock/rspec'
 
-require 'freemle'
+require 'jortt'

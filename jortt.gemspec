@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'freemle/client/version'
+require 'jortt/client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'jortt'
-  spec.version       = Freemle::Client::VERSION
+  spec.version       = Jortt::Client::VERSION
   spec.authors       = ['Bob Forma', 'Steven Weller', 'Lars Vonk']
   spec.email         = [
     'bforma@zilverline.com',
