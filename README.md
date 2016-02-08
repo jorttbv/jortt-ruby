@@ -1,7 +1,7 @@
 # Jortt REST API client
 
 [![Inline docs](
-http://inch-ci.org/github/jorttbv/jortr-ruby.svg?branch=master&style=flat
+http://inch-ci.org/github/jorttbv/jortt-ruby.svg?branch=master&style=flat
 )](http://inch-ci.org/github/jorttbv/jortt-ruby)
 [![Code Climate](
 http://img.shields.io/codeclimate/github/jorttbv/jortt-ruby.svg?style=flat
