@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     'svdiepen@zilverline.com'
   ]
   spec.summary       = 'jortt.nl REST API client'
-  spec.homepage      = 'https://www.jortt.nl/api-documentatie'
+  spec.homepage      = 'https://app.jortt.nl/api-documentatie'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
