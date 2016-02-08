@@ -6,7 +6,7 @@ module Jortt
   # This class is the main interface used to communicate with the Jortt API.
   # It is by the {Jortt} module to create configured instances.
   class Client
-    BASE_URL = 'https://www.jortt.com/api'
+    BASE_URL = 'https://app.jortt.nl/api'
 
     attr_accessor :base_url, :app_name, :api_key
 
