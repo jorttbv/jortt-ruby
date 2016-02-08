@@ -14,8 +14,8 @@ module Jortt
     #
     # @example
     #   Jortt::Client.new(
-    #     app_name: <application-name, chosen in jortt.com>
-    #     api_key: <api-key, as provided by jortt.com>
+    #     app_name: <application-name, chosen in jortt.nl>
+    #     api_key: <api-key, as provided by jortt.nl>
     #   )
     #
     # @params [ Hash ] opts Options for the client,

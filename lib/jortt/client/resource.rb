@@ -63,7 +63,7 @@ module Jortt # :nodoc:
         request.get(params: {query: query}, &block)
       end
 
-      # Persists a resource on jortt.com, given a payload.
+      # Persists a resource on app.jortt.nl, given a payload.
       #
       # @example
       #   customers.create(
