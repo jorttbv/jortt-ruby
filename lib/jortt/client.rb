@@ -1,27 +1,27 @@
 # encoding: UTF-8
-require 'freemle/client/resource'
+require 'jortt/client/resource'
 
-module Freemle
+module Jortt
   ##
-  # This class is the main interface used to communicate with the Freemle API.
-  # It is by the {Freemle} module to create configured instances.
+  # This class is the main interface used to communicate with the Jortt API.
+  # It is by the {Jortt} module to create configured instances.
   class Client
-    BASE_URL = 'https://www.freemle.com/api'
+    BASE_URL = 'https://app.jortt.nl/api'
 
     attr_accessor :base_url, :app_name, :api_key
 
-    # Initialize a Freemle client.
+    # Initialize a Jortt client.
     #
     # @example
-    #   Freemle::Client.new(
-    #     app_name: <application-name, chosen in freemle.com>
-    #     api_key: <api-key, as provided by freemle.com>
+    #   Jortt::Client.new(
+    #     app_name: <application-name, chosen in jortt.com>
+    #     api_key: <api-key, as provided by jortt.com>
     #   )
     #
     # @params [ Hash ] opts Options for the client,
     #   optionally including base_url.
     #
-    # @return [ Freemle::Client ]
+    # @return [ Jortt::Client ]
     #
     # @since 1.0.0
     def initialize(opts)
@@ -35,7 +35,7 @@ module Freemle
     # @example
     #   client.customers
     #
-    # @return [ Freemle::Client::Resource ] entry to the customer resource.
+    # @return [ Jortt::Client::Resource ] entry to the customer resource.
     #
     # @since 1.0.0
     def customers
@@ -47,7 +47,7 @@ module Freemle
     # @example
     #   client.invoices
     #
-    # @return [ Freemle::Client::Resource ] entry to the invoice resource.
+    # @return [ Jortt::Client::Resource ] entry to the invoice resource.
     #
     # @since 1.0.0
     def invoices
@@ -56,13 +56,13 @@ module Freemle
 
   private
 
-    # Creates a freemle client resource based on the passed configuration
+    # Creates a jortt client resource based on the passed configuration
     #
-    # @return [ Freemle::Client::Resource ] entry to a resource.
+    # @return [ Jortt::Client::Resource ] entry to a resource.
     #
     # @since 1.0.1
     def new_resource(*args)
-      Freemle::Client::Resource.new(*args)
+      Jortt::Client::Resource.new(*args)
     end
 
   end
