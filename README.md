@@ -6,9 +6,9 @@ http://inch-ci.org/github/jorttbv/jortr-ruby.svg?branch=master&style=flat
 [![Code Climate](
 http://img.shields.io/codeclimate/github/jorttbv/jortt-ruby.svg?style=flat
 )](https://codeclimate.com/github/jorttbv/jortt-ruby)
-[![Coverage Status](
-http://img.shields.io/coveralls/jorttbv/jortt-ruby.svg?style=flat
-)](https://coveralls.io/r/jorttbv/jortt-ruby)
+[![Code Coverage](
+https://codecov.io/github/jorttbv/jortt-ruby/coverage.svg?branch=master
+)](https://codecov.io/github/jorttbv/jortt-ruby?branch=master)
 [![Build Status](
 http://img.shields.io/travis/jorttbv/jortt-ruby.svg?style=flat
 )](https://travis-ci.org/jorttbv/jortt-ruby)
