@@ -39,5 +39,10 @@ describe Jortt::Client do
       its(:singular) { should eq(:invoice) }
       its(:plural) { should eq(:invoices) }
     end
+
+    describe '#invoice' do
+      subject { client.invoice('foo') }
+      it { should be_instance_of(described_class::Invoice) }
+    end
   end
 end
