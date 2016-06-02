@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'jortt/client/resource'
+require 'jortt/client/invoice'
 
 module Jortt
   ##
@@ -52,6 +53,10 @@ module Jortt
     # @since 1.0.0
     def invoices
       @invoices ||= new_resource(self, :invoice, :invoices)
+    end
+
+    def invoice(invoice_id)
+      Jortt::Client::Invoice.new(self, invoice_id)
     end
 
   private
