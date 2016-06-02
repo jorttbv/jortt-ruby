@@ -4,6 +4,10 @@ require 'rest-client'
 module Jortt # :nodoc:
   class Client # :nodoc:
 
+    ##
+    # Exposes the operations available for a single invoice.
+    #
+    # @see { Jortt::Client.invoice }
     class Invoice
 
       def initialize(config, id)
@@ -22,7 +26,8 @@ module Jortt # :nodoc:
         end
       end
 
-      private
+    private
+
       attr_reader :config, :id
     end
 

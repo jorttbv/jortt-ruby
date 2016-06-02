@@ -55,6 +55,14 @@ module Jortt
       @invoices ||= new_resource(self, :invoice, :invoices)
     end
 
+    # Access a single invoice resource to perform operations
+    #
+    # @example
+    #   client.invoice('abc')
+    #
+    # @params [ String ] invoice_id The id of an invoice.
+    #
+    # @return [ Jortt::Client::Invoice ] entry to the invoice resource.
     def invoice(invoice_id)
       Jortt::Client::Invoice.new(self, invoice_id)
     end
