@@ -1,5 +1,6 @@
 # encoding: UTF-8
-require 'jortt/client/resource'
+require 'jortt/client/customers'
+require 'jortt/client/invoices'
 require 'jortt/client/invoice'
 
 module Jortt
@@ -31,31 +32,31 @@ module Jortt
       self.api_key = opts.fetch(:api_key)
     end
 
-    # Access the customer resource.
+    # Access the customer resource to perform operations.
     #
     # @example
     #   client.customers
     #
-    # @return [ Jortt::Client::Resource ] entry to the customer resource.
+    # @return [ Jortt::Client::Customers ] entry to the customer resource.
     #
     # @since 1.0.0
     def customers
-      @customers ||= new_resource(self, :customer, :customers)
+      @customers ||= Jortt::Client::Customers.new(self)
     end
 
-    # Access the invoice resource.
+    # Access the invoices resource to perform operations.
     #
     # @example
     #   client.invoices
     #
-    # @return [ Jortt::Client::Resource ] entry to the invoice resource.
+    # @return [ Jortt::Client::Invoices ] entry to the invoice resource.
     #
     # @since 1.0.0
     def invoices
-      @invoices ||= new_resource(self, :invoice, :invoices)
+      @invoices ||= Jortt::Client::Invoices.new(self)
     end
 
-    # Access a single invoice resource to perform operations
+    # Access a single invoice resource to perform operations.
     #
     # @example
     #   client.invoice('abc')
@@ -65,17 +66,6 @@ module Jortt
     # @return [ Jortt::Client::Invoice ] entry to the invoice resource.
     def invoice(invoice_id)
       Jortt::Client::Invoice.new(self, invoice_id)
-    end
-
-  private
-
-    # Creates a jortt client resource based on the passed configuration
-    #
-    # @return [ Jortt::Client::Resource ] entry to a resource.
-    #
-    # @since 1.0.1
-    def new_resource(*args)
-      Jortt::Client::Resource.new(*args)
     end
 
   end

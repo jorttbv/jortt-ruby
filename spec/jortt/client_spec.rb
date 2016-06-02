@@ -28,16 +28,12 @@ describe Jortt::Client do
 
     describe '#customers' do
       subject { client.customers }
-      it { should be_instance_of(described_class::Resource) }
-      its(:singular) { should eq(:customer) }
-      its(:plural) { should eq(:customers) }
+      it { should be_instance_of(described_class::Customers) }
     end
 
     describe '#invoices' do
       subject { client.invoices }
-      it { should be_instance_of(described_class::Resource) }
-      its(:singular) { should eq(:invoice) }
-      its(:plural) { should eq(:invoices) }
+      it { should be_instance_of(described_class::Invoices) }
     end
 
     describe '#invoice' do
