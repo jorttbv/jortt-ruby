@@ -188,3 +188,5 @@ by `require 'jortt/client'` and do your stuff).
 Make a fix, commit and push. Make sure the build is green. Then bump the
 version (edit `lib/jortt/client/version.rb`). Now `rake release` and follow
 the instructions (you need a rubygems.org account and permissions ;-)).
+
+Otherwise `gem build jortt.gemspec` and `gem push jortt-[version].gem`.
