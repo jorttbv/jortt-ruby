@@ -19,4 +19,13 @@ describe Jortt::Client::Invoices do
     end
     it { should eq('invoice_id' => 'abc') }
   end
+
+  describe '#search' do
+    subject { invoices.search('terms') }
+    before do
+      stub_request(:get, 'http://app:secret@foo/invoices?query=terms').
+        to_return(status: 200, body: '{"invoices": []}')
+    end
+    it { should eq('invoices' => []) }
+  end
 end

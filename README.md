@@ -27,7 +27,7 @@ jortt = Jortt.client(
 
 ### Customers
 
-Accessing customers (`jortt.customers.search('Jortt')`) returns:
+Searching customers (`jortt.customers.search('Jortt')`) returns:
 ```ruby
 [{
   company_name: 'Jortt',
@@ -62,6 +62,19 @@ jortt.customers.create(
 ```
 
 ### Invoices
+Searching invoices (`jortt.invoices.search('201606-012')`) returns:
+```ruby
+[{
+  company_name: 'Jortt',
+  address: {
+    street: "Transistorstraat 71C",
+    postal_code: "1322 CK",
+    city: "Almere",
+    country_code: "NL"
+  }
+}]
+```
+
 
 Adding invoices:
 ```ruby
@@ -74,6 +87,22 @@ jortt.invoices.create(
   ]
 )
 ```
+
+Sending invoices:
+```ruby
+jortt.invoice(:invoice_id).send_invoice(
+  mail_data: {
+    to: 'ben@jortt.nl', # optional
+    subject: 'Thank you for your assignment', # optional
+    body: 'I hereby send you the invoice', # optional
+  },
+  invoice_date: Date.today, # optional
+  payment_term: 7, # optional
+  language: 'nl', # optional
+  send_method: 'email', # optional
+)
+```
+
 
 ## Documentation
 

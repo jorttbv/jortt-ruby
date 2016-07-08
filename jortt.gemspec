@@ -8,13 +8,13 @@ Gem::Specification.new do |spec|
   spec.version       = Jortt::Client::VERSION
   spec.authors       = [
     'Bob Forma',
-    'Steven Weller',
+    'Michael Franken',
     'Lars Vonk',
     'Stephan van Diepen',
   ]
   spec.email         = [
     'bforma@zilverline.com',
-    'suweller@zilverline.com',
+    'mfranken@zilverline.com',
     'lvonk@zilverline.com',
     'svdiepen@zilverline.com',
   ]

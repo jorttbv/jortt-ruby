@@ -40,6 +40,12 @@ module Jortt # :nodoc:
         end
       end
 
+      def search(query)
+        resource.get(params: {query: query}) do |response|
+          JSON.parse(response.body)
+        end
+      end
+
     private
 
       attr_reader :resource
