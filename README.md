@@ -64,15 +64,79 @@ jortt.customers.create(
 ### Invoices
 Searching invoices (`jortt.invoices.search('201606-012')`) returns:
 ```ruby
-[{
-  company_name: 'Jortt',
-  address: {
-    street: "Transistorstraat 71C",
-    postal_code: "1322 CK",
-    city: "Almere",
-    country_code: "NL"
+[
+  {
+    "invoice_id": "934d59dd-76f6-4716-9e0f-82a618e1be21",
+    "recipient": {
+      "company_name": "Zilverine B.V.",
+      "attn": null,
+      "address": {
+        "street": "Cruquisweg 109F",
+        "city": "Amsterdam",
+        "postal_code": "1111SX",
+        "country": {
+          "code": "NL",
+          "name": "Nederland"
+        }
+      },
+      "email": "ben@jortt.nl",
+      "customer_id": "e1c5e15b-e34e-423e-a291-4ed43226a190",
+      "extra_information": null,
+      "shift_vat": null,
+      "vat_number": null,
+      "payment_term": 30
+    },
+    "recipient_in_eu": true,
+    "organization": {
+      "company_name": "Jortt BV",
+      "company_name_line_2": null,
+      "address": {
+        "street": "Straat 1",
+        "city": "Amsterdam",
+        "postal_code": "1000 AA",
+        "country": {
+          "code": "NL",
+          "name": "Nederland"
+        }
+      },
+      "phonenumber": null,
+      "bank_information": {
+        "bic": "RABONL2U",
+        "iban": "NL50RABO0150000001",
+        "in_the_name_of": "Jortt B.V.",
+        "description": null
+      },
+      "coc_number": "unique number",
+      "vat_number": "NL821898279B01",
+      "profession": null,
+      "healthcare_data": null,
+      "free_of_vat": false,
+      "finance_email": "Jortt BV <compleet@jortt.nl>"
+    },
+    "line_items": [
+      {
+        "description": "Scrum",
+        "vat": "0.21",
+        "amount": "-100.0",
+        "total_amount_ex_vat": "-100.0",
+        "currency": "EUR",
+        "quantity": "1.0"
+      }
+    ],
+    "invoice_currency": null,
+    "invoice_total": "-100.0",
+    "invoice_total_incl_vat": "-121.0",
+    "invoice_number": "201607-011",
+    "invoice_status": "paid",
+    "invoice_due_date": "2016-08-06",
+    "invoice_date": "2016-07-07",
+    "invoice_delivery_period": "2016-07-01",
+    "invoice_remarks": null,
+    "invoice_language": "nl",
+    "invoice_reference": null
   }
-}]
+]
+
 ```
 
 
