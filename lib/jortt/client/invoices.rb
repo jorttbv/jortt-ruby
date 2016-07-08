@@ -41,7 +41,7 @@ module Jortt # :nodoc:
       end
 
       def search(query)
-        resource.get(params: {query: query}) do |response|
+        resource["search"].get(params: {query: query}) do |response|
           JSON.parse(response.body)
         end
       end
