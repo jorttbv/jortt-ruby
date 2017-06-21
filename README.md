@@ -27,6 +27,30 @@ jortt = Jortt.client(
 
 ### Customers
 
+All customers (`jortt.customers.all(page: 2, per_page: 25)`) returns:
+```ruby
+[{
+  company_name: 'Jortt',
+  address: {
+    street: "Transistorstraat 71C",
+    postal_code: "1322 CK",
+    city: "Almere",
+    country_code: "NL"
+  }
+},
+{
+  company_name: 'Zilverline',
+  address: {
+    street: "Cruquiusweg",
+    ...
+  }
+},
+...
+page: 2,
+per_page: 25
+]
+```
+
 Searching customers (`jortt.customers.search('Jortt')`) returns:
 ```ruby
 [{
@@ -38,6 +62,7 @@ Searching customers (`jortt.customers.search('Jortt')`) returns:
     country_code: "NL"
   }
 },
+{
   company_name: 'ttroj',
   address: {
     street: "Jorttweg",

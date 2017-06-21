@@ -19,6 +19,18 @@ module Jortt # :nodoc:
       end
 
       ##
+      # Returns all customers using the GET /customers/all endpoint.
+      #
+      # @example
+      #   Jortt::Client.customers.all(page: 3, per_page: 10)
+      #
+      def all(page: 1, per_page: 50)
+        resource['all'].get(params: {page: page, per_page: per_page}) do |res|
+          JSON.parse(res.body)
+        end
+      end
+
+      ##
       # Creates a Customer using the POST /customers endpoint.
       # See https://app.jortt.nl/api-documentatie#klant-aanmaken
       #

@@ -8,6 +8,34 @@ describe Jortt::Client::Customers do
     )
   end
 
+  describe '#all' do
+    context 'without params' do
+      subject { customers.all }
+
+      before do
+        url = 'http://app:secret@foo/customers/all?page=1&per_page=50'
+        stub_request(:get, url).
+          to_return(status: 200, body: '{"customers": ["foo"]}')
+      end
+
+      it { should eq('customers' => ['foo']) }
+    end
+
+    context 'with params' do
+      subject { customers.all(page: page, per_page: per_page) }
+      let(:page) { 3 }
+      let(:per_page) { 25 }
+
+      before do
+        url = 'http://app:secret@foo/customers/all?page=3&per_page=25'
+        stub_request(:get, url).
+          to_return(status: 200, body: '{"customers": ["bar"]}')
+      end
+
+      it { should eq('customers' => ['bar']) }
+    end
+  end
+
   describe '#create' do
     let(:request_body) { JSON.generate(customer: {line_items: []}) }
     let(:response_body) { JSON.generate(customer_id: 'abc') }
