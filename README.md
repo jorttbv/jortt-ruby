@@ -87,13 +87,39 @@ jortt.customers.create(
 ```
 
 ### Invoices
+Get invoices by ID (`jortt.invoices.get('934d59dd-76f6-4716-9e0f-82a618e1be21')`) returns:
+```ruby
+{
+  "invoice_id": "934d59dd-76f6-4716-9e0f-82a618e1be21",
+  "recipient": {
+    "company_name": "Zilverline B.V.",
+    "attn": null,
+    "address": {
+      "street": "Cruquisweg 109F",
+      "city": "Amsterdam",
+      "postal_code": "1111SX",
+      "country": {
+        "code": "NL",
+        "name": "Nederland"
+      }
+    },
+    "email": "ben@jortt.nl",
+    "customer_id": "e1c5e15b-e34e-423e-a291-4ed43226a190",
+    "extra_information": null,
+    ...
+  }
+  ...
+}
+```
+
+
 Searching invoices (`jortt.invoices.search('201606-012')`) returns:
 ```ruby
 [
   {
     "invoice_id": "934d59dd-76f6-4716-9e0f-82a618e1be21",
     "recipient": {
-      "company_name": "Zilverine B.V.",
+      "company_name": "Zilverline B.V.",
       "attn": null,
       "address": {
         "street": "Cruquisweg 109F",
