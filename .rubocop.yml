@@ -9,7 +9,10 @@ Style/AlignParameters:
 Style/DotPosition:
   EnforcedStyle: trailing
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
 Style/EmptyLinesAroundBody:
