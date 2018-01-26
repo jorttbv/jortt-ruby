@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'spec_helper'
 
 describe Jortt::Client::Customers do
@@ -13,7 +12,7 @@ describe Jortt::Client::Customers do
       subject { customers.all }
 
       before do
-        url = 'http://app:secret@foo/customers/all?page=1&per_page=50'
+        url = 'http://foo/customers/all?page=1&per_page=50'
         stub_request(:get, url).
           to_return(status: 200, body: '{"customers": ["foo"]}')
       end
@@ -27,7 +26,7 @@ describe Jortt::Client::Customers do
       let(:per_page) { 25 }
 
       before do
-        url = 'http://app:secret@foo/customers/all?page=3&per_page=25'
+        url = 'http://foo/customers/all?page=3&per_page=25'
         stub_request(:get, url).
           to_return(status: 200, body: '{"customers": ["bar"]}')
       end
@@ -41,7 +40,7 @@ describe Jortt::Client::Customers do
     let(:response_body) { JSON.generate(customer_id: 'abc') }
     subject { customers.create(line_items: []) }
     before do
-      stub_request(:post, 'http://app:secret@foo/customers').
+      stub_request(:post, 'http://foo/customers').
         with(body: request_body).
         to_return(status: 200, body: response_body)
     end
@@ -51,7 +50,7 @@ describe Jortt::Client::Customers do
   describe '#search' do
     subject { customers.search('terms') }
     before do
-      stub_request(:get, 'http://app:secret@foo/customers?query=terms').
+      stub_request(:get, 'http://foo/customers?query=terms').
         to_return(status: 200, body: '{"customers": []}')
     end
     it { should eq('customers' => []) }

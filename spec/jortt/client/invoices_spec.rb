@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'spec_helper'
 
 describe Jortt::Client::Invoices do
@@ -13,7 +12,7 @@ describe Jortt::Client::Invoices do
     let(:response_body) { JSON.generate(invoice_id: 'abc') }
     subject { invoices.create(line_items: []) }
     before do
-      stub_request(:post, 'http://app:secret@foo/invoices').
+      stub_request(:post, 'http://foo/invoices').
         with(body: request_body).
         to_return(status: 200, body: response_body)
     end
@@ -23,7 +22,7 @@ describe Jortt::Client::Invoices do
   describe '#get' do
     subject { invoices.get('foo') }
     before do
-      stub_request(:get, 'http://app:secret@foo/invoices/id/foo').
+      stub_request(:get, 'http://foo/invoices/id/foo').
         to_return(status: 200, body: '{"id": "foo"}')
     end
     it { should eq('id' => 'foo') }
@@ -32,9 +31,18 @@ describe Jortt::Client::Invoices do
   describe '#search' do
     subject { invoices.search('terms') }
     before do
-      stub_request(:get, 'http://app:secret@foo/invoices/search?query=terms').
+      stub_request(:get, 'http://foo/invoices/search?query=terms').
         to_return(status: 200, body: '{"invoices": []}')
     end
     it { should eq('invoices' => []) }
+  end
+
+  describe '#status' do
+    subject { invoices.status('due', page: 1, per_page: 3) }
+    before do
+      stub_request(:get, 'http://foo/invoices/status/due?page=1&per_page=3').
+        to_return(status: 200, body: '{"invoices": [], "page": 1, "per_page": 3, "total_pages": 0}')
+    end
+    it { should eq('invoices' => [], 'page' => 1, 'per_page' => 3, 'total_pages' => 0) }
   end
 end

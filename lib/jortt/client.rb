@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'jortt/client/customers'
 require 'jortt/client/invoices'
 require 'jortt/client/invoice'

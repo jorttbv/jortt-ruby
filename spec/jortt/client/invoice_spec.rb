@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'spec_helper'
 
 describe Jortt::Client::Invoice do
@@ -14,7 +13,7 @@ describe Jortt::Client::Invoice do
     let(:response_body) { JSON.generate(invoice_number: '2016-001') }
     subject { invoice.send_invoice(mail_data: {to: 'ben@jortt.nl'}) }
     before do
-      stub_request(:post, 'http://app:secret@foo/invoices/id/bar/send').
+      stub_request(:post, 'http://foo/invoices/id/bar/send').
         with(body: request_body).
         to_return(status: 200, body: response_body)
     end
