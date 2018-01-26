@@ -37,4 +37,13 @@ describe Jortt::Client::Invoices do
     end
     it { should eq('invoices' => []) }
   end
+
+  describe '#status' do
+    subject { invoices.status('due', page: 1, per_page: 3) }
+    before do
+      stub_request(:get, 'http://foo/invoices/status/due?page=1&per_page=3').
+        to_return(status: 200, body: '{"invoices": [], "page": 1, "per_page": 3, "total_pages": 0}')
+    end
+    it { should eq('invoices' => [], 'page' => 1, 'per_page' => 3, 'total_pages' => 0) }
+  end
 end

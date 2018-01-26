@@ -52,6 +52,12 @@ module Jortt # :nodoc:
         end
       end
 
+      def status(invoice_status, page: 1, per_page: 100)
+        resource["status/#{invoice_status}"].get(params: {page: page, per_page: per_page}) do |response|
+          JSON.parse(response.body)
+        end
+      end
+
     private
 
       attr_reader :resource
