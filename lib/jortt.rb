@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'jortt/client'
 require 'jortt/client/version'
 
