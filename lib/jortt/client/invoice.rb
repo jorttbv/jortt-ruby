@@ -40,6 +40,26 @@ module Jortt # :nodoc:
         end
       end
 
+      ##
+      # Credit an invoice using the POST /invoices/id/:invoice_id/credit endpoint.
+      #
+      # @example
+      #   Jortt::Client.invoice(:invoice_id).credit(
+      #     invoice_date: Date.today, # mandatory
+      #     payment_term: 14, # mandatory
+      #   )
+      #  #=> { credit_invoice_id: "de378629-487b-4a80-b543-4de9f390649b" }
+      def credit_invoice(payload = {})
+        resource = RestClient::Resource.new(
+          "#{config.base_url}/invoices/id/#{id}/credit",
+          user: config.app_name,
+          password: config.api_key,
+        )
+        resource.post(JSON.generate(payload)) do |res|
+          JSON.parse(res.body)
+        end
+      end
+
     private
 
       attr_reader :config, :id
