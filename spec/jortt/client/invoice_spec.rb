@@ -19,4 +19,18 @@ describe Jortt::Client::Invoice do
     end
     it { should eq('invoice_number' => '2016-001') }
   end
+
+  describe '#credit_invoice' do
+    let(:args) { {invoice_date: Date.today, payment_term: 7} }
+    before do
+      stub_request(:post, 'http://foo/invoices/id/bar/credit')
+        .with(body: JSON.generate(args))
+        .to_return(status: 200, body: '{"credit_invoice_id": "CREDIT_INVOICE_ID"}')
+    end
+
+    it 'creates a draft credit invoice' do
+      res = invoice.credit_invoice(args)
+      expect(res["credit_invoice_id"]).to eq('CREDIT_INVOICE_ID')
+    end
+  end
 end
