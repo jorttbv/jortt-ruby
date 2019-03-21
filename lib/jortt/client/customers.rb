@@ -7,7 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of customers.
     #
     # @see { Jortt::Client.customers }
-    class Customers
+    class Customers < Client
 
       def initialize(config)
         @resource = RestClient::Resource.new(
@@ -24,8 +24,8 @@ module Jortt # :nodoc:
       #   Jortt::Client.customers.all(page: 3, per_page: 10)
       #
       def all(page: 1, per_page: 50)
-        resource['all'].get(params: {page: page, per_page: per_page}) do |res|
-          JSON.parse(res.body)
+        with_valid_json do
+          resource['all'].get(params: {page: page, per_page: per_page})
         end
       end
 
@@ -47,8 +47,8 @@ module Jortt # :nodoc:
       #     }
       #   )
       def create(payload)
-        resource.post(JSON.generate('customer' => payload)) do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource.post(JSON.generate('customer' => payload))
         end
       end
 
@@ -69,8 +69,8 @@ module Jortt # :nodoc:
       #
       # @since 1.0.0
       def search(query)
-        resource.get(params: {query: query}) do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource.get(params: {query: query})
         end
       end
 

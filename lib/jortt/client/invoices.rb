@@ -7,7 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of invoices.
     #
     # @see { Jortt::Client.invoices }
-    class Invoices
+    class Invoices < Client
 
       def initialize(config)
         @resource = RestClient::Resource.new(
@@ -34,32 +34,32 @@ module Jortt # :nodoc:
       #     }]
       #   )
       def create(payload)
-        resource.post(JSON.generate('invoice' => payload)) do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource.post(JSON.generate('invoice' => payload))
         end
       end
 
       def get(id)
-        resource["id/#{id}"].get do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource["id/#{id}"].get
         end
       end
 
       def download(id)
-        resource["id/#{id}"].get(params: {format: "pdf"}).body
-      rescue RestClient::Exception => error
-        raise Jortt::Error.new(error.message, error.response)
+        with_valid_response do
+          resource["id/#{id}"].get(params: {format: "pdf"}).body
+        end
       end
 
       def search(query)
-        resource['search'].get(params: {query: query}) do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource['search'].get(params: {query: query})
         end
       end
 
       def status(invoice_status, page: 1, per_page: 100)
-        resource["status/#{invoice_status}"].get(params: {page: page, per_page: per_page}) do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource["status/#{invoice_status}"].get(params: {page: page, per_page: per_page})
         end
       end
 

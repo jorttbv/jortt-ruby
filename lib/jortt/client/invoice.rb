@@ -7,7 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a single invoice.
     #
     # @see { Jortt::Client.invoice }
-    class Invoice
+    class Invoice < Client
 
       def initialize(config, id)
         @config = config
@@ -35,8 +35,8 @@ module Jortt # :nodoc:
           user: config.app_name,
           password: config.api_key,
         )
-        resource.post(JSON.generate(payload)) do |response|
-          JSON.parse(response.body)
+        with_valid_json do
+          resource.post(JSON.generate(payload))
         end
       end
 
@@ -55,8 +55,8 @@ module Jortt # :nodoc:
           user: config.app_name,
           password: config.api_key,
         )
-        resource.post(JSON.generate(payload)) do |res|
-          JSON.parse(res.body)
+        with_valid_json do
+          resource.post(JSON.generate(payload))
         end
       end
 

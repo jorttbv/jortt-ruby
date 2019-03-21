@@ -21,11 +21,22 @@ describe Jortt::Client::Invoices do
 
   describe '#get' do
     subject { invoices.get('foo') }
-    before do
-      stub_request(:get, 'http://foo/invoices/id/foo').
-        to_return(status: 200, body: '{"id": "foo"}')
+
+    context 'with valid id' do
+      before do
+        stub_request(:get, 'http://foo/invoices/id/foo').
+          to_return(status: 200, body: '{"id": "foo"}')
+      end
+      it { should eq('id' => 'foo') }
     end
-    it { should eq('id' => 'foo') }
+
+    context 'with invalid id' do
+      before do
+        stub_request(:get, 'http://foo/invoices/id/foo').
+          to_return(status: 400, body: '{"errors":{"invoice_id":{"code":"not_found"}}}')
+      end
+      it { expect { subject }.to raise_error(Jortt::Error) }
+    end
   end
 
   describe '#download' do
