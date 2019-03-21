@@ -7,7 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a single invoice.
     #
     # @see { Jortt::Client.invoice }
-    class Invoice < Client
+    class Invoice < Base
 
       def initialize(config, id)
         @config = config

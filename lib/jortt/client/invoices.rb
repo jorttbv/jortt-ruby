@@ -7,7 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of invoices.
     #
     # @see { Jortt::Client.invoices }
-    class Invoices < Client
+    class Invoices < Base
 
       def initialize(config)
         @resource = RestClient::Resource.new(
