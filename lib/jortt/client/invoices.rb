@@ -45,6 +45,12 @@ module Jortt # :nodoc:
         end
       end
 
+      def download(id)
+        resource["id/#{id}"].get(params: {format: "pdf"}).body
+      rescue RestClient::Exception => error
+        raise Jortt::Error.new(error.message, error.response)
+      end
+
       def search(query)
         resource['search'].get(params: {query: query}) do |response|
           JSON.parse(response.body)
