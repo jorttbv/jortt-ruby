@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:31:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - fa8d0d7b-9328-4236-bab0-d1648ba9fdb9
+      - 33b6cd29-6a31-41c9-8487-d3a6c00bfd01
       X-Download-Options:
       - noopen
       Etag:
-      - W/"478ce618dfb10483cecc2195d1245a01"
+      - W/"4281085f53eca948f3ee76ba38623d66"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.319089'
+      - '0.320411'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,9 +58,9 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"Vckj4K1q8XPD-M4xeuXrXzXwcybPsCOgX6sRo1hCJ6c","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600766291}'
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+      string: '{"access_token":"hvns0VCaQYYCN5edG3O8BlLdl8OahtiX9pxv9Vuip5c","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600781519}'
+  recorded_at: Tue, 22 Sep 2020 13:31:59 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?customer_name=Jane%20Doe&is_private=true
@@ -82,7 +82,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:31:59 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -112,8 +112,8 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"91ca2c05-bd22-4e25-8eee-5dd3210a98e3"}}'
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+      string: '{"data":{"id":"c62cadfd-b889-4ddd-8509-55aab2a0c638"}}'
+  recorded_at: Tue, 22 Sep 2020 13:31:59 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?customer_name=John%20Doe&is_private=true
@@ -135,7 +135,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:32:00 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -165,8 +165,8 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"ee8871cb-b2df-4936-bd3d-600f58a8420e"}}'
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+      string: '{"data":{"id":"b27de637-ef2d-46b9-897f-cadbb02caf7a"}}'
+  recorded_at: Tue, 22 Sep 2020 13:32:00 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?address_city=Mojave%20Wasteland&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
@@ -188,7 +188,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:12 GMT
+      - Tue, 22 Sep 2020 13:32:00 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -218,11 +218,11 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"39850d96-fdcb-414a-a70d-f4b0b8ecf15d"}}'
-  recorded_at: Tue, 22 Sep 2020 09:18:12 GMT
+      string: '{"data":{"id":"97bc5e5f-79c7-4897-b54e-468c6de392c1"}}'
+  recorded_at: Tue, 22 Sep 2020 13:32:00 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/39850d96-fdcb-414a-a70d-f4b0b8ecf15d
+    uri: https://api.jortt.nl/customers/97bc5e5f-79c7-4897-b54e-468c6de392c1
     body:
       encoding: US-ASCII
       string: ''
@@ -239,7 +239,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:12 GMT
+      - Tue, 22 Sep 2020 13:32:00 GMT
       Connection:
       - keep-alive
       Server:
@@ -266,10 +266,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 09:18:12 GMT
+  recorded_at: Tue, 22 Sep 2020 13:32:00 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/91ca2c05-bd22-4e25-8eee-5dd3210a98e3
+    uri: https://api.jortt.nl/customers/c62cadfd-b889-4ddd-8509-55aab2a0c638
     body:
       encoding: US-ASCII
       string: ''
@@ -286,7 +286,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:12 GMT
+      - Tue, 22 Sep 2020 13:32:00 GMT
       Connection:
       - keep-alive
       Server:
@@ -313,10 +313,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 09:18:12 GMT
+  recorded_at: Tue, 22 Sep 2020 13:32:00 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/ee8871cb-b2df-4936-bd3d-600f58a8420e
+    uri: https://api.jortt.nl/customers/b27de637-ef2d-46b9-897f-cadbb02caf7a
     body:
       encoding: US-ASCII
       string: ''
@@ -333,7 +333,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:12 GMT
+      - Tue, 22 Sep 2020 13:32:00 GMT
       Connection:
       - keep-alive
       Server:
@@ -360,5 +360,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 09:18:12 GMT
+  recorded_at: Tue, 22 Sep 2020 13:32:00 GMT
 recorded_with: VCR 6.0.0

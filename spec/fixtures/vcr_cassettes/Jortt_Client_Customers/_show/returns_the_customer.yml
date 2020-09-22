@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:10 GMT
+      - Tue, 22 Sep 2020 13:31:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - c6b1bd3c-62c4-45d5-b5a7-0e91cdeb9017
+      - 983cbe9d-f1f5-4551-a29f-250659faa7d9
       X-Download-Options:
       - noopen
       Etag:
-      - W/"9b1d5907340d72142e2a33acde3a1cab"
+      - W/"aa4b4f95222f69627b19cae7ec40448d"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.330578'
+      - '0.318459'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,9 +58,9 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"LK0CH2Za82fwa0LOEjk2o7fS6JoKo8PLZsmBWhBue8o","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600766290}'
-  recorded_at: Tue, 22 Sep 2020 09:18:10 GMT
+      string: '{"access_token":"n-AJ-pvakITJ56Ppna8IPz_2MdBZJR4nlRUhGX53oU4","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600781518}'
+  recorded_at: Tue, 22 Sep 2020 13:31:58 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?customer_name=Jane%20Doe&is_private=true
@@ -82,7 +82,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:10 GMT
+      - Tue, 22 Sep 2020 13:31:58 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -112,8 +112,8 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"2b1b0d55-2ba1-42e8-81d5-d8eb9397c425"}}'
-  recorded_at: Tue, 22 Sep 2020 09:18:10 GMT
+      string: '{"data":{"id":"6a430ee5-466c-432f-a3b4-94ed8a89f8e4"}}'
+  recorded_at: Tue, 22 Sep 2020 13:31:58 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?customer_name=John%20Doe&is_private=true
@@ -135,7 +135,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:31:59 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -165,11 +165,11 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"df3fb89f-dee2-42b3-9345-861d3e2bc878"}}'
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+      string: '{"data":{"id":"9eb84474-daa7-4070-9db1-883775ad86d7"}}'
+  recorded_at: Tue, 22 Sep 2020 13:31:59 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/customers/2b1b0d55-2ba1-42e8-81d5-d8eb9397c425
+    uri: https://api.jortt.nl/customers/6a430ee5-466c-432f-a3b4-94ed8a89f8e4
     body:
       encoding: US-ASCII
       string: ''
@@ -186,7 +186,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:31:59 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -216,13 +216,13 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"2b1b0d55-2ba1-42e8-81d5-d8eb9397c425","is_private":true,"customer_name":"Jane
+      string: '{"data":{"id":"6a430ee5-466c-432f-a3b4-94ed8a89f8e4","is_private":true,"customer_name":"Jane
         Doe","address_street":null,"address_postal_code":null,"address_city":null,"address_country_code":"NL","address_country_name":"Nederland","address_extra_information":null,"shift_vat":null,"vat_number":null,"coc_number":null,"initials":null,"first_name":null,"last_name":null,"date_of_birth":null,"citizen_service_number":null,"attn":null,"phonenumber":null,"website":null,"email":null,"cc_emails":null,"email_salutation":"Geachte
         heer, mevrouw,","additional_information":null,"payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}}'
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+  recorded_at: Tue, 22 Sep 2020 13:31:59 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/2b1b0d55-2ba1-42e8-81d5-d8eb9397c425
+    uri: https://api.jortt.nl/customers/6a430ee5-466c-432f-a3b4-94ed8a89f8e4
     body:
       encoding: US-ASCII
       string: ''
@@ -239,7 +239,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:31:59 GMT
       Connection:
       - keep-alive
       Server:
@@ -266,10 +266,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+  recorded_at: Tue, 22 Sep 2020 13:31:59 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/df3fb89f-dee2-42b3-9345-861d3e2bc878
+    uri: https://api.jortt.nl/customers/9eb84474-daa7-4070-9db1-883775ad86d7
     body:
       encoding: US-ASCII
       string: ''
@@ -286,7 +286,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 09:18:11 GMT
+      - Tue, 22 Sep 2020 13:31:59 GMT
       Connection:
       - keep-alive
       Server:
@@ -313,5 +313,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 09:18:11 GMT
+  recorded_at: Tue, 22 Sep 2020 13:31:59 GMT
 recorded_with: VCR 6.0.0

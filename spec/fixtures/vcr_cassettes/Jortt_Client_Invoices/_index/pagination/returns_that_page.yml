@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:15:44 GMT
+      - Tue, 22 Sep 2020 13:32:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 21e3b654-2a52-4166-9edd-7b29dd110d54
+      - 5bc328bd-c14c-491c-ad85-c89573e600fa
       X-Download-Options:
       - noopen
       Etag:
-      - W/"a518a19815b17d09d02e43e88f669114"
+      - W/"c058651847122586bcd8841968622fd3"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.315473'
+      - '0.341792'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,9 +58,9 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"_pWZlArqfB5A86fJpqB2M2dshMMwsrkPiwYZ6f7139w","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600780544}'
-  recorded_at: Tue, 22 Sep 2020 13:15:44 GMT
+      string: '{"access_token":"jGzR-aAsLZKlIJ6yl4x3aF-Inb058bcXPrq7dqTl1H4","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600781525}'
+  recorded_at: Tue, 22 Sep 2020 13:32:05 GMT
 - request:
     method: get
     uri: https://api.jortt.nl/invoices?invoice_status&page=10000&query
@@ -80,7 +80,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:15:45 GMT
+      - Tue, 22 Sep 2020 13:32:05 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -111,5 +111,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":[],"_links":{"previous":{"href":"https://api.jortt.nl/invoices?page=9999","type":"application/json"},"next":null,"self":{"href":"https://api.jortt.nl/invoices?page=10000","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
-  recorded_at: Tue, 22 Sep 2020 13:15:45 GMT
+  recorded_at: Tue, 22 Sep 2020 13:32:05 GMT
 recorded_with: VCR 6.0.0
