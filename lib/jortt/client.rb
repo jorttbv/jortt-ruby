@@ -1,6 +1,5 @@
 require 'jortt/client/customers'
 require 'jortt/client/invoices'
-require 'jortt/client/invoice'
 
 module Jortt
   ##
@@ -60,7 +59,7 @@ module Jortt
     #
     # @since 1.0.0
     def invoices
-      @invoices ||= Jortt::Client::Invoices.new(self)
+      @invoices ||= Jortt::Client::Invoices.new(token)
     end
 
     # Access a single invoice resource to perform operations.

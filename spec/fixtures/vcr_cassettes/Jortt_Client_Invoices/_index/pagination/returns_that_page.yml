@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 22 Sep 2020 13:15:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, no-store
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 21e3b654-2a52-4166-9edd-7b29dd110d54
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"a518a19815b17d09d02e43e88f669114"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.315473'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger
+      Server:
+      - nginx + Phusion Passenger
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"_pWZlArqfB5A86fJpqB2M2dshMMwsrkPiwYZ6f7139w","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600780544}'
+  recorded_at: Tue, 22 Sep 2020 13:15:44 GMT
+- request:
+    method: get
+    uri: https://api.jortt.nl/invoices?invoice_status&page=10000&query
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 22 Sep 2020 13:15:45 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '292'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":[],"_links":{"previous":{"href":"https://api.jortt.nl/invoices?page=9999","type":"application/json"},"next":null,"self":{"href":"https://api.jortt.nl/invoices?page=10000","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
+  recorded_at: Tue, 22 Sep 2020 13:15:45 GMT
+recorded_with: VCR 6.0.0

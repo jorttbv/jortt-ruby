@@ -18,14 +18,14 @@ module Jortt # :nodoc:
       # Returns all customers using the GET /customers endpoint.
       #
       # @example
-      #   client.customers.all(page: 3, per_page: 10, query: 'Jane')
+      #   client.customers.index(page: 3, query: 'Jane')
       #
-      def index(page: 1, per_page: 50, query: nil)
-        token.get('/customers', params: {page: page, per_page: per_page, query: query}).parsed.fetch('data')
+      def index(page: 1, query: nil)
+        token.get('/customers', params: {page: page, query: query}).parsed.fetch('data')
       end
 
       ##
-      # Returns a customers using the GET /customers/{customer_id} endpoint.
+      # Returns a customer using the GET /customers/{customer_id} endpoint.
       #
       # @example
       #   client.customers.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
