@@ -24,3 +24,6 @@ end
 
 RSpec.configure do |c|
 end
+
+ENV['JORTT_CLIENT_ID'] ||= 'client-id'
+ENV['JORTT_CLIENT_SECRET'] ||= 'client-secret'
