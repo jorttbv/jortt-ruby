@@ -221,7 +221,7 @@ jortt.invoice(:invoice_id).send_invoice(
 
 ## Documentation
 
-Check https://app.jortt.nl/api-documentatie for more info.
+Check https://developer.jortt.nl/ for more info.
 
 ## Development
 

@@ -7,16 +7,17 @@ module Jortt
   # This class is the main interface used to communicate with the Jortt API.
   # It is by the {Jortt} module to create configured instances.
   class Client
-    BASE_URL = 'https://app.jortt.nl/api'
+    SITE = 'https://api.jortt.nl'
+    OAUTH_PROVIDER_URL = 'https://app.jortt.nl/oauth-provider/oauth'
 
-    attr_accessor :base_url, :app_name, :api_key
+    attr_accessor :token
 
     # Initialize a Jortt client.
     #
     # @example
     #   Jortt::Client.new(
-    #     app_name: <application-name, chosen in jortt.nl>
-    #     api_key: <api-key, as provided by jortt.nl>
+    #     "my-client-id",
+    #     "my-client-secret"
     #   )
     #
     # @params [ Hash ] opts Options for the client,
@@ -25,10 +26,17 @@ module Jortt
     # @return [ Jortt::Client ]
     #
     # @since 1.0.0
-    def initialize(opts)
-      self.base_url = opts.fetch(:base_url, BASE_URL)
-      self.app_name = opts.fetch(:app_name)
-      self.api_key = opts.fetch(:api_key)
+    def initialize(id, secret, opts = {})
+      oauth_provider_url = opts[:oauth_provider_url] || OAUTH_PROVIDER_URL
+
+      client = OAuth2::Client.new(id, secret,
+        site: opts[:site] || SITE,
+        token_url: "#{oauth_provider_url}/token",
+        authorize_url: "#{oauth_provider_url}/authorize",
+        auth_scheme: :basic_auth
+      )
+
+      @token = client.client_credentials.get_token(scope: "invoices:read invoices:write customers:read customers:write")
     end
 
     # Access the customer resource to perform operations.
@@ -40,7 +48,7 @@ module Jortt
     #
     # @since 1.0.0
     def customers
-      @customers ||= Jortt::Client::Customers.new(self)
+      @customers ||= Jortt::Client::Customers.new(token)
     end
 
     # Access the invoices resource to perform operations.

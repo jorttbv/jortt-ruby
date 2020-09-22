@@ -1,4 +1,8 @@
 require 'simplecov'
+require 'rspec'
+require 'rspec/its'
+require 'vcr'
+require 'jortt'
 
 SimpleCov.start
 if ENV['CI'] == 'true'
@@ -6,8 +10,12 @@ if ENV['CI'] == 'true'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
-require 'rspec'
-require 'rspec/its'
-require 'webmock/rspec'
+VCR.configure do |c|
+  c.cassette_library_dir = "fixtures/vcr_cassettes"
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.default_cassette_options = { :record => :once }
+end
 
-require 'jortt'
+RSpec.configure do |c|
+end
