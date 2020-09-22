@@ -1,5 +1,6 @@
 require 'jortt/client/customers'
 require 'jortt/client/invoices'
+require 'jortt/client/ledger_accounts'
 
 module Jortt
   ##
@@ -62,16 +63,16 @@ module Jortt
       @invoices ||= Jortt::Client::Invoices.new(token)
     end
 
-    # Access a single invoice resource to perform operations.
+    # Access the ledger_accounts resource.
     #
     # @example
-    #   client.invoice('abc')
+    #   client.ledger_accounts
     #
-    # @params [ String ] invoice_id The id of an invoice.
+    # @return [ Jortt::Client::LedgerAccounts ] entry to the leger_accounts resource.
     #
-    # @return [ Jortt::Client::Invoice ] entry to the invoice resource.
-    def invoice(invoice_id)
-      Jortt::Client::Invoice.new(self, invoice_id)
+    # @since 5.0.0
+    def ledger_accounts
+      Jortt::Client::LedgerAccounts.new(token)
     end
 
   end
