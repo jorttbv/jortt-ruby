@@ -52,12 +52,22 @@ describe Jortt::Client::Customers, :vcr do
   end
 
   describe '#create' do
-    subject { client.customers.create(params) }
-    after { client.customers.delete(subject['id']) }
+    context "valid payload" do
+      subject { client.customers.create(params) }
+      after { client.customers.delete(subject['id']) }
 
-    it "creates the customer" do
-      uuid_length = 36
-      expect(subject['id'].length).to eq(uuid_length)
+      it "creates the customer" do
+        uuid_length = 36
+        expect(subject['id'].length).to eq(uuid_length)
+      end
+    end
+
+    context "faulty payload" do
+      subject { client.customers.create({}) }
+
+      it "shows a nice error" do
+        expect { subject }.to raise_error(Jortt::Client::ResponseError)
+      end
     end
   end
 
@@ -84,7 +94,11 @@ describe Jortt::Client::Customers, :vcr do
     subject { client.customers.direct_debit_mandate(jane) }
 
     it "sends direct debit mandate to the customer or responds with an error when not possible" do
-      expect {subject }.to raise_error /DirectDebit::NotEnabled/
+      begin
+        subject
+      rescue Jortt::Client::ResponseError => e
+        expect(e.details.first['key']).to eq("DirectDebit::NotEnabled")
+      end
     end
   end
 end

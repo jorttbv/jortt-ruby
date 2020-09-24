@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 24 Sep 2020 13:35:22 GMT
+      - Thu, 24 Sep 2020 15:03:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - b5649f53-266e-4ace-b052-59a28479687e
+      - 2e0f796d-e20e-4594-ac31-a08be242cb89
       X-Download-Options:
       - noopen
       Etag:
-      - W/"9baba540f0c0d5ff8d248b95a3605c63"
+      - W/"da80de97426b3d59bf4384340e28edd9"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.318772'
+      - '0.320264'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,9 +58,9 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"00rHocdGJgTGChWfV-4gROThiV-PLv3CcWm2l45JS7o","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600954522}'
-  recorded_at: Thu, 24 Sep 2020 13:35:22 GMT
+      string: '{"access_token":"gWaZb4mSrV-6NMeKUD_OL9u1hDOIuR1Bl23k6Lafh0w","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600959813}'
+  recorded_at: Thu, 24 Sep 2020 15:03:33 GMT
 - request:
     method: get
     uri: https://api.jortt.nl/customers?page=1&query=Search%20target
@@ -80,7 +80,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 24 Sep 2020 13:35:22 GMT
+      - Thu, 24 Sep 2020 15:03:33 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -113,7 +113,7 @@ http_interactions:
       string: '{"data":[{"id":"21a81a13-312f-4914-886b-75746c300a92","is_private":true,"customer_name":"Search
         target","address_street":null,"address_postal_code":null,"address_city":null,"address_country_code":"NL","address_country_name":"Nederland","address_extra_information":null,"shift_vat":null,"vat_number":null,"coc_number":null,"initials":null,"first_name":null,"last_name":null,"date_of_birth":null,"citizen_service_number":null,"attn":null,"phonenumber":null,"website":null,"email":"stephan+jortt-gem-customer@zilverline.com","cc_emails":[],"email_salutation":"Geachte
         heer, mevrouw,","additional_information":"","payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}],"_links":{"previous":null,"next":null,"self":{"href":"https://api.jortt.nl/customers?query=Search%20target\u0026page=1","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
-  recorded_at: Thu, 24 Sep 2020 13:35:22 GMT
+  recorded_at: Thu, 24 Sep 2020 15:03:33 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/invoices?customer_id=21a81a13-312f-4914-886b-75746c300a92&line_items%5B%5D%5Bamount_per_unit%5D%5Bcurrency%5D=EUR&line_items%5B%5D%5Bamount_per_unit%5D%5Bvalue%5D=499&line_items%5B%5D%5Bdescription%5D=Your%20product&line_items%5B%5D%5Bunits%5D=4&line_items%5B%5D%5Bvat%5D=21&send_method=self
@@ -135,7 +135,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Thu, 24 Sep 2020 13:35:22 GMT
+      - Thu, 24 Sep 2020 15:03:33 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -165,6 +165,6 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"9a5bc82a-38fa-41e8-a3e5-78182d160cac"}}'
-  recorded_at: Thu, 24 Sep 2020 13:35:22 GMT
+      string: '{"data":{"id":"de18c2cf-6bc2-4567-9e4c-d8ede4f17285"}}'
+  recorded_at: Thu, 24 Sep 2020 15:03:33 GMT
 recorded_with: VCR 6.0.0

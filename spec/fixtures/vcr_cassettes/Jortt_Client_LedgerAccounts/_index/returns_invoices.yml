@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 24 Sep 2020 13:35:25 GMT
+      - Thu, 24 Sep 2020 15:03:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - fef16c41-1192-4377-b235-f79cd02b6fa8
+      - d83ae9ab-c629-46a3-8536-3d48345bbc24
       X-Download-Options:
       - noopen
       Etag:
-      - W/"ffe4cb54a51263c8e5d3fb328a31c84a"
+      - W/"0fb39157c79bce6700240fe1ea97876e"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.333841'
+      - '0.333943'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,9 +58,9 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"3M--mOVhwm0hG5wMJGvbzkIhM8rMoYPaRT9PxNIGnyI","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600954525}'
-  recorded_at: Thu, 24 Sep 2020 13:35:25 GMT
+      string: '{"access_token":"-OQjJQikSmMhA9USfhfgESp3DKCWUUOGBfclpyF0oic","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600959815}'
+  recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
 - request:
     method: get
     uri: https://api.jortt.nl/ledger_accounts/invoices
@@ -80,7 +80,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 24 Sep 2020 13:35:25 GMT
+      - Thu, 24 Sep 2020 15:03:35 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -114,5 +114,5 @@ http_interactions:
         omzet","selectable":true},{"ledger_account_id":"05ba2a61-a0cc-4736-9000-89fb361e85c8","parent_ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","name":"Omzet
         uit facturen","selectable":true},{"ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","parent_ledger_account_id":"986e5b45-dae6-48cc-b4c9-a2f30fbd7bfe","name":"Inkoopkosten","selectable":false},{"ledger_account_id":"424d222d-f8cb-4d38-82c0-24674a2dcf75","parent_ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","name":"Inkoop","selectable":true},{"ledger_account_id":"a5c08fb4-0a22-4f53-9ee2-d7682bba10f7","parent_ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","name":"Uitbesteed
         werk","selectable":true}]}'
-  recorded_at: Thu, 24 Sep 2020 13:35:25 GMT
+  recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
 recorded_with: VCR 6.0.0

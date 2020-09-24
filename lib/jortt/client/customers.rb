@@ -69,8 +69,7 @@ module Jortt # :nodoc:
       #   client.customers.delete("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def delete(id)
-        response = token.delete("/customers/#{id}")
-        response.status == 204
+        super("/customers/#{id}")
       end
 
       ##
@@ -82,8 +81,7 @@ module Jortt # :nodoc:
       #
 
       def direct_debit_mandate(id)
-        response = token.post("/customers/#{id}/direct_debit_mandate").parsed.fetch('data')
-        response.status == 204
+        post("/customers/#{id}/direct_debit_mandate")
       end
     end
   end
