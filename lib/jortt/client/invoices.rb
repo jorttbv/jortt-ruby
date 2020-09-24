@@ -10,6 +10,7 @@ module Jortt # :nodoc:
     class Invoices < Resource
       ##
       # Returns all invoices using the GET /invoices endpoint.
+      # https://developer.jortt.nl/#list-invoices
       #
       # @example
       #   client.invoices.index(query: 'Jane')
@@ -20,6 +21,7 @@ module Jortt # :nodoc:
 
       ##
       # Returns a invoice using the GET /invoices/{invoice_id} endpoint.
+      # https://developer.jortt.nl/#get-invoice-by-id
       #
       # @example
       #   client.invoices.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
@@ -30,6 +32,7 @@ module Jortt # :nodoc:
 
       ##
       # Creates an Invoice using the POST /invoices endpoint.
+      # https://developer.jortt.nl/#create-and-optionally-send-an-invoice
       #
       # @example
       #   client.invoices.create(
@@ -46,6 +49,7 @@ module Jortt # :nodoc:
 
       ##
       # Returns an invoice PDF download link using the GET /invoices/{invoice_id}/download endpoint.
+      # https://developer.jortt.nl/#download-invoice-pdf
       #
       # @example
       #   client.invoices.download("9afcd96e-caf8-40a1-96c9-1af16d0bc804")

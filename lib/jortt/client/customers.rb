@@ -10,6 +10,7 @@ module Jortt # :nodoc:
     class Customers < Resource
       ##
       # Returns all customers using the GET /customers endpoint.
+      # https://developer.jortt.nl/#list-customers
       #
       # @example
       #   client.customers.index(query: 'Jane')
@@ -20,6 +21,7 @@ module Jortt # :nodoc:
 
       ##
       # Returns a customer using the GET /customers/{customer_id} endpoint.
+      # https://developer.jortt.nl/#get-customer-by-id
       #
       # @example
       #   client.customers.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
@@ -30,6 +32,7 @@ module Jortt # :nodoc:
 
       ##
       # Creates a Customer using the POST /customers endpoint.
+      # https://developer.jortt.nl/#create-customer
       #
       # @example
       #   client.customers.create(
@@ -46,6 +49,7 @@ module Jortt # :nodoc:
 
       ##
       # Updates a Customer using the PUT /customers/{customer_id} endpoint.
+      # https://developer.jortt.nl/#update-customer
       #
       # @example
       #   client.customers.update(
@@ -59,6 +63,7 @@ module Jortt # :nodoc:
 
       ##
       # Deletes a Customer using the DELETE /customers/{customer_id} endpoint.
+      # https://developer.jortt.nl/#delete-a-customer
       #
       # @example
       #   client.customers.delete("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
@@ -70,6 +75,7 @@ module Jortt # :nodoc:
 
       ##
       # Send direct debit authorization to a Customer using POST /customers/{customer_id}/direct_debit_mandate.
+      # https://developer.jortt.nl/#send-direct-debit-authorization-to-a-customer
       #
       # @example
       #   client.customers.direct_debit_mandate("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
