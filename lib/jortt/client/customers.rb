@@ -12,10 +12,10 @@ module Jortt # :nodoc:
       # Returns all customers using the GET /customers endpoint.
       #
       # @example
-      #   client.customers.index(page: 3, query: 'Jane')
+      #   client.customers.index(query: 'Jane')
       #
-      def index(page: 1, query: nil)
-        get('/customers', page: page, query: query)
+      def index(query: nil)
+        paginated('/customers', query: query)
       end
 
       ##

@@ -27,6 +27,19 @@ module Jortt # :nodoc:
         return true if response.status == 204
         response.parsed.fetch('data')
       end
+
+      def paginated(path, params = {})
+        page = 1
+
+        Enumerator.new do |yielder|
+          loop do
+            response = token.get(path, params: params.merge(page: page)).parsed
+            response['data'].each { |item| yielder << item }
+            break if response['_links']['next'].nil?
+            page += 1
+          end
+        end
+      end
     end
   end
 end

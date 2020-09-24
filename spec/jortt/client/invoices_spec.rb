@@ -7,43 +7,77 @@ describe Jortt::Client::Invoices, :vcr do
 
   let(:params) do
     {
-      customer_id: customer.fetch('id'),
-      send_method: 'self',
-      line_items: [{
-        vat: 21,
-        amount_per_unit: {
-            value: 499,
-            currency: 'EUR'
-        },
-        units: 4,
-        description: 'Your product'
-     }]
+        customer_id: customer.fetch('id'),
+        send_method: 'self',
+        line_items: [{
+                         vat: 21,
+                         amount_per_unit: {
+                             value: 499,
+                             currency: 'EUR'
+                         },
+                         units: 4,
+                         description: 'Your product'
+                     }]
     }
   end
 
   describe '#index' do
-    context 'without params' do
+    context 'pagination', vcr: false do
       subject { client.invoices.index }
 
-      it "returns invoices" do
-        expect(subject.count).to be > 0
-        expect(subject.first.fetch('invoice_status')).to eq('sent')
+      before do
+        VCR.turn_off!
+
+        stub_request(:any, "https://app.jortt.nl/oauth-provider/oauth/token").
+            to_return(
+                headers: {content_type: 'application/json'},
+                body: {access_token: 'abc'}.to_json)
+
+        stub_request(:get, "https://api.jortt.nl/invoices?invoice_status&page=1&query").
+            to_return(
+                headers: {content_type: 'application/json'},
+                body: {
+                    'data': [{id: 1}, {id: 2}],
+                    _links: {next: "https://api.jortt.nl/invoices?page=2"}
+                }.to_json
+            )
+
+        stub_request(:get, "https://api.jortt.nl/invoices?invoice_status&page=2&query").
+            to_return(
+                headers: {content_type: 'application/json'},
+                body: {
+                    data: [{id: 3}, {id: 4}],
+                    _links: {next: "https://api.jortt.nl/invoices?page=3"}
+                }.to_json
+            )
+
+        stub_request(:get, "https://api.jortt.nl/invoices?invoice_status&page=3&query").
+            to_return(
+                headers: {content_type: 'application/json'},
+                body: {
+                    data: [{id: 5}],
+                    _links: {next: nil}
+                }.to_json
+            )
       end
-    end
 
-    context 'pagination' do
-      subject { client.invoices.index(page: 10000) }
+      after { VCR.turn_on! }
 
-      it "returns that page" do
-        expect(subject.count).to eq(0)
+      it "returns the first page" do
+        expect(subject.first.fetch('id')).to eq(1)
+      end
+
+      it "seamlessly returns results from the other pages" do
+        expect(subject.to_a.count).to eq(5)
       end
     end
 
     context 'invoice_status' do
       subject { client.invoices.index(invoice_status: 'sent') }
 
-      it "returns that page" do
+      it "returns those invoices" do
         expect(subject.count).to be > 0
+        expect(subject.first.fetch('invoice_status')).to eq('sent')
       end
     end
 

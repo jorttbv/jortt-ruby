@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:32:10 GMT
+      - Thu, 24 Sep 2020 13:35:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 7b19f6b1-c7ef-4e8e-9431-c13e49111130
+      - accd6822-78bf-4ffa-9054-75eb78f7b765
       X-Download-Options:
       - noopen
       Etag:
-      - W/"b4cc5b7be02dce9d6028a22db52b7812"
+      - W/"d9b23f30d6650531f3508578ce9c7bf5"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.321518'
+      - '0.324753'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,7 +58,7 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"Cosw2mXrbl0WsFdvQGzwhsRUxSgYhus6W0o2dtv03y0","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600781529}'
-  recorded_at: Tue, 22 Sep 2020 13:32:10 GMT
+      string: '{"access_token":"1MzyPM8Lf8gaxkwKbaXEuhwWii_ZxDYILZnYYB3ZLQw","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600954525}'
+  recorded_at: Thu, 24 Sep 2020 13:35:25 GMT
 recorded_with: VCR 6.0.0

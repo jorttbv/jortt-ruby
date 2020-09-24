@@ -12,10 +12,10 @@ module Jortt # :nodoc:
       # Returns all invoices using the GET /invoices endpoint.
       #
       # @example
-      #   client.invoices.index(page: 3, query: 'Jane')
+      #   client.invoices.index(query: 'Jane')
       #
-      def index(page: 1, query: nil, invoice_status: nil)
-        get('/invoices', page: page, query: query, invoice_status: invoice_status)
+      def index(query: nil, invoice_status: nil)
+        paginated('/invoices', query: query, invoice_status: invoice_status)
       end
 
       ##

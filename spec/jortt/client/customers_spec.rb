@@ -23,21 +23,13 @@ describe Jortt::Client::Customers, :vcr do
 
   describe '#index' do
     context 'without params' do
-      subject { client.customers.index }
+      subject { client.customers.index.to_a }
 
       it "returns customers" do
         expect(subject.count).to eq(3)
         expect(subject[0]['customer_name']).to eq('Jane Doe')
         expect(subject[1]['customer_name']).to eq('John Doe')
         expect(subject[2]['customer_name']).to eq('Search target')
-      end
-    end
-
-    context 'pagination' do
-      subject { client.customers.index(page: 10000) }
-
-      it "returns that page" do
-        expect(subject.count).to eq(0)
       end
     end
 

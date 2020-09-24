@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'rspec'
 require 'rspec/its'
+require 'webmock/rspec'
 require 'vcr'
 require 'jortt'
 
@@ -20,9 +21,6 @@ VCR.configure do |c|
     i.response.headers.delete('Set-Cookie')
     i.request.headers.delete('Authorization')
   end
-end
-
-RSpec.configure do |c|
 end
 
 ENV['JORTT_CLIENT_ID'] ||= 'client-id'

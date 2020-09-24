@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:31:56 GMT
+      - Thu, 24 Sep 2020 13:35:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 60bdff57-57d0-4b8b-a512-e1b6caf1f00c
+      - c256b48e-5f11-4adc-9045-6da831e94987
       X-Download-Options:
       - noopen
       Etag:
-      - W/"c444f327de9c165ed2dac6546eefb356"
+      - W/"b5d9b4955def0a166366e6b7aad33179"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.320942'
+      - '0.322590'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,9 +58,9 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"rQbVaEqxcAsxdiA16V7tvckus06sL8FpgQ_rKso21Xg","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600781516}'
-  recorded_at: Tue, 22 Sep 2020 13:31:56 GMT
+      string: '{"access_token":"uGbRGC2llbJyT6RkQa41bW72tGu2MOJJL7vsp5utWew","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600954512}'
+  recorded_at: Thu, 24 Sep 2020 13:35:12 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?customer_name=Jane%20Doe&is_private=true
@@ -82,7 +82,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:31:56 GMT
+      - Thu, 24 Sep 2020 13:35:12 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -112,8 +112,8 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"d1c9d7a0-b5d5-40dc-adea-31e04c00734d"}}'
-  recorded_at: Tue, 22 Sep 2020 13:31:56 GMT
+      string: '{"data":{"id":"bf27c316-88d6-4c27-aafb-2a9b05d86366"}}'
+  recorded_at: Thu, 24 Sep 2020 13:35:12 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers?customer_name=John%20Doe&is_private=true
@@ -135,7 +135,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:31:57 GMT
+      - Thu, 24 Sep 2020 13:35:12 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -165,62 +165,11 @@ http_interactions:
         t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"aebd1dcd-3f37-48a4-941a-7347aa10a122"}}'
-  recorded_at: Tue, 22 Sep 2020 13:31:57 GMT
-- request:
-    method: get
-    uri: https://api.jortt.nl/customers?page=10000&query
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 22 Sep 2020 13:31:57 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '294'
-      Connection:
-      - keep-alive
-      Server:
-      - Apache
-      Status:
-      - 200 OK
-      Content-Security-Policy:
-      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
-        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
-        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
-        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
-        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
-        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
-        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
-        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
-        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
-        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
-        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
-        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
-        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
-        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
-        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
-        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
-    body:
-      encoding: UTF-8
-      string: '{"data":[],"_links":{"previous":{"href":"https://api.jortt.nl/customers?page=9999","type":"application/json"},"next":null,"self":{"href":"https://api.jortt.nl/customers?page=10000","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
-  recorded_at: Tue, 22 Sep 2020 13:31:57 GMT
+      string: '{"data":{"id":"689ceb18-1f85-4634-8cc3-2e269b8da661"}}'
+  recorded_at: Thu, 24 Sep 2020 13:35:13 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/d1c9d7a0-b5d5-40dc-adea-31e04c00734d
+    uri: https://api.jortt.nl/customers/bf27c316-88d6-4c27-aafb-2a9b05d86366
     body:
       encoding: US-ASCII
       string: ''
@@ -237,7 +186,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:31:57 GMT
+      - Thu, 24 Sep 2020 13:35:13 GMT
       Connection:
       - keep-alive
       Server:
@@ -264,10 +213,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 13:31:57 GMT
+  recorded_at: Thu, 24 Sep 2020 13:35:13 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/aebd1dcd-3f37-48a4-941a-7347aa10a122
+    uri: https://api.jortt.nl/customers/689ceb18-1f85-4634-8cc3-2e269b8da661
     body:
       encoding: US-ASCII
       string: ''
@@ -284,7 +233,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 22 Sep 2020 13:31:57 GMT
+      - Thu, 24 Sep 2020 13:35:13 GMT
       Connection:
       - keep-alive
       Server:
@@ -311,5 +260,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Sep 2020 13:31:57 GMT
+  recorded_at: Thu, 24 Sep 2020 13:35:13 GMT
 recorded_with: VCR 6.0.0
