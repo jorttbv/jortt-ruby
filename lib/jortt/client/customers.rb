@@ -1,4 +1,4 @@
-require 'oauth2'
+require 'jortt/client/resource'
 
 module Jortt # :nodoc:
   class Client # :nodoc:
@@ -7,13 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of customers.
     #
     # @see { Jortt::Client.customers }
-    class Customers
-      attr_accessor :token
-
-      def initialize(token)
-        @token = token
-      end
-
+    class Customers < Resource
       ##
       # Returns all customers using the GET /customers endpoint.
       #
@@ -21,7 +15,7 @@ module Jortt # :nodoc:
       #   client.customers.index(page: 3, query: 'Jane')
       #
       def index(page: 1, query: nil)
-        token.get('/customers', params: {page: page, query: query}).parsed.fetch('data')
+        get('/customers', page: page, query: query)
       end
 
       ##
@@ -30,8 +24,8 @@ module Jortt # :nodoc:
       # @example
       #   client.customers.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
-      def show(uuid)
-        token.get("/customers/#{uuid}").parsed.fetch('data')
+      def show(id)
+        get("/customers/#{id}")
       end
 
       ##
@@ -47,7 +41,7 @@ module Jortt # :nodoc:
       #   )
       #
       def create(payload)
-        token.post('/customers', params: payload).parsed.fetch('data')
+        post('/customers', payload)
       end
 
       ##
@@ -60,8 +54,7 @@ module Jortt # :nodoc:
       #   )
       #
       def update(id, payload)
-        response = token.put("/customers/#{id}", params: payload)
-        response.status == 204
+        put("/customers/#{id}", payload)
       end
 
       ##

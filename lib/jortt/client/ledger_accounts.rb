@@ -1,4 +1,4 @@
-require 'oauth2'
+require 'jortt/client/resource'
 
 module Jortt # :nodoc:
   class Client # :nodoc:
@@ -7,13 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of customers.
     #
     # @see { Jortt::Client.customers }
-    class LedgerAccounts
-      attr_accessor :token
-
-      def initialize(token)
-        @token = token
-      end
-
+    class LedgerAccounts < Resource
       ##
       # Returns the list of Ledger Accounts that can be used to categorize Line Items on an Invoice
       # for in your Profit and Loss report using the GET /ledger_accounts/invoices endpoint.
@@ -22,7 +16,7 @@ module Jortt # :nodoc:
       #   client.ledger_accounts.index
       #
       def index
-        token.get('/ledger_accounts/invoices').parsed.fetch('data')
+        get('/ledger_accounts/invoices')
       end
     end
   end

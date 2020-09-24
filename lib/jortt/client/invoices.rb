@@ -1,4 +1,4 @@
-require 'rest-client'
+require 'jortt/client/resource'
 
 module Jortt # :nodoc:
   class Client # :nodoc:
@@ -7,13 +7,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of invoices.
     #
     # @see { Jortt::Client.invoices }
-    class Invoices
-      attr_accessor :token
-
-      def initialize(token)
-        @token = token
-      end
-
+    class Invoices < Resource
       ##
       # Returns all invoices using the GET /invoices endpoint.
       #
@@ -21,13 +15,7 @@ module Jortt # :nodoc:
       #   client.invoices.index(page: 3, query: 'Jane')
       #
       def index(page: 1, query: nil, invoice_status: nil)
-        params = {
-          page: page,
-          query: query,
-          invoice_status: invoice_status
-        }
-
-        token.get('/invoices', params: params).parsed.fetch('data')
+        get('/invoices', page: page, query: query, invoice_status: invoice_status)
       end
 
       ##
@@ -37,7 +25,7 @@ module Jortt # :nodoc:
       #   client.invoices.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def show(id)
-        token.get("/invoices/#{id}").parsed.fetch('data')
+        get("/invoices/#{id}")
       end
 
       ##
@@ -53,7 +41,7 @@ module Jortt # :nodoc:
       #     }]
       #   )
       def create(payload)
-        token.post('/invoices', params: payload).parsed.fetch('data')
+        post('/invoices', payload)
       end
 
       ##
@@ -63,7 +51,7 @@ module Jortt # :nodoc:
       #   client.invoices.download("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def download(id)
-        token.get("/invoices/#{id}/download").parsed.fetch('data')
+        get("/invoices/#{id}/download")
       end
     end
   end
