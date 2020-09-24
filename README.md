@@ -15,9 +15,9 @@ http://img.shields.io/travis/jorttbv/jortt-ruby.svg?style=flat
 
 A Ruby interface to the [Jortt](https://www.jortt.nl/) REST API.
 
-## Documentation
-
 Check https://developer.jortt.nl/ for more info.
+
+> THIS VERSION IS FOR THE NEW OAUTH API. STILL ON THE LEGACY API? USE VERSION 4.x OF THIS GEM: [CLICK HERE](https://github.com/jorttbv/jortt-ruby/tree/v4.2.0)
 
 ## Usage examples
 
