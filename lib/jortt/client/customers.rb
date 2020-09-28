@@ -1,13 +1,16 @@
-require 'jortt/client/resource'
-
 module Jortt # :nodoc:
   class Client # :nodoc:
-
     ##
     # Exposes the operations available for a collection of customers.
     #
     # @see { Jortt::Client.customers }
-    class Customers < Resource
+    class Customers
+      attr_accessor :client
+
+      def initialize(client)
+        @client = client
+      end
+
       ##
       # Returns all customers using the GET /customers endpoint.
       # https://developer.jortt.nl/#list-customers
@@ -16,7 +19,7 @@ module Jortt # :nodoc:
       #   client.customers.index(query: 'Jane')
       #
       def index(query: nil)
-        paginated('/customers', query: query)
+        client.paginated('/customers', query: query)
       end
 
       ##
@@ -27,7 +30,7 @@ module Jortt # :nodoc:
       #   client.customers.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def show(id)
-        get("/customers/#{id}")
+        client.get("/customers/#{id}")
       end
 
       ##
@@ -44,7 +47,7 @@ module Jortt # :nodoc:
       #   )
       #
       def create(payload)
-        post('/customers', payload)
+        client.post('/customers', payload)
       end
 
       ##
@@ -58,7 +61,7 @@ module Jortt # :nodoc:
       #   )
       #
       def update(id, payload)
-        put("/customers/#{id}", payload)
+        client.put("/customers/#{id}", payload)
       end
 
       ##
@@ -69,7 +72,7 @@ module Jortt # :nodoc:
       #   client.customers.delete("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def delete(id)
-        super("/customers/#{id}")
+        client.delete("/customers/#{id}")
       end
 
       ##
@@ -81,7 +84,7 @@ module Jortt # :nodoc:
       #
 
       def direct_debit_mandate(id)
-        post("/customers/#{id}/direct_debit_mandate")
+        client.post("/customers/#{id}/direct_debit_mandate")
       end
     end
   end

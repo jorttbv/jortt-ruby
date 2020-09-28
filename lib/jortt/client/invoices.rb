@@ -1,13 +1,16 @@
-require 'jortt/client/resource'
-
 module Jortt # :nodoc:
   class Client # :nodoc:
-
     ##
     # Exposes the operations available for a collection of invoices.
     #
     # @see { Jortt::Client.invoices }
-    class Invoices < Resource
+    class Invoices
+      attr_accessor :client
+
+      def initialize(client)
+        @client = client
+      end
+
       ##
       # Returns all invoices using the GET /invoices endpoint.
       # https://developer.jortt.nl/#list-invoices
@@ -16,7 +19,7 @@ module Jortt # :nodoc:
       #   client.invoices.index(query: 'Jane')
       #
       def index(query: nil, invoice_status: nil)
-        paginated('/invoices', query: query, invoice_status: invoice_status)
+        client.paginated('/invoices', query: query, invoice_status: invoice_status)
       end
 
       ##
@@ -27,7 +30,7 @@ module Jortt # :nodoc:
       #   client.invoices.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def show(id)
-        get("/invoices/#{id}")
+        client.get("/invoices/#{id}")
       end
 
       ##
@@ -44,7 +47,7 @@ module Jortt # :nodoc:
       #     }]
       #   )
       def create(payload)
-        post('/invoices', payload)
+        client.post('/invoices', payload)
       end
 
       ##
@@ -55,7 +58,7 @@ module Jortt # :nodoc:
       #   client.invoices.download("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def download(id)
-        get("/invoices/#{id}/download")
+        client.get("/invoices/#{id}/download")
       end
     end
   end
