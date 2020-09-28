@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, no-store
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - dfa7330e-2975-4637-8d0b-fee35ed40cac
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"97e5c8d5cedcea8cd8407a1a0a6f21c1"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.319627'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger
+      Server:
+      - nginx + Phusion Passenger
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"OCU8keLfHRLh6MQ1GdpTxDF9fvnRHge-h8IuDo1fx5M","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600959817}'
+  recorded_at: Thu, 24 Sep 2020 15:03:37 GMT
+recorded_with: VCR 6.0.0

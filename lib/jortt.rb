@@ -1,4 +1,3 @@
-require 'jortt/error'
 require 'jortt/client'
 require 'jortt/client/version'
 

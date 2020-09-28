@@ -1,58 +1,104 @@
 require 'spec_helper'
 
-describe Jortt::Client::Customers do
-  let(:customers) do
-    described_class.new(
-      double(base_url: 'foo', app_name: 'app', api_key: 'secret'),
-    )
+describe Jortt::Client::Customers, :vcr do
+  let(:client) { Jortt.client(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
+
+  let(:params) do
+    {
+        is_private: false,
+        customer_name: 'Nuka-Cola Corporation',
+        address_street: 'Vault 11',
+        address_postal_code: '1111AA',
+        address_city: 'Mojave Wasteland'
+    }
   end
 
-  describe '#all' do
+  let!(:jane) { client.customers.create(is_private: true, customer_name: 'Jane Doe')['id'] }
+  let!(:john) { client.customers.create(is_private: true, customer_name: 'John Doe')['id'] }
+
+  after do
+    client.customers.delete(jane)
+    client.customers.delete(john)
+  end
+
+  describe '#index' do
     context 'without params' do
-      subject { customers.all }
+      subject { client.customers.index.to_a }
 
-      before do
-        url = 'http://foo/customers/all?page=1&per_page=50'
-        stub_request(:get, url).
-          to_return(status: 200, body: '{"customers": ["foo"]}')
+      it "returns customers" do
+        expect(subject.count).to eq(3)
+        expect(subject[0]['customer_name']).to eq('Jane Doe')
+        expect(subject[1]['customer_name']).to eq('John Doe')
+        expect(subject[2]['customer_name']).to eq('Search target')
       end
-
-      it { should eq('customers' => ['foo']) }
     end
 
-    context 'with params' do
-      subject { customers.all(page: page, per_page: per_page) }
-      let(:page) { 3 }
-      let(:per_page) { 25 }
+    context 'query' do
+      subject { client.customers.index(query: 'Search target') }
 
-      before do
-        url = 'http://foo/customers/all?page=3&per_page=25'
-        stub_request(:get, url).
-          to_return(status: 200, body: '{"customers": ["bar"]}')
+      it "returns the queried customers" do
+        expect(subject.count).to eq(1)
+        expect(subject.first['customer_name']).to eq("Search target")
       end
+    end
+  end
 
-      it { should eq('customers' => ['bar']) }
+  describe '#show' do
+    subject { client.customers.show(jane) }
+
+    it "returns the customer" do
+      expect(subject['customer_name']).to eq("Jane Doe")
     end
   end
 
   describe '#create' do
-    let(:request_body) { JSON.generate(customer: {line_items: []}) }
-    let(:response_body) { JSON.generate(customer_id: 'abc') }
-    subject { customers.create(line_items: []) }
-    before do
-      stub_request(:post, 'http://foo/customers').
-        with(body: request_body).
-        to_return(status: 200, body: response_body)
+    context "valid payload" do
+      subject { client.customers.create(params) }
+      after { client.customers.delete(subject['id']) }
+
+      it "creates the customer" do
+        uuid_length = 36
+        expect(subject['id'].length).to eq(uuid_length)
+      end
     end
-    it { should eq('customer_id' => 'abc') }
+
+    context "faulty payload" do
+      subject { client.customers.create({}) }
+
+      it "shows a nice error" do
+        expect { subject }.to raise_error(Jortt::Client::Error)
+      end
+    end
   end
 
-  describe '#search' do
-    subject { customers.search('terms') }
-    before do
-      stub_request(:get, 'http://foo/customers?query=terms').
-        to_return(status: 200, body: '{"customers": []}')
+  describe '#update' do
+    let(:uuid) { client.customers.create(params).fetch('id') }
+    subject { client.customers.update(uuid, params.merge(address_extra_information: 'Extra...')) }
+    after { client.customers.delete(uuid) }
+
+    it "updates the customer" do
+      expect(subject).to eq(true)
     end
-    it { should eq('customers' => []) }
+  end
+
+  describe '#delete' do
+    let(:uuid) { client.customers.create(params).fetch('id') }
+    subject { client.customers.delete(uuid) }
+
+    it "deletes the customer" do
+      expect(subject).to eq(true)
+    end
+  end
+
+  describe '#direct_debit_mandate' do
+    subject { client.customers.direct_debit_mandate(jane) }
+
+    it "sends direct debit mandate to the customer or responds with an error when not possible" do
+      begin
+        subject
+      rescue Jortt::Client::Error => e
+        expect(e.details.first['key']).to eq("DirectDebit::NotEnabled")
+      end
+    end
   end
 end

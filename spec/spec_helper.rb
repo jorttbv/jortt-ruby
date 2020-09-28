@@ -1,4 +1,9 @@
 require 'simplecov'
+require 'rspec'
+require 'rspec/its'
+require 'webmock/rspec'
+require 'vcr'
+require 'jortt'
 
 SimpleCov.start
 if ENV['CI'] == 'true'
@@ -6,8 +11,17 @@ if ENV['CI'] == 'true'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
-require 'rspec'
-require 'rspec/its'
-require 'webmock/rspec'
+VCR.configure do |c|
+  c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.default_cassette_options = { record: :once }
 
-require 'jortt'
+  c.before_record do |i|
+    i.response.headers.delete('Set-Cookie')
+    i.request.headers.delete('Authorization')
+  end
+end
+
+ENV['JORTT_CLIENT_ID'] ||= 'client-id'
+ENV['JORTT_CLIENT_SECRET'] ||= 'client-secret'

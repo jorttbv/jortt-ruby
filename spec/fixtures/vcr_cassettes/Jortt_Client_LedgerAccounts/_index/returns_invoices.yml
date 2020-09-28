@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, no-store
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - d83ae9ab-c629-46a3-8536-3d48345bbc24
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"0fb39157c79bce6700240fe1ea97876e"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.333943'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger
+      Server:
+      - nginx + Phusion Passenger
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"-OQjJQikSmMhA9USfhfgESp3DKCWUUOGBfclpyF0oic","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600959815}'
+  recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
+- request:
+    method: get
+    uri: https://api.jortt.nl/ledger_accounts/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1011'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","parent_ledger_account_id":"105ea7d7-8bb5-499e-9823-8324826b6563","name":"Omzet","selectable":false},{"ledger_account_id":"fcabf6bf-cccc-4a6d-b04e-7b2369d04a79","parent_ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","name":"Diverse
+        omzet","selectable":true},{"ledger_account_id":"05ba2a61-a0cc-4736-9000-89fb361e85c8","parent_ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","name":"Omzet
+        uit facturen","selectable":true},{"ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","parent_ledger_account_id":"986e5b45-dae6-48cc-b4c9-a2f30fbd7bfe","name":"Inkoopkosten","selectable":false},{"ledger_account_id":"424d222d-f8cb-4d38-82c0-24674a2dcf75","parent_ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","name":"Inkoop","selectable":true},{"ledger_account_id":"a5c08fb4-0a22-4f53-9ee2-d7682bba10f7","parent_ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","name":"Uitbesteed
+        werk","selectable":true}]}'
+  recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
+recorded_with: VCR 6.0.0

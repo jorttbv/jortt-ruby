@@ -1,22 +1,26 @@
+require 'oauth2'
+
+require 'jortt/client/error'
 require 'jortt/client/customers'
 require 'jortt/client/invoices'
-require 'jortt/client/invoice'
+require 'jortt/client/ledger_accounts'
 
 module Jortt
   ##
   # This class is the main interface used to communicate with the Jortt API.
   # It is by the {Jortt} module to create configured instances.
   class Client
-    BASE_URL = 'https://app.jortt.nl/api'
+    SITE = 'https://api.jortt.nl'
+    OAUTH_PROVIDER_URL = 'https://app.jortt.nl/oauth-provider/oauth'
 
-    attr_accessor :base_url, :app_name, :api_key
+    attr_accessor :token
 
     # Initialize a Jortt client.
     #
     # @example
     #   Jortt::Client.new(
-    #     app_name: <application-name, chosen in jortt.nl>
-    #     api_key: <api-key, as provided by jortt.nl>
+    #     "my-client-id",
+    #     "my-client-secret"
     #   )
     #
     # @params [ Hash ] opts Options for the client,
@@ -25,10 +29,17 @@ module Jortt
     # @return [ Jortt::Client ]
     #
     # @since 1.0.0
-    def initialize(opts)
-      self.base_url = opts.fetch(:base_url, BASE_URL)
-      self.app_name = opts.fetch(:app_name)
-      self.api_key = opts.fetch(:api_key)
+    def initialize(id, secret, opts = {})
+      oauth_provider_url = opts[:oauth_provider_url] || OAUTH_PROVIDER_URL
+
+      client = OAuth2::Client.new(id, secret,
+        site: opts[:site] || SITE,
+        token_url: "#{oauth_provider_url}/token",
+        authorize_url: "#{oauth_provider_url}/authorize",
+        auth_scheme: :basic_auth
+      )
+
+      @token = client.client_credentials.get_token(scope: "invoices:read invoices:write customers:read customers:write")
     end
 
     # Access the customer resource to perform operations.
@@ -55,16 +66,55 @@ module Jortt
       @invoices ||= Jortt::Client::Invoices.new(self)
     end
 
-    # Access a single invoice resource to perform operations.
+    # Access the ledger_accounts resource.
     #
     # @example
-    #   client.invoice('abc')
+    #   client.ledger_accounts
     #
-    # @params [ String ] invoice_id The id of an invoice.
+    # @return [ Jortt::Client::LedgerAccounts ] entry to the leger_accounts resource.
     #
-    # @return [ Jortt::Client::Invoice ] entry to the invoice resource.
-    def invoice(invoice_id)
-      Jortt::Client::Invoice.new(self, invoice_id)
+    # @since 5.0.0
+    def ledger_accounts
+      Jortt::Client::LedgerAccounts.new(self)
+    end
+
+    def get(path, params = {})
+      handle_response { token.get(path, params: params) }
+    end
+
+    def post(path, params = {})
+      handle_response { token.post(path, params: params) }
+    end
+
+    def put(path, params = {})
+      handle_response { token.put(path, params: params) }
+    end
+
+    def delete(path)
+      handle_response { token.delete(path) }
+    end
+
+    def handle_response(&block)
+      response = yield
+      return true if response.status == 204
+      response.parsed.fetch('data')
+    rescue OAuth2::Error => e
+      raise Error.from_response(e.response)
+    end
+
+    def paginated(path, params = {})
+      page = 1
+
+      Enumerator.new do |yielder|
+        loop do
+          response = token.get(path, params: params.merge(page: page)).parsed
+          response['data'].each { |item| yielder << item }
+          break if response['_links']['next'].nil?
+          page += 1
+        end
+      end
+    rescue OAuth2::Error => e
+      raise Error.from_response(e.response)
     end
 
   end

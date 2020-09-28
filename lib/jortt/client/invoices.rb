@@ -1,73 +1,65 @@
-require 'rest-client'
-
 module Jortt # :nodoc:
   class Client # :nodoc:
-
     ##
     # Exposes the operations available for a collection of invoices.
     #
     # @see { Jortt::Client.invoices }
     class Invoices
+      attr_accessor :client
 
-      def initialize(config)
-        @resource = RestClient::Resource.new(
-          "#{config.base_url}/invoices",
-          user: config.app_name,
-          password: config.api_key,
-        )
+      def initialize(client)
+        @client = client
+      end
+
+      ##
+      # Returns all invoices using the GET /invoices endpoint.
+      # https://developer.jortt.nl/#list-invoices
+      #
+      # @example
+      #   client.invoices.index(query: 'Jane')
+      #
+      def index(query: nil, invoice_status: nil)
+        client.paginated('/invoices', query: query, invoice_status: invoice_status)
+      end
+
+      ##
+      # Returns a invoice using the GET /invoices/{invoice_id} endpoint.
+      # https://developer.jortt.nl/#get-invoice-by-id
+      #
+      # @example
+      #   client.invoices.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #
+      def show(id)
+        client.get("/invoices/#{id}")
       end
 
       ##
       # Creates an Invoice using the POST /invoices endpoint.
-      # See https://app.jortt.nl/api-documentatie#factuur-aanmaken
+      # https://developer.jortt.nl/#create-and-optionally-send-an-invoice
       #
       # @example
-      #   Jortt::Client.invoices.create(
-      #     customer_id: 'customer_id', # optional
-      #     delivery_period: '31-12-2015', # optional
-      #     reference: 'reference', # optional
+      #   client.invoices.create(
       #     line_items: [{
-      #       vat: 21, # mandatory, percentage
-      #       amount: 499, # mandatory, ex vat
-      #       quantity: 4, # mandatory
-      #       description: 'Your Thinkas' # mandatory
+      #       vat: 21,
+      #       amount: 499,
+      #       units: 4,
+      #       description: 'Your product'
       #     }]
       #   )
       def create(payload)
-        resource.post(JSON.generate('invoice' => payload)) do |response|
-          JSON.parse(response.body)
-        end
+        client.post('/invoices', payload)
       end
 
-      def get(id)
-        resource["id/#{id}"].get do |response|
-          JSON.parse(response.body)
-        end
-      end
-
+      ##
+      # Returns an invoice PDF download link using the GET /invoices/{invoice_id}/download endpoint.
+      # https://developer.jortt.nl/#download-invoice-pdf
+      #
+      # @example
+      #   client.invoices.download("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #
       def download(id)
-        resource["id/#{id}"].get(params: {format: "pdf"}).body
-      rescue RestClient::Exception => error
-        raise Jortt::Error.new(error.message, error.response)
+        client.get("/invoices/#{id}/download")
       end
-
-      def search(query)
-        resource['search'].get(params: {query: query}) do |response|
-          JSON.parse(response.body)
-        end
-      end
-
-      def status(invoice_status, page: 1, per_page: 100)
-        resource["status/#{invoice_status}"].get(params: {page: page, per_page: per_page}) do |response|
-          JSON.parse(response.body)
-        end
-      end
-
-    private
-
-      attr_reader :resource
-
     end
-
   end
 end

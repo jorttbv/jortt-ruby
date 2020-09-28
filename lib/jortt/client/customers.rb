@@ -1,83 +1,91 @@
-require 'rest-client'
-
 module Jortt # :nodoc:
   class Client # :nodoc:
-
     ##
     # Exposes the operations available for a collection of customers.
     #
     # @see { Jortt::Client.customers }
     class Customers
+      attr_accessor :client
 
-      def initialize(config)
-        @resource = RestClient::Resource.new(
-          "#{config.base_url}/customers",
-          user: config.app_name,
-          password: config.api_key,
-        )
+      def initialize(client)
+        @client = client
       end
 
       ##
-      # Returns all customers using the GET /customers/all endpoint.
+      # Returns all customers using the GET /customers endpoint.
+      # https://developer.jortt.nl/#list-customers
       #
       # @example
-      #   Jortt::Client.customers.all(page: 3, per_page: 10)
+      #   client.customers.index(query: 'Jane')
       #
-      def all(page: 1, per_page: 50)
-        resource['all'].get(params: {page: page, per_page: per_page}) do |res|
-          JSON.parse(res.body)
-        end
+      def index(query: nil)
+        client.paginated('/customers', query: query)
+      end
+
+      ##
+      # Returns a customer using the GET /customers/{customer_id} endpoint.
+      # https://developer.jortt.nl/#get-customer-by-id
+      #
+      # @example
+      #   client.customers.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #
+      def show(id)
+        client.get("/customers/#{id}")
       end
 
       ##
       # Creates a Customer using the POST /customers endpoint.
-      # See https://app.jortt.nl/api-documentatie#klant-aanmaken
+      # https://developer.jortt.nl/#create-customer
       #
       # @example
-      #   Jortt::Client.customers.create(
-      #     company_name: "Jortt B.V.", # mandatory
-      #     attn: "Finance department", # optional
-      #     email: "support@jortt.nl", # optional
-      #     extra_information: "Our valued customer", # optional
-      #     address: {
-      #       street: "Street 100", # mandatory
-      #       postal_code: "1000 AA", # mandatory
-      #       city: "Amsterdam", # mandatory
-      #       country_code: "NL" # mandatory
-      #     }
+      #   client.customers.create(
+      #     is_private: false,
+      #     customer_name: 'Nuka-Cola Corporation',
+      #     address_street: 'Vault 11',
+      #     address_postal_code: '1111AA',
+      #     address_city: 'Mojave Wasteland'
       #   )
+      #
       def create(payload)
-        resource.post(JSON.generate('customer' => payload)) do |response|
-          JSON.parse(response.body)
-        end
+        client.post('/customers', payload)
       end
 
-      # Performs a search on this resource, given a query.
+      ##
+      # Updates a Customer using the PUT /customers/{customer_id} endpoint.
+      # https://developer.jortt.nl/#update-customer
       #
       # @example
-      #   customers.search('Zilverline')
+      #   client.customers.update(
+      #     "9afcd96e-caf8-40a1-96c9-1af16d0bc804",
+      #     { address_extra_information: 'foobar' }
+      #   )
       #
-      # @example
-      #   customers.search('Zilverline') do |response|
-      #     # Roll your own response handler
-      #   end
-      #
-      # @param [ Hash ] query A hash containing the fields to search for.
-      # @param [ Proc ] block A custom response handler.
-      #
-      # @return [ Array<Hash> ] By default, a JSON parsed response body.
-      #
-      # @since 1.0.0
-      def search(query)
-        resource.get(params: {query: query}) do |response|
-          JSON.parse(response.body)
-        end
+      def update(id, payload)
+        client.put("/customers/#{id}", payload)
       end
 
-    private
+      ##
+      # Deletes a Customer using the DELETE /customers/{customer_id} endpoint.
+      # https://developer.jortt.nl/#delete-a-customer
+      #
+      # @example
+      #   client.customers.delete("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #
+      def delete(id)
+        client.delete("/customers/#{id}")
+      end
 
-      attr_reader :resource
+      ##
+      # Send direct debit authorization to a Customer using POST /customers/{customer_id}/direct_debit_mandate.
+      # https://developer.jortt.nl/#send-direct-debit-authorization-to-a-customer
+      #
+      # @example
+      #   client.customers.direct_debit_mandate("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #
 
+      def direct_debit_mandate(id)
+        client.post("/customers/#{id}/direct_debit_mandate")
+      end
     end
   end
 end

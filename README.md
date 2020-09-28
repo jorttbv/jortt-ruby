@@ -15,74 +15,36 @@ http://img.shields.io/travis/jorttbv/jortt-ruby.svg?style=flat
 
 A Ruby interface to the [Jortt](https://www.jortt.nl/) REST API.
 
-## Usage
+Check https://developer.jortt.nl/ for more info.
+
+> THIS VERSION IS FOR THE NEW OAUTH API. STILL ON THE LEGACY API? USE VERSION 4.x OF THIS GEM: [CLICK HERE](https://github.com/jorttbv/jortt-ruby/tree/v4.2.0)
+
+## Usage examples
 
 To create a jortt client:
 ```ruby
-jortt = Jortt.client(
-  app_name: "application-name-as-chosen-on-jortt.nl",
-  api_key: "api-key-as-provided-by-jortt.nl"
-)
+jortt = Jortt.client('<your-client-id>', '<your-client-secret>')
 ```
 
 ### Customers
 
-All customers (`jortt.customers.all(page: 2, per_page: 25)`) returns:
+All customers (`jortt.customers.index(page: 2)`) returns:
 ```ruby
 [{
-  company_name: 'Jortt',
-  address: {
-    street: "Transistorstraat 71C",
-    postal_code: "1322 CK",
-    city: "Almere",
-    country_code: "NL"
-  }
-},
-{
-  company_name: 'Zilverline',
-  address: {
-    street: "Cruquiusweg",
-    ...
-  }
-},
-...
-page: 2,
-per_page: 25
-]
-```
-
-Searching customers (`jortt.customers.search('Jortt')`) returns:
-```ruby
-[{
-  company_name: 'Jortt',
-  address: {
-    street: "Transistorstraat 71C",
-    postal_code: "1322 CK",
-    city: "Almere",
-    country_code: "NL"
-  }
-},
-{
-  company_name: 'ttroj',
-  address: {
-    street: "Jorttweg",
-    ...
-  }
+  "id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+  "is_private": true,
+  "customer_name": "Jortt",
+  "address_street": "Rozengracht 75a",
+  ...
 }]
 ```
 
 Adding customers:
 ```ruby
 jortt.customers.create(
-  company_name: "Jortt B.V.",
-  attn: "Vibiemme", # Optional
-  extra_information: "The best cofee maker!", # Optional
-  address: {
-    street: "Transistorstraat 71C",
-    postal_code: "1322 CK",
-    city: "Almere",
-    country_code: "NL"
-  }
+  "is_private": true,
+  "customer_name": "Jortt",
+  ...
 )
 ```
 
@@ -113,80 +75,16 @@ Get invoices by ID (`jortt.invoices.get('934d59dd-76f6-4716-9e0f-82a618e1be21')`
 ```
 
 
-Searching invoices (`jortt.invoices.search('201606-012')`) returns:
+Searching invoices (`jortt.invoices.index(query: '202001-002')`) returns:
 ```ruby
-[
-  {
-    "invoice_id": "934d59dd-76f6-4716-9e0f-82a618e1be21",
-    "recipient": {
-      "company_name": "Zilverline B.V.",
-      "attn": null,
-      "address": {
-        "street": "Cruquisweg 109F",
-        "city": "Amsterdam",
-        "postal_code": "1111SX",
-        "country": {
-          "code": "NL",
-          "name": "Nederland"
-        }
-      },
-      "email": "ben@jortt.nl",
-      "customer_id": "e1c5e15b-e34e-423e-a291-4ed43226a190",
-      "extra_information": null,
-      "shift_vat": null,
-      "vat_number": null,
-      "payment_term": 30
-    },
-    "recipient_in_eu": true,
-    "organization": {
-      "company_name": "Jortt BV",
-      "company_name_line_2": null,
-      "address": {
-        "street": "Straat 1",
-        "city": "Amsterdam",
-        "postal_code": "1000 AA",
-        "country": {
-          "code": "NL",
-          "name": "Nederland"
-        }
-      },
-      "phonenumber": null,
-      "bank_information": {
-        "bic": "RABONL2U",
-        "iban": "NL50RABO0150000001",
-        "in_the_name_of": "Jortt B.V.",
-        "description": null
-      },
-      "coc_number": "unique number",
-      "vat_number": "NL821898279B01",
-      "profession": null,
-      "healthcare_data": null,
-      "free_of_vat": false,
-      "finance_email": "Jortt BV <compleet@jortt.nl>"
-    },
-    "line_items": [
-      {
-        "description": "Scrum",
-        "vat": "0.21",
-        "amount": "-100.0",
-        "total_amount_ex_vat": "-100.0",
-        "currency": "EUR",
-        "quantity": "1.0"
-      }
-    ],
-    "invoice_currency": null,
-    "invoice_total": "-100.0",
-    "invoice_total_incl_vat": "-121.0",
-    "invoice_number": "201607-011",
-    "invoice_status": "paid",
-    "invoice_due_date": "2016-08-06",
-    "invoice_date": "2016-07-07",
-    "invoice_delivery_period": "2016-07-01",
-    "invoice_remarks": null,
-    "invoice_language": "nl",
-    "invoice_reference": null
-  }
-]
+[{
+  "id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+  "invoice_status": "draft",
+  "customer_id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+  "invoice_number": "202001-002",
+  "invoice_date": "2020-02-23",
+  ...
+}]
 
 ```
 
@@ -194,34 +92,30 @@ Searching invoices (`jortt.invoices.search('201606-012')`) returns:
 Adding invoices:
 ```ruby
 jortt.invoices.create(
-  customer_id: "123456789", # Optional
-  delivery_period: "31-12-1234", # Optional
-  reference: "my-reference", # Optional
+  customer_id: "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+  invoice_date: "2020-02-23",
+  delivery_period: "2020-02-01",
+  payment_term: 14,
+  net_amounts: true,
+  send_method: "email",
+  introduction: "example",
+  remarks: "example",
+  payment_method: "pay_later",
   line_items: [
-    {vat: 21, amount: 1359.50, quantity: 1, description: "Scrum Training"}
-  ]
+    {
+      description: "this is a description example",
+      units: 3.14,
+      amount_per_unit: {
+        value: "365.00",
+        currency: "EUR"
+      },
+      vat: 21,
+      ledger_account_id: "f8fd3e4e-da1c-43a7-892f-1410ac13e38a"
+    }
+  ],
+  reference: "123"
 )
 ```
-
-Sending invoices:
-```ruby
-jortt.invoice(:invoice_id).send_invoice(
-  mail_data: {
-    to: 'ben@jortt.nl', # optional
-    subject: 'Thank you for your assignment', # optional
-    body: 'I hereby send you the invoice', # optional
-  },
-  invoice_date: Date.today, # optional
-  payment_term: 7, # optional
-  language: 'nl', # optional
-  send_method: 'email', # optional
-)
-```
-
-
-## Documentation
-
-Check https://app.jortt.nl/api-documentatie for more info.
 
 ## Development
 

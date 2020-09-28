@@ -1,0 +1,505 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.jortt.nl/customers/3b9461f1-b384-471c-abd9-d1fa0a86d181
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:02:54 GMT
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 204 No Content
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 24 Sep 2020 15:02:54 GMT
+- request:
+    method: delete
+    uri: https://api.jortt.nl/customers/1b617738-e01c-4d96-9b9a-1c32d2ea8e87
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:02:54 GMT
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 204 No Content
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 24 Sep 2020 15:02:54 GMT
+- request:
+    method: delete
+    uri: https://api.jortt.nl/customers/cf05a8a2-d401-4bae-a1b9-c8ea2ca2ed11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:02:54 GMT
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 204 No Content
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 24 Sep 2020 15:02:54 GMT
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, no-store
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 1ea3dbf8-443a-4689-9d43-bcd9ccdcb104
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"490e3c7a2630782042baa8f22011db00"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.326108'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger
+      Server:
+      - nginx + Phusion Passenger
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"QjsKvyYFm-GTOmOzhPV5MgEXKTgu5AUE9JauktDI4S4","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600959808}'
+  recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
+- request:
+    method: post
+    uri: https://api.jortt.nl/customers?customer_name=Jane%20Doe&is_private=true
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:28 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '54'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 201 Created
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"c85113d9-47d7-4cf3-a985-d46448af6d2c"}}'
+  recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
+- request:
+    method: post
+    uri: https://api.jortt.nl/customers?customer_name=John%20Doe&is_private=true
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:28 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '54'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 201 Created
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"17633b62-276f-451f-847a-4c2d5cc75a0b"}}'
+  recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
+- request:
+    method: post
+    uri: https://api.jortt.nl/customers?address_city=Mojave%20Wasteland&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:29 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '54'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 201 Created
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"fb27464c-ee20-4375-920f-215b48a29f85"}}'
+  recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
+- request:
+    method: delete
+    uri: https://api.jortt.nl/customers/fb27464c-ee20-4375-920f-215b48a29f85
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:29 GMT
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 204 No Content
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
+- request:
+    method: delete
+    uri: https://api.jortt.nl/customers/c85113d9-47d7-4cf3-a985-d46448af6d2c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:29 GMT
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 204 No Content
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
+- request:
+    method: delete
+    uri: https://api.jortt.nl/customers/17633b62-276f-451f-847a-4c2d5cc75a0b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:29 GMT
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 204 No Content
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,168 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, no-store
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 571bb0a8-eae0-4c8d-908a-0f05228ae7f1
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"f5ff4029cd3ff8024d105668befd03e2"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.317214'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger
+      Server:
+      - nginx + Phusion Passenger
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"qUCGp3DsxLLzRAIhGVlXagVeHBoyRCeRlGj1EVCOw6o","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write","created_at":1600959814}'
+  recorded_at: Thu, 24 Sep 2020 15:03:34 GMT
+- request:
+    method: get
+    uri: https://api.jortt.nl/invoices?invoice_status&page=1&query=Download%20test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:34 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1673'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"75d6f559-0295-4586-9aa9-2ab3ce42f6a6","invoice_status":"sent","customer_id":"21a81a13-312f-4914-886b-75746c300a92","invoice_number":"202009-010","invoice_date":"2020-09-22","invoice_due_date":"2020-10-22","invoice_delivery_period":"2020-09-01","invoice_date_sent":"2020-09-22","invoice_total":{"value":"100.00","currency":"EUR"},"invoice_total_incl_vat":{"value":"121.00","currency":"EUR"},"invoice_due_amount":{"value":"121.00","currency":"EUR"},"send_method":"self","net_amounts":false,"invoice_marked_free_of_vat":false,"credited_invoice_id":null,"remarks":null,"introduction":null,"number_of_reminders_sent":0,"last_reminded_at":null,"payment_method":"pay_later","customer_company_name":"Search
+        target","customer_attn":null,"customer_address_street":null,"customer_address_city":null,"customer_address_postal_code":null,"customer_address_country_code":"NL","customer_address_country_name":"Nederland","customer_address_extra_information":null,"customer_vat_shifted":null,"customer_vat_number":null,"customer_in_eu":true,"customer_reference":null,"customer_mail_to":null,"customer_mail_cc_addresses":[],"language":"nl","line_items":[{"description":"Download
+        test","vat":21.0,"amount_per_unit":{"value":"100.00","currency":"EUR"},"total_amount_excl_vat":{"value":"100.00","currency":"EUR"},"units":1.0,"ledger_account_id":"05ba2a61-a0cc-4736-9000-89fb361e85c8"}],"reference":null,"created_at":"2020-09-22T15:12:16+02:00"}],"_links":{"previous":null,"next":null,"self":{"href":"https://api.jortt.nl/invoices?query=Download%20test\u0026page=1","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
+  recorded_at: Thu, 24 Sep 2020 15:03:34 GMT
+- request:
+    method: get
+    uri: https://api.jortt.nl/invoices/75d6f559-0295-4586-9aa9-2ab3ce42f6a6/download
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:03:34 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '615'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"download_location":"https://files.jortt.nl/29d26011-51ed-418d-a9f2-2e55349d37d6/75d6f559-0295-4586-9aa9-2ab3ce42f6a6?response-content-disposition=attachment;filename=202009-010.pdf\u0026Expires=1600960414\u0026Signature=aPu1qDX1M-NbnKYF7jaShsC3ur~iqcjI-Rg7U92LDbdWdWip413aBGMqXQ8FR8QAFsZL6Zvfid2mT4sYy7V1t3gHYBrVJFdCc-z3HXQwNRAM-SeGhWFDMio2IIa4LGaA6N3RT-5P53uMi7ceh96NXxTDET-DhGhiQFHzffaGSKsYGTm0QV9u998e2IfpjBBZtXDRm72QLI48Cb~kvryv8GhbZ0qFoGp8Ser9UXQqWtoTmmHLdB-ABjsZZJzYZQKqkCxbDViV-pVRVyHMGCc1TwY8bNRYPlZ7TARCxPbAm3tXmY~1eJp0ua6U~1P2LlJE-kXDM~IDD4ruD5L627YLzA__\u0026Key-Pair-Id=APKAJQLVUY5LXNQN6NRQ"}}'
+  recorded_at: Thu, 24 Sep 2020 15:03:34 GMT
+recorded_with: VCR 6.0.0
