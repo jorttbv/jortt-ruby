@@ -99,7 +99,7 @@ module Jortt
       return true if response.status == 204
       response.parsed.fetch('data')
     rescue OAuth2::Error => e
-      raise ResponseError.new(e.response)
+      raise Error.from_response(e.response)
     end
 
     def paginated(path, params = {})
@@ -114,7 +114,7 @@ module Jortt
         end
       end
     rescue OAuth2::Error => e
-      raise ResponseError.new(e.response)
+      raise Error.from_response(e.response)
     end
 
   end

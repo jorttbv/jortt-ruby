@@ -66,7 +66,7 @@ describe Jortt::Client::Customers, :vcr do
       subject { client.customers.create({}) }
 
       it "shows a nice error" do
-        expect { subject }.to raise_error(Jortt::Client::ResponseError)
+        expect { subject }.to raise_error(Jortt::Client::Error)
       end
     end
   end
@@ -96,7 +96,7 @@ describe Jortt::Client::Customers, :vcr do
     it "sends direct debit mandate to the customer or responds with an error when not possible" do
       begin
         subject
-      rescue Jortt::Client::ResponseError => e
+      rescue Jortt::Client::Error => e
         expect(e.details.first['key']).to eq("DirectDebit::NotEnabled")
       end
     end

@@ -1,13 +1,22 @@
 module Jortt # :nodoc:
   class Client # :nodoc:
-    class ResponseError < StandardError # :nodoc:
+    class Error < StandardError # :nodoc:
       attr_reader :response, :code, :key, :message, :details
 
-      def initialize(response)
-        @code = response.parsed.dig('error', 'code')
-        @key = response.parsed.dig('error', 'key')
-        @message = response.parsed.dig('error', 'message')
-        @details = response.parsed.dig('error', 'details')
+      def self.from_response(response)
+        Error.new(
+            response.parsed.dig('error', 'code'),
+            response.parsed.dig('error', 'key'),
+            response.parsed.dig('error', 'message'),
+            response.parsed.dig('error', 'details')
+        )
+      end
+
+      def initialize(code, key, message, details)
+        @code = code
+        @key = key
+        @message = message
+        @details = details
 
         super(error_message)
       end
