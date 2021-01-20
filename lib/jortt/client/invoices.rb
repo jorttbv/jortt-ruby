@@ -51,6 +51,21 @@ module Jortt # :nodoc:
       end
 
       ##
+      # Credits an Invoice using the POST /invoices/{invoice_id}/credit endpoint.
+      # https://developer.jortt.nl/#create-and-optionally-send-an-invoice
+      #
+      # @example
+      #   client.invoices.credit(
+      #     "9afcd96e-caf8-40a1-96c9-1af16d0bc804",
+      #     {
+      #       send_method: 'email'
+      #     }
+      #   )
+      def credit(id, payload)
+        client.post("/invoices/#{id}/credit", payload)
+      end
+
+      ##
       # Returns an invoice PDF download link using the GET /invoices/{invoice_id}/download endpoint.
       # https://developer.jortt.nl/#download-invoice-pdf
       #
