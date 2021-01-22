@@ -7,17 +7,17 @@ describe Jortt::Client::Invoices, :vcr do
 
   let(:params) do
     {
-        customer_id: customer.fetch('id'),
-        send_method: 'self',
-        line_items: [{
-                         vat: 21,
-                         amount_per_unit: {
-                             value: 499,
-                             currency: 'EUR'
-                         },
-                         units: 4,
-                         description: 'Your product'
-                     }]
+      customer_id: customer.fetch('id'),
+      send_method: 'self',
+      line_items: [{
+        vat: 21,
+        amount_per_unit: {
+          value: 499,
+          currency: 'EUR'
+        },
+        units: 4,
+        description: 'Your product'
+      }]
     }
   end
 
@@ -29,36 +29,36 @@ describe Jortt::Client::Invoices, :vcr do
         VCR.turn_off!
 
         stub_request(:any, "https://app.jortt.nl/oauth-provider/oauth/token").
-            to_return(
-                headers: {content_type: 'application/json'},
-                body: {access_token: 'abc'}.to_json)
+          to_return(
+            headers: {content_type: 'application/json'},
+            body: {access_token: 'abc'}.to_json)
 
         stub_request(:get, "https://api.jortt.nl/invoices?invoice_status&page=1&query").
-            to_return(
-                headers: {content_type: 'application/json'},
-                body: {
-                    'data': [{id: 1}, {id: 2}],
-                    _links: {next: "https://api.jortt.nl/invoices?page=2"}
-                }.to_json
-            )
+          to_return(
+            headers: {content_type: 'application/json'},
+            body: {
+              'data': [{id: 1}, {id: 2}],
+              _links: {next: "https://api.jortt.nl/invoices?page=2"}
+            }.to_json
+          )
 
         stub_request(:get, "https://api.jortt.nl/invoices?invoice_status&page=2&query").
-            to_return(
-                headers: {content_type: 'application/json'},
-                body: {
-                    data: [{id: 3}, {id: 4}],
-                    _links: {next: "https://api.jortt.nl/invoices?page=3"}
-                }.to_json
-            )
+          to_return(
+            headers: {content_type: 'application/json'},
+            body: {
+              data: [{id: 3}, {id: 4}],
+              _links: {next: "https://api.jortt.nl/invoices?page=3"}
+            }.to_json
+          )
 
         stub_request(:get, "https://api.jortt.nl/invoices?invoice_status&page=3&query").
-            to_return(
-                headers: {content_type: 'application/json'},
-                body: {
-                    data: [{id: 5}],
-                    _links: {next: nil}
-                }.to_json
-            )
+          to_return(
+            headers: {content_type: 'application/json'},
+            body: {
+              data: [{id: 5}],
+              _links: {next: nil}
+            }.to_json
+          )
       end
 
       after { VCR.turn_on! }
@@ -114,6 +114,16 @@ describe Jortt::Client::Invoices, :vcr do
 
     it "returns the invoice download link" do
       expect(subject.fetch('download_location')).to match(/https:\/\/files\.jortt\.nl\/.*/)
+    end
+  end
+
+  describe '#credit' do
+    let(:uuid) { client.invoices.index(query: 'Search target').first.fetch('id') }
+    subject { client.invoices.credit(uuid, {send_method: 'self'}) }
+
+    it "credits the invoice" do
+      uuid_length = 36
+      expect(subject['id'].length).to eq(uuid_length)
     end
   end
 end
