@@ -1,8 +1,6 @@
 # Jortt REST API client
 
-[![Code Climate](
-http://img.shields.io/codeclimate/github/jorttbv/jortt-ruby.svg?style=flat
-)](https://codeclimate.com/github/jorttbv/jortt-ruby)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Code Coverage](
 https://codecov.io/github/jorttbv/jortt-ruby/coverage.svg?branch=master
 )](https://codecov.io/github/jorttbv/jortt-ruby?branch=master)
