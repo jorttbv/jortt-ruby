@@ -6,7 +6,7 @@ http://img.shields.io/codeclimate/github/jorttbv/jortt-ruby.svg?style=flat
 [![Code Coverage](
 https://codecov.io/github/jorttbv/jortt-ruby/coverage.svg?branch=master
 )](https://codecov.io/github/jorttbv/jortt-ruby?branch=master)
-[![rspec Actions Status](https://github.com/jorttbv/jortt-ruby/.github/workflows/rspec/badge.svg)](https://github.com/jorttbv/jortt-ruby/actions)
+[![rspec Actions Status](https://github.com/jorttbv/jortt-ruby/workflows/rspec/badge.svg)](https://github.com/jorttbv/jortt-ruby/actions)
 
 A Ruby interface to the [Jortt](https://www.jortt.nl/) REST API.
 
