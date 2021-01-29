@@ -1,17 +1,12 @@
 # Jortt REST API client
 
-[![Inline docs](
-http://inch-ci.org/github/jorttbv/jortt-ruby.svg?branch=master&style=flat
-)](http://inch-ci.org/github/jorttbv/jortt-ruby)
 [![Code Climate](
 http://img.shields.io/codeclimate/github/jorttbv/jortt-ruby.svg?style=flat
 )](https://codeclimate.com/github/jorttbv/jortt-ruby)
 [![Code Coverage](
 https://codecov.io/github/jorttbv/jortt-ruby/coverage.svg?branch=master
 )](https://codecov.io/github/jorttbv/jortt-ruby?branch=master)
-[![Build Status](
-http://img.shields.io/travis/jorttbv/jortt-ruby.svg?style=flat
-)](https://travis-ci.org/jorttbv/jortt-ruby)
+![jortt-ruby workflow file path](https://github.com/jorttbv/jortt-ruby/workflows/.github/workflows/main.yml/badge.svg)
 
 A Ruby interface to the [Jortt](https://www.jortt.nl/) REST API.
 
