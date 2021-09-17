@@ -99,12 +99,12 @@ jortt.invoices.create(
   line_items: [
     {
       description: "this is a description example",
-      units: 3.14,
+      units: "3.14",
       amount_per_unit: {
         value: "365.00",
         currency: "EUR"
       },
-      vat: 21,
+      vat_percentage: "21",
       ledger_account_id: "f8fd3e4e-da1c-43a7-892f-1410ac13e38a"
     }
   ],

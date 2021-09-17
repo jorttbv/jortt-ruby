@@ -40,9 +40,9 @@ module Jortt # :nodoc:
       # @example
       #   client.invoices.create(
       #     line_items: [{
-      #       vat: 21,
+      #       vat_percentage: "21.0",
       #       amount: 499,
-      #       units: 4,
+      #       number_of_units: "4",
       #       description: 'Your product'
       #     }]
       #   )
