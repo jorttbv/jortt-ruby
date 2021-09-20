@@ -82,9 +82,19 @@ module Jortt # :nodoc:
       # @example
       #   client.customers.direct_debit_mandate("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
-
       def direct_debit_mandate(id)
         client.post("/customers/#{id}/direct_debit_mandate")
+      end
+
+      ##
+      # Get vat percentages for a Customer using the GET /customers/{customer_id}/vat-percentages endpoint.
+      # https://developer.jortt.nl/#get-vat-percentages-for-a-customer-by-id
+      #
+      # @example
+      #   client.customers.vat_percentages("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #
+      def vat_percentages(id)
+        client.get("/customers/#{id}/vat-percentages")
       end
     end
   end

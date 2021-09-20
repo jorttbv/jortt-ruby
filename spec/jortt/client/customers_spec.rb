@@ -5,11 +5,11 @@ describe Jortt::Client::Customers, :vcr do
 
   let(:params) do
     {
-        is_private: false,
-        customer_name: 'Nuka-Cola Corporation',
-        address_street: 'Vault 11',
-        address_postal_code: '1111AA',
-        address_city: 'Mojave Wasteland'
+      is_private: false,
+      customer_name: 'Nuka-Cola Corporation',
+      address_street: 'Vault 11',
+      address_postal_code: '1111AA',
+      address_city: 'Mojave Wasteland'
     }
   end
 
@@ -99,6 +99,22 @@ describe Jortt::Client::Customers, :vcr do
       rescue Jortt::Client::Error => e
         expect(e.details.first['key']).to eq("DirectDebit::NotEnabled")
       end
+    end
+  end
+
+  describe '#vat_percentages' do
+    subject { client.customers.vat_percentages(jane) }
+
+    it "returns the vat percentages" do
+      expect(subject).to eq (
+        {
+          "id" => "546a86e8-7a57-4d46-9a81-09378a399dd9",
+          "vat_percentages" => {
+            "reduced_rate" => ["9.0", "0.0"],
+            "standard_rate" => "21.0",
+          }
+        }
+      )
     end
   end
 end
