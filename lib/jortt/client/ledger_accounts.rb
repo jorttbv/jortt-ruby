@@ -3,7 +3,7 @@ module Jortt # :nodoc:
     ##
     # Exposes the operations available for a collection of customers.
     #
-    # @see { Jortt::Client.customers }
+    # @see { Jortt::Client.ledger_accounts }
     class LedgerAccounts
       attr_accessor :client
 

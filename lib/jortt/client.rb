@@ -5,6 +5,7 @@ require 'jortt/client/customers'
 require 'jortt/client/invoices'
 require 'jortt/client/ledger_accounts'
 require 'jortt/client/organizations'
+require 'jortt/client/tradenames'
 
 module Jortt
   ##
@@ -88,6 +89,17 @@ module Jortt
     #
     def organizations
       Jortt::Client::Organizations.new(self)
+    end
+
+    # Access the tradenames resource.
+    #
+    # @example
+    #   client.tradenames
+    #
+    # @return [ Jortt::Client::Organizations ] entry to the organizations resource.
+    #
+    def tradenames
+      Jortt::Client::Tradenames.new(self)
     end
 
     def get(path, params = {})
