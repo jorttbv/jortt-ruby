@@ -40,7 +40,7 @@ module Jortt
         auth_scheme: :basic_auth
       )
 
-      @token = client.client_credentials.get_token(scope: "invoices:read invoices:write customers:read customers:write")
+      @token = client.client_credentials.get_token(scope: "invoices:read invoices:write customers:read customers:write organizations:read")
     end
 
     # Access the customer resource to perform operations.
@@ -79,12 +79,12 @@ module Jortt
       Jortt::Client::LedgerAccounts.new(self)
     end
 
-    # Access the ledger_accounts resource.
+    # Access the organizations resource.
     #
     # @example
-    #   client.ledger_accounts
+    #   client.organizations
     #
-    # @return [ Jortt::Client::LedgerAccounts ] entry to the leger_accounts resource.
+    # @return [ Jortt::Client::Organizations ] entry to the organizations resource.
     #
     def organizations
       Jortt::Client::Organizations.new(self)
