@@ -86,6 +86,7 @@ module Jortt
     #
     # @return [ Jortt::Client::Organizations ] entry to the organizations resource.
     #
+    # @since 6.2.0
     def organizations
       Jortt::Client::Organizations.new(self)
     end
