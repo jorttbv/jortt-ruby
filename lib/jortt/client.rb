@@ -4,6 +4,7 @@ require 'jortt/client/error'
 require 'jortt/client/customers'
 require 'jortt/client/invoices'
 require 'jortt/client/ledger_accounts'
+require 'jortt/client/organizations'
 
 module Jortt
   ##
@@ -76,6 +77,17 @@ module Jortt
     # @since 5.0.0
     def ledger_accounts
       Jortt::Client::LedgerAccounts.new(self)
+    end
+
+    # Access the ledger_accounts resource.
+    #
+    # @example
+    #   client.ledger_accounts
+    #
+    # @return [ Jortt::Client::LedgerAccounts ] entry to the leger_accounts resource.
+    #
+    def organizations
+      Jortt::Client::Organizations.new(self)
     end
 
     def get(path, params = {})
