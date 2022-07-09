@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'oauth2'
 
 require 'jortt/client/error'
@@ -34,14 +36,20 @@ module Jortt
     def initialize(id, secret, opts = {})
       oauth_provider_url = opts[:oauth_provider_url] || OAUTH_PROVIDER_URL
 
-      client = OAuth2::Client.new(id, secret,
+      client = OAuth2::Client.new(
+        id,
+        secret,
         site: opts[:site] || SITE,
         token_url: "#{oauth_provider_url}/token",
         authorize_url: "#{oauth_provider_url}/authorize",
-        auth_scheme: :basic_auth
+        auth_scheme: :basic_auth,
       )
 
-      @token = client.client_credentials.get_token(scope: "invoices:read invoices:write customers:read customers:write organizations:read")
+      @token = client
+        .client_credentials
+        .get_token(
+          scope: 'invoices:read invoices:write customers:read customers:write organizations:read',
+        )
     end
 
     # Access the customer resource to perform operations.
@@ -118,9 +126,10 @@ module Jortt
       handle_response { token.delete(path) }
     end
 
-    def handle_response(&block)
+    def handle_response
       response = yield
       return true if response.status == 204
+
       response.parsed.fetch('data')
     rescue OAuth2::Error => e
       raise Error.from_response(e.response)
@@ -134,12 +143,12 @@ module Jortt
           response = token.get(path, params: params.merge(page: page)).parsed
           response['data'].each { |item| yielder << item }
           break if response['_links']['next'].nil?
+
           page += 1
         end
       end
     rescue OAuth2::Error => e
       raise Error.from_response(e.response)
     end
-
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jortt
   # Define the version of +Jortt::Client+
   class Client
