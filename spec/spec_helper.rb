@@ -1,17 +1,10 @@
 # frozen_string_literal: true
 
-require 'simplecov'
 require 'rspec'
 require 'rspec/its'
 require 'webmock/rspec'
 require 'vcr'
 require 'jortt'
-
-SimpleCov.start
-if ENV['CI'] == 'true'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
