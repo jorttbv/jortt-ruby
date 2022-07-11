@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'base'
+
 module Jortt # :nodoc:
   class Client # :nodoc:
     ##
@@ -21,7 +23,7 @@ module Jortt # :nodoc:
       #   client.tradenames.index
       #
       def index
-        client.paginated('/tradenames')
+        client.get(make_path('/tradenames'))
       end
     end
   end
