@@ -1,18 +1,14 @@
 # frozen_string_literal: true
 
+require_relative 'base'
+
 module Jortt # :nodoc:
   class Client # :nodoc:
     ##
     # Exposes the operations available for the Organization logged in.
     #
     # @see { Jortt::Client.organizations }
-    class Organizations
-      attr_accessor :client
-
-      def initialize(client)
-        @client = client
-      end
-
+    class Organizations <  Base
       ##
       # Returns the Organization associated with the credentials.
       # https://developer.jortt.nl/#jortt-api-organizations
@@ -21,7 +17,7 @@ module Jortt # :nodoc:
       #   client.organizations.me
       #
       def me
-        client.get('/organizations/me')
+        client.get(make_path('/organizations/me'))
       end
     end
   end

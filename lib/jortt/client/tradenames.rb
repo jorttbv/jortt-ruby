@@ -8,13 +8,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for a collection of tradenames.
     #
     # @see { Jortt::Client.tradenames }
-    class Tradenames
-      attr_accessor :client
-
-      def initialize(client)
-        @client = client
-      end
-
+    class Tradenames < Base
       ##
       # Returns all tradenames using the GET /tradenames endpoint.
       # https://developer.jortt.nl/#list-tradenames

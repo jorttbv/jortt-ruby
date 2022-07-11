@@ -17,7 +17,7 @@ module Jortt
     SITE = 'https://api.jortt.nl'
     OAUTH_PROVIDER_URL = 'https://app.jortt.nl/oauth-provider/oauth'
 
-    attr_accessor :token
+    attr_accessor :token, :base_path
 
     # Initialize a Jortt client.
     #
@@ -35,11 +35,15 @@ module Jortt
     # @since 1.0.0
     def initialize(id, secret, opts = {})
       oauth_provider_url = opts[:oauth_provider_url] || OAUTH_PROVIDER_URL
+      site = opts[:site] || SITE
+      site_uri = URI(site)
+      site_host = [site_uri.scheme, [site_uri.host, site_uri.port].join(':')].join('://')
+      @base_path = site_uri.path
 
       client = OAuth2::Client.new(
         id,
         secret,
-        site: opts[:site] || SITE,
+        site: site_host,
         token_url: "#{oauth_provider_url}/token",
         authorize_url: "#{oauth_provider_url}/authorize",
         auth_scheme: :basic_auth,
@@ -111,19 +115,19 @@ module Jortt
     end
 
     def get(path, params = {})
-      handle_response { token.get(path, params: params) }
+      handle_response { token.get(path, params: params, snaky: false) }
     end
 
     def post(path, params = {})
-      handle_response { token.post(path, params: params) }
+      handle_response { token.post(path, params: params, snaky: false) }
     end
 
     def put(path, params = {})
-      handle_response { token.put(path, params: params) }
+      handle_response { token.put(path, params: params, snaky: false) }
     end
 
     def delete(path)
-      handle_response { token.delete(path) }
+      handle_response { token.delete(path, snaky: false) }
     end
 
     def handle_response
