@@ -11,8 +11,8 @@ module Jortt # :nodoc:
       end
 
       def make_path(resource_path)
-        path = !resource_path.start_with?('/') && !@base_path.end_with?('/') ? "/#{resource_path}" : resource_path
-        "#{@base_path}#{path}"
+        path = !resource_path.start_with?('/') && !client.base_path.end_with?('/') ? "/#{resource_path}" : resource_path
+        "#{client.base_path}#{path}"
       end
     end
   end
