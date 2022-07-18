@@ -1,16 +1,14 @@
+# frozen_string_literal: true
+
+require_relative 'base'
+
 module Jortt # :nodoc:
   class Client # :nodoc:
     ##
     # Exposes the operations available for a collection of invoices.
     #
     # @see { Jortt::Client.invoices }
-    class Invoices
-      attr_accessor :client
-
-      def initialize(client)
-        @client = client
-      end
-
+    class Invoices < Base
       ##
       # Returns all invoices using the GET /invoices endpoint.
       # https://developer.jortt.nl/#list-invoices
@@ -19,7 +17,7 @@ module Jortt # :nodoc:
       #   client.invoices.index(query: 'Jane')
       #
       def index(query: nil, invoice_status: nil)
-        client.paginated('/invoices', query: query, invoice_status: invoice_status)
+        client.paginated(make_path('/invoices'), query: query, invoice_status: invoice_status)
       end
 
       ##
@@ -30,7 +28,7 @@ module Jortt # :nodoc:
       #   client.invoices.show("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def show(id)
-        client.get("/invoices/#{id}")
+        client.get(make_path("/invoices/#{id}"))
       end
 
       ##
@@ -47,7 +45,7 @@ module Jortt # :nodoc:
       #     }]
       #   )
       def create(payload)
-        client.post('/invoices', payload)
+        client.post(make_path('/invoices'), payload)
       end
 
       ##
@@ -62,7 +60,7 @@ module Jortt # :nodoc:
       #     }
       #   )
       def credit(id, payload)
-        client.post("/invoices/#{id}/credit", payload)
+        client.post(make_path("/invoices/#{id}/credit"), payload)
       end
 
       ##
@@ -73,7 +71,7 @@ module Jortt # :nodoc:
       #   client.invoices.download("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
       def download(id)
-        client.get("/invoices/#{id}/download")
+        client.get(make_path("/invoices/#{id}/download"))
       end
     end
   end

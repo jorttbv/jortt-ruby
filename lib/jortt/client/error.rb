@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jortt # :nodoc:
   class Client # :nodoc:
     class Error < StandardError # :nodoc:
@@ -5,10 +7,10 @@ module Jortt # :nodoc:
 
       def self.from_response(response)
         Error.new(
-            response.parsed.dig('error', 'code'),
-            response.parsed.dig('error', 'key'),
-            response.parsed.dig('error', 'message'),
-            response.parsed.dig('error', 'details')
+          response.parsed.dig('error', 'code'),
+          response.parsed.dig('error', 'key'),
+          response.parsed.dig('error', 'message'),
+          response.parsed.dig('error', 'details'),
         )
       end
 

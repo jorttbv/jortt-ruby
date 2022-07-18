@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite+organizations%3Aread
+    headers:
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 11 Jul 2022 18:04:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, no-store
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 86abddd3-1d1b-482b-8935-3218377c0259
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"6a99a209a0c26376489eb27fe9956ad5"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.291929'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R)
+      Server:
+      - nginx + Phusion Passenger(R)
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"k933n4ZbYU6nsgiZGEmNMOdSyVXuo467jx4EFyHrUJU","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write organizations:read","created_at":1657562675}'
+  recorded_at: Mon, 11 Jul 2022 18:04:35 GMT
+- request:
+    method: get
+    uri: https://api.jortt.nl/organizations/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 11 Jul 2022 18:04:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '636'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com https://*.tapfiliate.com static.ads-twitter.com tagmanager.google.com
+        analytics.twitter.com https://connect.facebook.net https://app.inlinemanual.com
+        https://cdn.inlinemanual.com https://optimize.google.com https://www.googleoptimize.com
+        https://tpc.googlesyndication.com googleads.g.doubleclick.net;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com https://appsignal-endpoint.net bat.bing.com;     style-src
+        ''self'' ''unsafe-inline'' fonts.googleapis.com files.jortt.nl tagmanager.google.com
+        https://app.inlinemanual.com https://optimize.google.com https://cdn.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com
+        https://cdn.inlinemanual.com;     frame-src ''self'' *.jortt.nl files.jortt.nl
+        b.frstre.com beacon.tapfiliate.com jortt.uservoice.com *.vimeo.com https://connect.facebook.net
+        https://optimize.google.com https://tpc.googlesyndication.com/;     img-src
+        ''self'' blob: data: *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com
+        https://*.jf79.net https://jf79.net https://analytics.twitter.com https://cdn.inlinemanual.com;     frame-ancestors
+        ''self'' https://*.jortt.nl files.jortt.nl;'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"29d26011-51ed-418d-a9f2-2e55349d37d6","company_name":"jortt-ruby
+        gem","company_name_line_2":null,"address_street":"cruquiusweg 109f","address_postal_code":"1111aa","address_city":"amsterdam","address_country_code":"NL","address_country_name":"Nederland","tax_registration_number":"NL821898279B01","chamber_of_commerce_number":"34377452","bank_account_iban":"sdfdsf","bank_account_bban":"sdfdsf","owners":[{"id":"fa8b019f-047a-412d-8a48-dcdb9b7cba94","full_name":"jortt-ruby
+        gem"}],"legal_form":"bv","website":null,"phonenumber":null,"invoice_from_email":"stephan+jortt-ruby@zilverline.com","one_stop_shop_enabled":false}}'
+  recorded_at: Mon, 11 Jul 2022 18:04:35 GMT
+recorded_with: VCR 6.1.0

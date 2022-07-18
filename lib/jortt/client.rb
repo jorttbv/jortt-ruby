@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'oauth2'
 
 require 'jortt/client/error'
@@ -5,6 +7,7 @@ require 'jortt/client/customers'
 require 'jortt/client/invoices'
 require 'jortt/client/ledger_accounts'
 require 'jortt/client/organizations'
+require 'jortt/client/tradenames'
 
 module Jortt
   ##
@@ -14,7 +17,7 @@ module Jortt
     SITE = 'https://api.jortt.nl'
     OAUTH_PROVIDER_URL = 'https://app.jortt.nl/oauth-provider/oauth'
 
-    attr_accessor :token
+    attr_accessor :token, :base_path
 
     # Initialize a Jortt client.
     #
@@ -32,15 +35,25 @@ module Jortt
     # @since 1.0.0
     def initialize(id, secret, opts = {})
       oauth_provider_url = opts[:oauth_provider_url] || OAUTH_PROVIDER_URL
+      site = opts[:site] || SITE
+      site_uri = URI(site)
+      site_host = [site_uri.scheme, [site_uri.host, site_uri.port].join(':')].join('://')
+      @base_path = site_uri.path
 
-      client = OAuth2::Client.new(id, secret,
-        site: opts[:site] || SITE,
+      client = OAuth2::Client.new(
+        id,
+        secret,
+        site: site_host,
         token_url: "#{oauth_provider_url}/token",
         authorize_url: "#{oauth_provider_url}/authorize",
-        auth_scheme: :basic_auth
+        auth_scheme: :basic_auth,
       )
 
-      @token = client.client_credentials.get_token(scope: "invoices:read invoices:write customers:read customers:write organizations:read")
+      @token = client
+        .client_credentials
+        .get_token(
+          scope: 'invoices:read invoices:write customers:read customers:write organizations:read',
+        )
     end
 
     # Access the customer resource to perform operations.
@@ -90,25 +103,37 @@ module Jortt
       Jortt::Client::Organizations.new(self)
     end
 
+    # Access the tradenames resource.
+    #
+    # @example
+    #   client.tradenames
+    #
+    # @return [ Jortt::Client::Organizations ] entry to the organizations resource.
+    #
+    def tradenames
+      Jortt::Client::Tradenames.new(self)
+    end
+
     def get(path, params = {})
-      handle_response { token.get(path, params: params) }
+      handle_response { token.get(path, params: params, snaky: false) }
     end
 
     def post(path, params = {})
-      handle_response { token.post(path, params: params) }
+      handle_response { token.post(path, params: params, snaky: false) }
     end
 
     def put(path, params = {})
-      handle_response { token.put(path, params: params) }
+      handle_response { token.put(path, params: params, snaky: false) }
     end
 
     def delete(path)
-      handle_response { token.delete(path) }
+      handle_response { token.delete(path, snaky: false) }
     end
 
-    def handle_response(&block)
+    def handle_response
       response = yield
       return true if response.status == 204
+
       response.parsed.fetch('data')
     rescue OAuth2::Error => e
       raise Error.from_response(e.response)
@@ -122,12 +147,12 @@ module Jortt
           response = token.get(path, params: params.merge(page: page)).parsed
           response['data'].each { |item| yielder << item }
           break if response['_links']['next'].nil?
+
           page += 1
         end
       end
     rescue OAuth2::Error => e
       raise Error.from_response(e.response)
     end
-
   end
 end

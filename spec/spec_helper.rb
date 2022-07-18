@@ -1,21 +1,16 @@
-require 'simplecov'
+# frozen_string_literal: true
+
 require 'rspec'
 require 'rspec/its'
 require 'webmock/rspec'
 require 'vcr'
 require 'jortt'
 
-SimpleCov.start
-if ENV['CI'] == 'true'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
-
 VCR.configure do |c|
-  c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.configure_rspec_metadata!
-  c.default_cassette_options = { record: :once }
+  c.default_cassette_options = {record: :once}
 
   c.before_record do |i|
     i.response.headers.delete('Set-Cookie')
