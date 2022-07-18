@@ -8,7 +8,7 @@ module Jortt # :nodoc:
     # Exposes the operations available for the Organization logged in.
     #
     # @see { Jortt::Client.organizations }
-    class Organizations <  Base
+    class Organizations < Base
       ##
       # Returns the Organization associated with the credentials.
       # https://developer.jortt.nl/#jortt-api-organizations

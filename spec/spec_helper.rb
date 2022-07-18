@@ -13,8 +13,12 @@ VCR.configure do |c|
   c.default_cassette_options = {record: :once}
 
   c.before_record do |i|
-    i.response.headers.delete('Set-Cookie')
     i.request.headers.delete('Authorization')
+    i.response.headers.delete('Set-Cookie')
+
+    if JSON.parse(i.response.body)['access_token']
+      i.response.body = JSON.parse(i.response.body).tap { |b| b['access_token'] = 'access_token' }.to_json
+    end
   end
 end
 
