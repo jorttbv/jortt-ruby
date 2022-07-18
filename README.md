@@ -8,14 +8,26 @@ Check https://developer.jortt.nl/ for more info.
 
 > THIS VERSION IS FOR THE NEW OAUTH API. STILL ON THE LEGACY API? USE VERSION 4.x OF THIS GEM: [CLICK HERE](https://github.com/jorttbv/jortt-ruby/tree/v4.2.0)
 
-> THIS VERSION ONLY WORKS FOR CLIENT CREDENTIALS CURRENTLY.
-
 ## Usage examples
 
-To create a jortt client:
+To create a jortt client using client credentials grant type:
 ```ruby
 jortt = Jortt.client('<your-client-id>', '<your-client-secret>')
 ```
+
+To create a Jortt client using authorization code grant type:
+```ruby
+jortt = Jortt.client(
+  '<your-client-id>', 
+  '<your-client-secret>', 
+  scope: "invoices:read customers:read", 
+  access_token: "access-token",
+  refresh_token: "refresh-token",
+  expires_at: "1657896798"
+)
+```
+
+You can use the [oauth2 gem](https://github.com/oauth-xx/oauth2) to request an access and refresh token.
 
 ### Customers
 

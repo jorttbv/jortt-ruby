@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.jortt.nl/customers/9afcd96e-caf8-40a1-96c9-1af16d0bc804
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Sep 2020 15:02:49 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '750'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
+        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
+        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
+        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
+        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
+        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
+        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
+        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
+        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
+        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
+        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
+        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
+        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"12cac16d-1961-4614-8aa1-eb5b58d8826a","is_private":true,"customer_name":"Jane
+        Doe","address_street":null,"address_postal_code":null,"address_city":null,"address_country_code":"NL","address_country_name":"Nederland","address_extra_information":null,"shift_vat":null,"vat_number":null,"coc_number":null,"initials":null,"first_name":null,"last_name":null,"date_of_birth":null,"citizen_service_number":null,"attn":null,"phonenumber":null,"website":null,"email":null,"cc_emails":null,"email_salutation":"Geachte
+        heer, mevrouw,","additional_information":null,"payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}}'
+  recorded_at: Fri, 15 Jul 2022 14:25:15 GMT
+recorded_with: VCR 6.1.0
