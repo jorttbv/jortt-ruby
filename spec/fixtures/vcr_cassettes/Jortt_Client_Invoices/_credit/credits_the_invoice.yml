@@ -317,10 +317,10 @@ http_interactions:
   recorded_at: Fri, 22 Jan 2021 13:47:40 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/invoices/ae81a7c2-5896-4bf3-9d2d-a1083c6cfc80/credit?send_method=self
+    uri: https://api.jortt.nl/invoices/ae81a7c2-5896-4bf3-9d2d-a1083c6cfc80/credit
     body:
       encoding: UTF-8
-      string: ''
+      string: send_method=self
     headers:
       User-Agent:
       - Faraday v1.3.0

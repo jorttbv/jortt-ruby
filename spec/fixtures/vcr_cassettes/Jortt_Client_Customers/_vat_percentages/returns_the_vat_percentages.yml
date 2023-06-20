@@ -63,10 +63,10 @@ http_interactions:
   recorded_at: Fri, 17 Sep 2021 14:20:51 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers?customer_name=Jane%20Doe&is_private=true
+    uri: https://api.jortt.nl/customers
     body:
       encoding: UTF-8
-      string: ''
+      string: customer_name=Jane%20Doe&is_private=true
     headers:
       User-Agent:
       - Faraday v1.3.0
@@ -119,10 +119,10 @@ http_interactions:
   recorded_at: Fri, 17 Sep 2021 14:20:52 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers?customer_name=John%20Doe&is_private=true
+    uri: https://api.jortt.nl/customers
     body:
       encoding: UTF-8
-      string: ''
+      string: customer_name=John%20Doe&is_private=true
     headers:
       User-Agent:
       - Faraday v1.3.0

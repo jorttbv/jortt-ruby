@@ -5,26 +5,6 @@ require 'spec_helper'
 describe Jortt::Client::Invoices, :vcr do
   let(:client) { Jortt.client(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
 
-  let(:customer) { client.customers.index(query: 'Search target').first }
-
-  let(:params) do
-    {
-      customer_id: customer.fetch('id'),
-      send_method: 'self',
-      line_items: [
-        {
-          vat: 21,
-          amount_per_unit: {
-            value: 499,
-            currency: 'EUR',
-          },
-          units: 4,
-          description: 'Your product',
-        },
-      ],
-    }
-  end
-
   describe '#index' do
     context 'pagination', vcr: false do
       subject { client.invoices.index }
@@ -96,11 +76,36 @@ describe Jortt::Client::Invoices, :vcr do
   end
 
   describe '#create' do
+    let(:customer) { client.customers.create(is_private: true, customer_name: 'John Doe') }
+    let(:params) do
+      {
+        customer_id: customer.fetch('id'),
+        send_method: 'self',
+        line_items: [
+          {
+            vat: 21,
+            amount_per_unit: {
+              value: 499,
+              currency: 'EUR',
+            },
+            units: 4,
+            description: 'Your product',
+          },
+        ],
+      }
+    end
+    after { client.customers.delete(customer.fetch('id')) }
+
     subject { client.invoices.create(params) }
 
     it 'creates the invoice' do
       uuid_length = 36
       expect(subject['id'].length).to eq(uuid_length)
+    end
+
+    it 'sends invoice content in HTTP request body' do
+      subject
+      expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/invoices').with(body: params)
     end
   end
 

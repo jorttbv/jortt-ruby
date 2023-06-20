@@ -62,6 +62,11 @@ describe Jortt::Client::Customers, :vcr do
         uuid_length = 36
         expect(subject['id'].length).to eq(uuid_length)
       end
+
+      it 'sends customer parameters in HTTP request body' do
+        subject
+        expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/customers').with(body: params)
+      end
     end
 
     context 'faulty payload' do

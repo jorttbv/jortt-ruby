@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 21 Jun 2023 11:43:00 GMT
+      - Wed, 21 Jun 2023 11:45:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - aca122e0-e3c0-45ae-8e64-8b16f62e8221
+      - 666779ca-50e8-4ff3-881c-fa45b6fae6ee
       X-Download-Options:
       - noopen
       Etag:
-      - W/"fef69253543e157744621e6bf50fa7e1"
+      - W/"53af118800866500d676ccc665e6e14d"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.475894'
+      - '0.463311'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -59,8 +59,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write organizations:read","created_at":1687347780}'
-  recorded_at: Wed, 21 Jun 2023 11:43:00 GMT
+        invoices:write customers:read customers:write organizations:read","created_at":1687347945}'
+  recorded_at: Wed, 21 Jun 2023 11:45:45 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/customers
@@ -82,7 +82,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Wed, 21 Jun 2023 11:43:01 GMT
+      - Wed, 21 Jun 2023 11:45:45 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -121,14 +121,14 @@ http_interactions:
         ''self'' https://*.jortt.nl files.jortt.nl;'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"dc3b25a6-3242-4654-856b-bbf45c5e3e0a"}}'
-  recorded_at: Wed, 21 Jun 2023 11:43:01 GMT
+      string: '{"data":{"id":"9bce2bbb-555e-4dda-9470-46066bbc79ad"}}'
+  recorded_at: Wed, 21 Jun 2023 11:45:45 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/invoices
     body:
       encoding: UTF-8
-      string: '{"customer_id":"dc3b25a6-3242-4654-856b-bbf45c5e3e0a","send_method":"self","line_items":[{"vat":21,"amount_per_unit":{"value":499,"currency":"EUR"},"units":4,"description":"Your
+      string: '{"customer_id":"9bce2bbb-555e-4dda-9470-46066bbc79ad","send_method":"self","line_items":[{"vat":21,"amount_per_unit":{"value":499,"currency":"EUR"},"units":4,"description":"Your
         product"}]}'
     headers:
       User-Agent:
@@ -145,7 +145,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Wed, 21 Jun 2023 11:43:01 GMT
+      - Wed, 21 Jun 2023 11:45:45 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -184,11 +184,11 @@ http_interactions:
         ''self'' https://*.jortt.nl files.jortt.nl;'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"dfbebfa0-1f3b-4930-b9f4-590dc85fa39e"}}'
-  recorded_at: Wed, 21 Jun 2023 11:43:01 GMT
+      string: '{"data":{"id":"c159202c-5e7e-44cc-bd47-66cc8cb4e028"}}'
+  recorded_at: Wed, 21 Jun 2023 11:45:45 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/dc3b25a6-3242-4654-856b-bbf45c5e3e0a
+    uri: https://api.jortt.nl/customers/9bce2bbb-555e-4dda-9470-46066bbc79ad
     body:
       encoding: US-ASCII
       string: ''
@@ -205,7 +205,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Wed, 21 Jun 2023 11:43:01 GMT
+      - Wed, 21 Jun 2023 11:45:46 GMT
       Connection:
       - keep-alive
       Server:
@@ -241,5 +241,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Wed, 21 Jun 2023 11:43:01 GMT
+  recorded_at: Wed, 21 Jun 2023 11:45:46 GMT
 recorded_with: VCR 6.1.0

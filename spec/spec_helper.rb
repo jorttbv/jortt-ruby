@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'debug'
 require 'rspec'
 require 'rspec/its'
 require 'webmock/rspec'
@@ -16,7 +17,7 @@ VCR.configure do |c|
     i.request.headers.delete('Authorization')
     i.response.headers.delete('Set-Cookie')
 
-    if JSON.parse(i.response.body)['access_token']
+    if !i.response.body.empty? && JSON.parse(i.response.body)['access_token']
       i.response.body = JSON.parse(i.response.body).tap { |b| b['access_token'] = 'access_token' }.to_json
     end
   end

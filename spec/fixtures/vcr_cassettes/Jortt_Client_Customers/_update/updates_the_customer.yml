@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.jortt.nl/customers/06ac0ed9-1d20-4626-bb9b-67fa28fe5c9e?address_city=Mojave%20Wasteland&address_extra_information=Extra...&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
+    uri: https://api.jortt.nl/customers/06ac0ed9-1d20-4626-bb9b-67fa28fe5c9e
     body:
       encoding: UTF-8
-      string: ''
+      string: address_city=Mojave%20Wasteland&address_extra_information=Extra...&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
     headers:
       User-Agent:
       - Faraday v1.0.1
@@ -253,10 +253,10 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers?customer_name=Jane%20Doe&is_private=true
+    uri: https://api.jortt.nl/customers
     body:
       encoding: UTF-8
-      string: ''
+      string: customer_name=Jane%20Doe&is_private=true
     headers:
       User-Agent:
       - Faraday v1.0.1
@@ -306,10 +306,10 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers?customer_name=John%20Doe&is_private=true
+    uri: https://api.jortt.nl/customers
     body:
       encoding: UTF-8
-      string: ''
+      string: customer_name=John%20Doe&is_private=true
     headers:
       User-Agent:
       - Faraday v1.0.1
@@ -359,10 +359,10 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers?address_city=Mojave%20Wasteland&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
+    uri: https://api.jortt.nl/customers
     body:
       encoding: UTF-8
-      string: ''
+      string: address_city=Mojave%20Wasteland&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
     headers:
       User-Agent:
       - Faraday v1.0.1
@@ -412,10 +412,10 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: put
-    uri: https://api.jortt.nl/customers/9e0b42c8-15e8-4a33-ac47-a7ca633382e0?address_city=Mojave%20Wasteland&address_extra_information=Extra...&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
+    uri: https://api.jortt.nl/customers/9e0b42c8-15e8-4a33-ac47-a7ca633382e0
     body:
       encoding: UTF-8
-      string: ''
+      string: address_city=Mojave%20Wasteland&address_extra_information=Extra...&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
     headers:
       User-Agent:
       - Faraday v1.0.1
