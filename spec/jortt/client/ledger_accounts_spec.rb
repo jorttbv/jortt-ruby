@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Jortt::Client::LedgerAccounts, :vcr do
-  let(:client) { Jortt.client(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
+  let(:client) { jortt_client }
 
   describe '#index' do
     subject { client.ledger_accounts.index }
