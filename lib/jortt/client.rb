@@ -167,7 +167,11 @@ module Jortt
       response = yield
       return true if response.status == 204
 
-      response.parsed.fetch('data')
+      if response.parsed.is_a? Hash
+        response.parsed.fetch('data')
+      else
+        response.parsed
+      end
     rescue OAuth2::Error => e
       raise Error.from_response(e.response)
     end

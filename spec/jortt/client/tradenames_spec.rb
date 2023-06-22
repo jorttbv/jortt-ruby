@@ -19,5 +19,11 @@ describe Jortt::Client::Tradenames, :vcr do
         'company_name' => 'jortt-ruby gem',
       )
     end
+
+    context "with no tradenames available" do
+      it "returns an empty array" do
+        expect(subject).to eq []
+      end
+    end
   end
 end
