@@ -151,12 +151,12 @@ module Jortt
       handle_response { token.get(path, params: params, snaky: false) }
     end
 
-    def post(path, params = {})
-      handle_response { token.post(path, params: params, snaky: false) }
+    def post(path, payload = {})
+      handle_response { token.post(path, body: payload.to_json, snaky: false, headers: { "Content-Type" => "application/json" }) }
     end
 
-    def put(path, params = {})
-      handle_response { token.put(path, params: params, snaky: false) }
+    def put(path, payload = {})
+      handle_response { token.put(path, body: payload.to_json, snaky: false, headers: { "Content-Type" => "application/json" }) }
     end
 
     def delete(path)

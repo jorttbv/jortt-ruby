@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Jortt::Client::Customers, :vcr do
-  let(:client) { Jortt.client(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
+  let(:client) { jortt_client }
 
   let(:params) do
     {
@@ -61,6 +61,11 @@ describe Jortt::Client::Customers, :vcr do
       it 'creates the customer' do
         uuid_length = 36
         expect(subject['id'].length).to eq(uuid_length)
+      end
+
+      it 'sends customer parameters in HTTP request body' do
+        subject
+        expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/customers').with(body: params)
       end
     end
 
