@@ -1,0 +1,106 @@
+---
+http_interactions:
+  - request:
+      method: post
+      uri: https://app.jortt.nl/oauth-provider/oauth/token
+      body:
+        encoding: UTF-8
+        string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite+organizations%3Aread
+      headers:
+        User-Agent:
+          - Faraday v2.7.6
+        Content-Type:
+          - application/x-www-form-urlencoded
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Mon, 12 Aug 2024 16:49:42 GMT
+        Content-Type:
+          - application/json; charset=utf-8
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Status:
+          - 200 OK
+        Cache-Control:
+          - no-store
+        Vary:
+          - Accept
+        Referrer-Policy:
+          - strict-origin-when-cross-origin
+        X-Permitted-Cross-Domain-Policies:
+          - none
+        X-Xss-Protection:
+          - '0'
+        X-Request-Id:
+          - 7e9e9638-9c57-4524-9d69-6bef559b2569
+        X-Download-Options:
+          - noopen
+        Etag:
+          - W/"2973531e45a491eae2fe951b11ca7516"
+        X-Frame-Options:
+          - SAMEORIGIN
+        X-Runtime:
+          - '0.457547'
+        X-Content-Type-Options:
+          - nosniff
+        X-Powered-By:
+          - Phusion Passenger(R)
+        Server:
+          - nginx + Phusion Passenger(R)
+      body:
+        encoding: UTF-8
+        string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+        invoices:write customers:read customers:write organizations:read","created_at":1723481381}'
+    recorded_at: Mon, 12 Aug 2024 16:49:42 GMT
+  - request:
+      method: get
+      uri: https://api.jortt.nl/customers/1aa9cd93-aa14-4184-ba01-1fa2776d2e2d
+      body:
+        encoding: US-ASCII
+        string: ''
+      headers:
+        User-Agent:
+          - Faraday v2.7.6
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 502
+        message: Bad Gateway
+      headers:
+        Date:
+          - Mon, 12 Aug 2024 16:49:42 GMT
+        Content-Type:
+          - application/html
+        Content-Length:
+          - '974'
+        Connection:
+          - keep-alive
+        Server:
+          - Apache
+        Vary:
+          - X-Forwarded-For
+        Status:
+          - 502 Bad Gateway
+      body:
+        encoding: UTF-8
+        string: |
+          <html>
+          <head><title>502 Bad Gateway</title></head>
+          <body>
+          <center><h1>502 Bad Gateway</h1></center>
+          </body>
+          </html>
+    recorded_at: Mon, 12 Aug 2024 16:49:42 GMT
+recorded_with: VCR 6.1.0
