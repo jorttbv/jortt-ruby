@@ -17,12 +17,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
+      - name: Update bundler
+        run: gem update --system 3.4.22 && bundle update --bundler
       - name: Run tests
         run: bundle exec rspec
       - name: rubocop
