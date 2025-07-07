@@ -15,4 +15,21 @@ describe Jortt::Client::Organizations, :vcr do
       )
     end
   end
+  describe '#create' do
+    let(:params) do
+      {
+        email: "info@example.com",
+        shop: 'the-shop',
+        first_name: "John",
+        last_name: "Doe"
+       }
+    end
+
+    subject { client.organizations.create(params) }
+
+    it 'creates the organization' do
+      uuid_length = 36
+      expect(subject['id'].length).to eq(uuid_length)
+    end
+  end
 end

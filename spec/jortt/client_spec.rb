@@ -5,7 +5,7 @@ require 'securerandom'
 
 describe Jortt::Client, :vcr do
   context 'client credentials grant type' do
-    let(:scope) { 'invoices:read invoices:write customers:read customers:write organizations:read' }
+    let(:scope) { 'invoices:read invoices:write customers:read customers:write organizations:read organizations:create' }
     let!(:client) { described_class.new(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
 
     it 'requests access token' do
