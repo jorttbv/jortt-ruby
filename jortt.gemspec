@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     'lvonk@zilverline.com',
     'stephan@vandiepen.info',
   ]
-  spec.required_ruby_version = '>= 2.7'
+  spec.required_ruby_version = '>= 3.3'
   spec.summary = 'jortt.nl REST API client'
   spec.homepage = 'https://app.jortt.nl/api-documentatie'
   spec.license = 'MIT'
