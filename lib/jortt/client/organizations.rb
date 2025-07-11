@@ -25,12 +25,12 @@ module Jortt # :nodoc:
       # https://developer.jortt.nl/#jortt-api-organizations
       #
       # @example
-      #   client.invoices.create(
+      #   client.organizations.create(
       #     email: "info@example.com",
       #     coc_number: "3456789",
       #     first_name: "John",
       #     last_name: "Doe",
-      #     shop: "the-shop",
+      #     shop_subdomain: "the-shop",
       #   )
       def create(payload)
         client.post(make_path('/organizations/create'), payload)
