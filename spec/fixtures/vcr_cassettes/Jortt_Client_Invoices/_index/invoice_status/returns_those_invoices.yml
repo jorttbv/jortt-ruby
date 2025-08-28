@@ -58,7 +58,7 @@ http_interactions:
       - nginx + Phusion Passenger
     body:
       encoding: UTF-8
-      string: '{"access_token":"06WkYS3RV8i6Ts33wfc1C5VPt4D_mTR_ekW3hSWVahQ","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+      string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
         invoices:write customers:read customers:write","created_at":1600959810}'
   recorded_at: Thu, 24 Sep 2020 15:03:30 GMT
 - request:
