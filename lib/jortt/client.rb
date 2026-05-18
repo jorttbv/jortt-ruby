@@ -4,6 +4,7 @@ require 'oauth2'
 
 require 'jortt/client/error'
 require 'jortt/client/customers'
+require 'jortt/client/expenses'
 require 'jortt/client/invoices'
 require 'jortt/client/ledger_accounts'
 require 'jortt/client/organizations'
@@ -111,6 +112,18 @@ module Jortt
     # @since 1.0.0
     def invoices
       @invoices ||= Jortt::Client::Invoices.new(self)
+    end
+
+    # Access the expenses resource to perform operations.
+    #
+    # @example
+    #   client.expenses
+    #
+    # @return [ Jortt::Client::Expenses ] entry to the expenses resource.
+    #
+    # @see https://developer.jortt.nl/#tag-v3-expenses
+    def expenses
+      @expenses ||= Jortt::Client::Expenses.new(self)
     end
 
     # Access the ledger_accounts resource.
