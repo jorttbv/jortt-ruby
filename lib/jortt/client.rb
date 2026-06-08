@@ -68,7 +68,7 @@ module Jortt
       else
         # Use client credentials grant type
         @token = client.client_credentials.get_token(
-          scope: opts[:scope] || 'invoices:read invoices:write customers:read customers:write organizations:read expenses:read',
+          scope: opts[:scope] || 'invoices:read invoices:write customers:read customers:write organizations:read',
         )
       end
     end
