@@ -10,8 +10,8 @@ Check https://developer.jortt.nl/ for more info.
 
 ## Upgrading to 7.0
 
-Every request now goes to the `/v3` API. The unversioned endpoints this gem used
-previously are being discontinued along with `/v1`.
+Every request now goes to the `/v3` API. The unversioned endpoints this gem previously used
+are being discontinued along with `/v1`.
 
 Most resources moved path only, so their request and response bodies are
 unchanged. Two of them changed shape and need code changes on your side:
