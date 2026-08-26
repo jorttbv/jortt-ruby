@@ -29,8 +29,7 @@ unchanged. Two of them changed shape and need code changes on your side:
 is a fraction rather than a percentage. On responses, `total_amount_excl_vat` is
 now `total_amount_ex_vat`.
 
-**Customer VAT percentages** (`customers.vat_percentages`) returns a flat list
-instead of a hash of rates:
+**Customer VAT percentages** (`customers.vat_percentages`):
 
 ```ruby
 # before
@@ -39,6 +38,9 @@ instead of a hash of rates:
 # after
 { "id" => "...", "vats" => [{ "value" => "0.21", "category" => nil }, ...] }
 ```
+
+The `vat_percentages` hash of named rates becomes a `vats` array of objects. As
+with invoice line items, `value` is a fraction rather than a percentage.
 
 ## Usage examples
 
