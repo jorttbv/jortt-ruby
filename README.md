@@ -8,6 +8,38 @@ Check https://developer.jortt.nl/ for more info.
 
 > THIS VERSION IS FOR THE NEW OAUTH API. STILL ON THE LEGACY API? USE VERSION 4.x OF THIS GEM: [CLICK HERE](https://github.com/jorttbv/jortt-ruby/tree/v4.2.0)
 
+## Upgrading to 7.0
+
+Every request now goes to the `/v3` API. The unversioned endpoints this gem used
+previously are being discontinued along with `/v1`.
+
+Most resources moved path only, so their request and response bodies are
+unchanged. Two of them changed shape and need code changes on your side:
+
+**Invoice line items** (`invoices.create`, and the line items returned by
+`invoices.index` / `invoices.show`):
+
+| before | after |
+| --- | --- |
+| `number_of_units: "4"` | `quantity: "4"` |
+| `amount_per_unit: { value:, currency: }` | `amount: { amount:, currency: }` |
+| `vat_percentage: "21.0"` | `vat: { value: "0.21", category: nil }` |
+
+`description`, `quantity`, `amount` and `vat` are all required, and `vat.value`
+is a fraction rather than a percentage. On responses, `total_amount_excl_vat` is
+now `total_amount_ex_vat`.
+
+**Customer VAT percentages** (`customers.vat_percentages`) returns a flat list
+instead of a hash of rates:
+
+```ruby
+# before
+{ "id" => "...", "vat_percentages" => { "standard_rate" => "21.0", "reduced_rate" => ["9.0", "0.0"] } }
+
+# after
+{ "id" => "...", "vats" => [{ "value" => "0.21", "category" => nil }, ...] }
+```
+
 ## Usage examples
 
 To create a jortt client using client credentials grant type:
@@ -31,7 +63,7 @@ You can use the [oauth2 gem](https://github.com/oauth-xx/oauth2) to request an a
 
 ### Customers
 
-All customers (`jortt.customers.index(page: 2)`) returns:
+All customers (`jortt.customers.index`) returns an enumerator that pages through every customer:
 ```ruby
 [{
   "id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
@@ -52,7 +84,7 @@ jortt.customers.create(
 ```
 
 ### Invoices
-Get invoices by ID (`jortt.invoices.get('934d59dd-76f6-4716-9e0f-82a618e1be21')`) returns:
+Get invoices by ID (`jortt.invoices.show('934d59dd-76f6-4716-9e0f-82a618e1be21')`) returns:
 ```ruby
 {
   "invoice_id": "934d59dd-76f6-4716-9e0f-82a618e1be21",
@@ -107,12 +139,15 @@ jortt.invoices.create(
   line_items: [
     {
       description: "this is a description example",
-      units: "3.14",
-      amount_per_unit: {
-        value: "365.00",
+      quantity: "3.14",
+      amount: {
+        amount: "365.00",
         currency: "EUR"
       },
-      vat_percentage: "21",
+      vat: {
+        value: "0.21",
+        category: nil
+      },
       ledger_account_id: "f8fd3e4e-da1c-43a7-892f-1410ac13e38a"
     }
   ],

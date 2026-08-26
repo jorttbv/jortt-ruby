@@ -65,7 +65,7 @@ describe Jortt::Client::Customers, :vcr do
 
       it 'sends customer parameters in HTTP request body' do
         subject
-        expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/customers').with(body: params)
+        expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/v3/customers').with(body: params)
       end
     end
 
@@ -114,10 +114,11 @@ describe Jortt::Client::Customers, :vcr do
       expect(subject).to eq(
         {
           'id' => '546a86e8-7a57-4d46-9a81-09378a399dd9',
-          'vat_percentages' => {
-            'reduced_rate' => ['9.0', '0.0'],
-            'standard_rate' => '21.0',
-          },
+          'vats' => [
+            {'value' => '0.21', 'category' => nil},
+            {'value' => '0.09', 'category' => nil},
+            {'value' => '0.00', 'category' => nil},
+          ],
         },
       )
     end

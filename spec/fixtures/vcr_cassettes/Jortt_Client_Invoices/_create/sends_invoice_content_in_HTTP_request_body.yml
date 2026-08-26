@@ -63,7 +63,7 @@ http_interactions:
   recorded_at: Wed, 21 Jun 2023 11:45:45 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: '{"is_private":true,"customer_name":"John Doe"}'
@@ -110,26 +110,26 @@ http_interactions:
         https://app.inlinemanual.com https://optimize.google.com https://fonts.googleapis.com
         https://cdn.inlinemanual.com;     font-src ''self'' data: fonts.gstatic.com
         files.jortt.nl https://app.inlinemanual.com https://cdn.inlinemanual.com;     frame-src
-        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com
-        jortt.uservoice.com *.vimeo.com https://connect.facebook.net https://optimize.google.com
-        https://tpc.googlesyndication.com/;     img-src ''self'' blob: data: *.jortt.nl
-        https://www.facebook.com files.jortt.nl www.google-analytics.com https://optimize.google.com
-        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
-        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
-        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com
-        https://*.jf79.net https://jf79.net https://analytics.twitter.com https://cdn.inlinemanual.com;     frame-ancestors
-        ''self'' https://*.jortt.nl files.jortt.nl;'
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net https://optimize.google.com https://tpc.googlesyndication.com/;     img-src
+        ''self'' blob: data: *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        https://optimize.google.com stats.g.doubleclick.net www.google.nl www.google.com
+        bat.bing.com googleads.g.doubleclick.net https://www.googletagmanager.com
+        https://widget.uservoice.com www.google.de t.co *.gstatic.com https://ssl.google-analytics.com
+        https://app.inlinemanual.com https://*.jf79.net https://jf79.net https://analytics.twitter.com
+        https://cdn.inlinemanual.com;     frame-ancestors ''self'' https://*.jortt.nl
+        files.jortt.nl;'
     body:
       encoding: UTF-8
       string: '{"data":{"id":"9bce2bbb-555e-4dda-9470-46066bbc79ad"}}'
   recorded_at: Wed, 21 Jun 2023 11:45:45 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/invoices
+    uri: https://api.jortt.nl/v3/invoices
     body:
       encoding: UTF-8
-      string: '{"customer_id":"9bce2bbb-555e-4dda-9470-46066bbc79ad","send_method":"self","line_items":[{"vat":21,"amount_per_unit":{"value":499,"currency":"EUR"},"units":4,"description":"Your
-        product"}]}'
+      string: '{"customer_id":"9bce2bbb-555e-4dda-9470-46066bbc79ad","send_method":"self","line_items":[{"description":"Your
+        product","vat":{"value":"0.21","category":null},"quantity":"4","amount":{"amount":"499","currency":"EUR"}}]}'
     headers:
       User-Agent:
       - Faraday v2.7.6
@@ -173,22 +173,22 @@ http_interactions:
         https://app.inlinemanual.com https://optimize.google.com https://fonts.googleapis.com
         https://cdn.inlinemanual.com;     font-src ''self'' data: fonts.gstatic.com
         files.jortt.nl https://app.inlinemanual.com https://cdn.inlinemanual.com;     frame-src
-        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com
-        jortt.uservoice.com *.vimeo.com https://connect.facebook.net https://optimize.google.com
-        https://tpc.googlesyndication.com/;     img-src ''self'' blob: data: *.jortt.nl
-        https://www.facebook.com files.jortt.nl www.google-analytics.com https://optimize.google.com
-        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
-        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
-        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com
-        https://*.jf79.net https://jf79.net https://analytics.twitter.com https://cdn.inlinemanual.com;     frame-ancestors
-        ''self'' https://*.jortt.nl files.jortt.nl;'
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net https://optimize.google.com https://tpc.googlesyndication.com/;     img-src
+        ''self'' blob: data: *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        https://optimize.google.com stats.g.doubleclick.net www.google.nl www.google.com
+        bat.bing.com googleads.g.doubleclick.net https://www.googletagmanager.com
+        https://widget.uservoice.com www.google.de t.co *.gstatic.com https://ssl.google-analytics.com
+        https://app.inlinemanual.com https://*.jf79.net https://jf79.net https://analytics.twitter.com
+        https://cdn.inlinemanual.com;     frame-ancestors ''self'' https://*.jortt.nl
+        files.jortt.nl;'
     body:
       encoding: UTF-8
       string: '{"data":{"id":"c159202c-5e7e-44cc-bd47-66cc8cb4e028"}}'
   recorded_at: Wed, 21 Jun 2023 11:45:45 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/9bce2bbb-555e-4dda-9470-46066bbc79ad
+    uri: https://api.jortt.nl/v3/customers/9bce2bbb-555e-4dda-9470-46066bbc79ad
     body:
       encoding: US-ASCII
       string: ''
@@ -229,15 +229,15 @@ http_interactions:
         https://app.inlinemanual.com https://optimize.google.com https://fonts.googleapis.com
         https://cdn.inlinemanual.com;     font-src ''self'' data: fonts.gstatic.com
         files.jortt.nl https://app.inlinemanual.com https://cdn.inlinemanual.com;     frame-src
-        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com
-        jortt.uservoice.com *.vimeo.com https://connect.facebook.net https://optimize.google.com
-        https://tpc.googlesyndication.com/;     img-src ''self'' blob: data: *.jortt.nl
-        https://www.facebook.com files.jortt.nl www.google-analytics.com https://optimize.google.com
-        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
-        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
-        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com
-        https://*.jf79.net https://jf79.net https://analytics.twitter.com https://cdn.inlinemanual.com;     frame-ancestors
-        ''self'' https://*.jortt.nl files.jortt.nl;'
+        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
+        *.vimeo.com https://connect.facebook.net https://optimize.google.com https://tpc.googlesyndication.com/;     img-src
+        ''self'' blob: data: *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
+        https://optimize.google.com stats.g.doubleclick.net www.google.nl www.google.com
+        bat.bing.com googleads.g.doubleclick.net https://www.googletagmanager.com
+        https://widget.uservoice.com www.google.de t.co *.gstatic.com https://ssl.google-analytics.com
+        https://app.inlinemanual.com https://*.jf79.net https://jf79.net https://analytics.twitter.com
+        https://cdn.inlinemanual.com;     frame-ancestors ''self'' https://*.jortt.nl
+        files.jortt.nl;'
     body:
       encoding: UTF-8
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.jortt.nl/customers/12cac16d-1961-4614-8aa1-eb5b58d8826a
+    uri: https://api.jortt.nl/v3/customers/12cac16d-1961-4614-8aa1-eb5b58d8826a
     body:
       encoding: US-ASCII
       string: ''
@@ -55,7 +55,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:49 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/12cac16d-1961-4614-8aa1-eb5b58d8826a
+    uri: https://api.jortt.nl/v3/customers/12cac16d-1961-4614-8aa1-eb5b58d8826a
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:49 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/3c23c964-d338-49cc-ba1a-6032c434f793
+    uri: https://api.jortt.nl/v3/customers/3c23c964-d338-49cc-ba1a-6032c434f793
     body:
       encoding: US-ASCII
       string: ''
@@ -210,7 +210,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:24 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=Jane%20Doe&is_private=true
@@ -263,7 +263,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:24 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=John%20Doe&is_private=true
@@ -316,7 +316,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:24 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/customers/8dda51ec-da43-404c-bef5-a2fefb672d5c
+    uri: https://api.jortt.nl/v3/customers/8dda51ec-da43-404c-bef5-a2fefb672d5c
     body:
       encoding: US-ASCII
       string: ''
@@ -369,7 +369,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:24 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/8dda51ec-da43-404c-bef5-a2fefb672d5c
+    uri: https://api.jortt.nl/v3/customers/8dda51ec-da43-404c-bef5-a2fefb672d5c
     body:
       encoding: US-ASCII
       string: ''
@@ -416,7 +416,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:24 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/c7c64c0c-1e27-4f8b-8edb-c8f192fdeef6
+    uri: https://api.jortt.nl/v3/customers/c7c64c0c-1e27-4f8b-8edb-c8f192fdeef6
     body:
       encoding: US-ASCII
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.jortt.nl/customers/06ac0ed9-1d20-4626-bb9b-67fa28fe5c9e
+    uri: https://api.jortt.nl/v3/customers/06ac0ed9-1d20-4626-bb9b-67fa28fe5c9e
     body:
       encoding: UTF-8
       string: address_city=Mojave%20Wasteland&address_extra_information=Extra...&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
@@ -51,7 +51,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:53 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/06ac0ed9-1d20-4626-bb9b-67fa28fe5c9e
+    uri: https://api.jortt.nl/v3/customers/06ac0ed9-1d20-4626-bb9b-67fa28fe5c9e
     body:
       encoding: US-ASCII
       string: ''
@@ -98,7 +98,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:53 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/b2bb8ca6-ef24-4480-9c97-1e86d2a2b3ca
+    uri: https://api.jortt.nl/v3/customers/b2bb8ca6-ef24-4480-9c97-1e86d2a2b3ca
     body:
       encoding: US-ASCII
       string: ''
@@ -145,7 +145,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:53 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/c94546dc-b939-48ca-bc1a-5c1455dc5939
+    uri: https://api.jortt.nl/v3/customers/c94546dc-b939-48ca-bc1a-5c1455dc5939
     body:
       encoding: US-ASCII
       string: ''
@@ -253,7 +253,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=Jane%20Doe&is_private=true
@@ -306,7 +306,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=John%20Doe&is_private=true
@@ -359,7 +359,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: address_city=Mojave%20Wasteland&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
@@ -412,7 +412,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: put
-    uri: https://api.jortt.nl/customers/9e0b42c8-15e8-4a33-ac47-a7ca633382e0
+    uri: https://api.jortt.nl/v3/customers/9e0b42c8-15e8-4a33-ac47-a7ca633382e0
     body:
       encoding: UTF-8
       string: address_city=Mojave%20Wasteland&address_extra_information=Extra...&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
@@ -461,7 +461,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/9e0b42c8-15e8-4a33-ac47-a7ca633382e0
+    uri: https://api.jortt.nl/v3/customers/9e0b42c8-15e8-4a33-ac47-a7ca633382e0
     body:
       encoding: US-ASCII
       string: ''
@@ -508,7 +508,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/de253c8d-4cc2-4a3a-8d20-fb7cd0429da5
+    uri: https://api.jortt.nl/v3/customers/de253c8d-4cc2-4a3a-8d20-fb7cd0429da5
     body:
       encoding: US-ASCII
       string: ''
@@ -555,7 +555,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/d754cddc-f2d5-4ffa-8a7f-b3ff48dcfa33
+    uri: https://api.jortt.nl/v3/customers/d754cddc-f2d5-4ffa-8a7f-b3ff48dcfa33
     body:
       encoding: US-ASCII
       string: ''

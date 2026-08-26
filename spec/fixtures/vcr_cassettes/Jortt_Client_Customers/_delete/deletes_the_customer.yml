@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/3b9461f1-b384-471c-abd9-d1fa0a86d181
+    uri: https://api.jortt.nl/v3/customers/3b9461f1-b384-471c-abd9-d1fa0a86d181
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:54 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/1b617738-e01c-4d96-9b9a-1c32d2ea8e87
+    uri: https://api.jortt.nl/v3/customers/1b617738-e01c-4d96-9b9a-1c32d2ea8e87
     body:
       encoding: US-ASCII
       string: ''
@@ -96,7 +96,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:54 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/cf05a8a2-d401-4bae-a1b9-c8ea2ca2ed11
+    uri: https://api.jortt.nl/v3/customers/cf05a8a2-d401-4bae-a1b9-c8ea2ca2ed11
     body:
       encoding: US-ASCII
       string: ''
@@ -204,7 +204,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=Jane%20Doe&is_private=true
@@ -257,7 +257,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=John%20Doe&is_private=true
@@ -310,7 +310,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:28 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: address_city=Mojave%20Wasteland&address_postal_code=1111AA&address_street=Vault%2011&customer_name=Nuka-Cola%20Corporation&is_private=false
@@ -363,7 +363,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/fb27464c-ee20-4375-920f-215b48a29f85
+    uri: https://api.jortt.nl/v3/customers/fb27464c-ee20-4375-920f-215b48a29f85
     body:
       encoding: US-ASCII
       string: ''
@@ -410,7 +410,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/c85113d9-47d7-4cf3-a985-d46448af6d2c
+    uri: https://api.jortt.nl/v3/customers/c85113d9-47d7-4cf3-a985-d46448af6d2c
     body:
       encoding: US-ASCII
       string: ''
@@ -457,7 +457,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:29 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/17633b62-276f-451f-847a-4c2d5cc75a0b
+    uri: https://api.jortt.nl/v3/customers/17633b62-276f-451f-847a-4c2d5cc75a0b
     body:
       encoding: US-ASCII
       string: ''

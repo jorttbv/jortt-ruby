@@ -68,7 +68,7 @@ module Jortt
       else
         # Use client credentials grant type
         @token = client.client_credentials.get_token(
-          scope: opts[:scope] || 'invoices:read invoices:write customers:read customers:write organizations:read expenses:read',
+          scope: opts[:scope] || 'invoices:read invoices:write customers:read customers:write organizations:read expenses:read expenses:write',
         )
       end
     end
@@ -97,6 +97,7 @@ module Jortt
     #
     # @return [ Jortt::Client::Customers ] entry to the customer resource.
     #
+    # @see https://developer.jortt.nl/#tag-v3-customers
     # @since 1.0.0
     def customers
       @customers ||= Jortt::Client::Customers.new(self)
@@ -109,6 +110,7 @@ module Jortt
     #
     # @return [ Jortt::Client::Invoices ] entry to the invoice resource.
     #
+    # @see https://developer.jortt.nl/#tag-v3-invoices
     # @since 1.0.0
     def invoices
       @invoices ||= Jortt::Client::Invoices.new(self)
@@ -133,6 +135,7 @@ module Jortt
     #
     # @return [ Jortt::Client::LedgerAccounts ] entry to the leger_accounts resource.
     #
+    # @see https://developer.jortt.nl/#tag-v3-ledger-accounts
     # @since 5.0.0
     def ledger_accounts
       Jortt::Client::LedgerAccounts.new(self)
@@ -145,6 +148,7 @@ module Jortt
     #
     # @return [ Jortt::Client::Organizations ] entry to the organizations resource.
     #
+    # @see https://developer.jortt.nl/#tag-v3-organizations
     def organizations
       Jortt::Client::Organizations.new(self)
     end
@@ -154,8 +158,9 @@ module Jortt
     # @example
     #   client.tradenames
     #
-    # @return [ Jortt::Client::Organizations ] entry to the organizations resource.
+    # @return [ Jortt::Client::Tradenames ] entry to the tradenames resource.
     #
+    # @see https://developer.jortt.nl/#tag-v3-tradenames
     def tradenames
       Jortt::Client::Tradenames.new(self)
     end

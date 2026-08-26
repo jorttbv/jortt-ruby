@@ -18,25 +18,25 @@ describe Jortt::Client::Invoices, :vcr do
             body: {access_token: 'abc'}.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/invoices?invoice_status&page=1&query')
+        stub_request(:get, 'https://api.jortt.nl/v3/invoices?invoice_status&page=1&query')
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
               'data': [{id: 1}, {id: 2}],
-              _links: {next: 'https://api.jortt.nl/invoices?page=2'},
+              _links: {next: 'https://api.jortt.nl/v3/invoices?page=2'},
             }.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/invoices?invoice_status&page=2&query')
+        stub_request(:get, 'https://api.jortt.nl/v3/invoices?invoice_status&page=2&query')
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
               data: [{id: 3}, {id: 4}],
-              _links: {next: 'https://api.jortt.nl/invoices?page=3'},
+              _links: {next: 'https://api.jortt.nl/v3/invoices?page=3'},
             }.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/invoices?invoice_status&page=3&query')
+        stub_request(:get, 'https://api.jortt.nl/v3/invoices?invoice_status&page=3&query')
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
@@ -83,13 +83,16 @@ describe Jortt::Client::Invoices, :vcr do
         send_method: 'self',
         line_items: [
           {
-            vat: 21,
-            amount_per_unit: {
-              value: 499,
+            description: 'Your product',
+            quantity: '4',
+            amount: {
+              amount: '499.00',
               currency: 'EUR',
             },
-            units: 4,
-            description: 'Your product',
+            vat: {
+              value: '0.21',
+              category: nil,
+            },
           },
         ],
       }
@@ -105,7 +108,7 @@ describe Jortt::Client::Invoices, :vcr do
 
     it 'sends invoice content in HTTP request body' do
       subject
-      expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/invoices').with(body: params)
+      expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/v3/invoices').with(body: params)
     end
   end
 

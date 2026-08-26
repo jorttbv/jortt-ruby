@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/d22ad827-5e47-4f08-b437-37bf1b5f0e9a
+    uri: https://api.jortt.nl/v3/customers/d22ad827-5e47-4f08-b437-37bf1b5f0e9a
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:52 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/f0ccee86-e357-4be9-998c-06fb1aeae55d
+    uri: https://api.jortt.nl/v3/customers/f0ccee86-e357-4be9-998c-06fb1aeae55d
     body:
       encoding: US-ASCII
       string: ''
@@ -157,7 +157,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:26 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=Jane%20Doe&is_private=true
@@ -210,7 +210,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:26 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=John%20Doe&is_private=true
@@ -263,7 +263,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:26 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: ''
@@ -318,7 +318,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:26 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/f231a06f-dc7e-4513-9fac-ace2b2d20a18
+    uri: https://api.jortt.nl/v3/customers/f231a06f-dc7e-4513-9fac-ace2b2d20a18
     body:
       encoding: US-ASCII
       string: ''
@@ -365,7 +365,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:27 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/22a8af7e-3497-4b77-be0d-7f5e881770c9
+    uri: https://api.jortt.nl/v3/customers/22a8af7e-3497-4b77-be0d-7f5e881770c9
     body:
       encoding: US-ASCII
       string: ''

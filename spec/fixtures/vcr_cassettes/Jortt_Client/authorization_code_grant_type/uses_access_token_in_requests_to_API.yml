@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.jortt.nl/customers/9afcd96e-caf8-40a1-96c9-1af16d0bc804
+    uri: https://api.jortt.nl/v3/customers/9afcd96e-caf8-40a1-96c9-1af16d0bc804
     body:
       encoding: US-ASCII
       string: ''

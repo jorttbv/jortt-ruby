@@ -1,100 +1,100 @@
 ---
 http_interactions:
-  - request:
-      method: post
-      uri: https://app.jortt.nl/oauth-provider/oauth/token
-      body:
-        encoding: UTF-8
-        string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite+organizations%3Aread
-      headers:
-        User-Agent:
-          - Faraday v2.7.6
-        Content-Type:
-          - application/x-www-form-urlencoded
-        Accept-Encoding:
-          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-        Accept:
-          - "*/*"
-    response:
-      status:
-        code: 200
-        message: OK
-      headers:
-        Date:
-          - Tue, 13 Aug 2024 08:16:51 GMT
-        Content-Type:
-          - application/json; charset=utf-8
-        Transfer-Encoding:
-          - chunked
-        Connection:
-          - keep-alive
-        Status:
-          - 200 OK
-        Cache-Control:
-          - no-store
-        Vary:
-          - Accept
-        Referrer-Policy:
-          - strict-origin-when-cross-origin
-        X-Permitted-Cross-Domain-Policies:
-          - none
-        X-Xss-Protection:
-          - '0'
-        X-Request-Id:
-          - bef9fa34-c7b6-4628-89a5-440b48c39bdd
-        X-Download-Options:
-          - noopen
-        Etag:
-          - W/"0b5388279f6c4c980d5cf6cfc6bda06d"
-        X-Frame-Options:
-          - SAMEORIGIN
-        X-Runtime:
-          - '0.561889'
-        X-Content-Type-Options:
-          - nosniff
-        X-Powered-By:
-          - Phusion Passenger(R)
-        Server:
-          - nginx + Phusion Passenger(R)
-      body:
-        encoding: UTF-8
-        string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite+organizations%3Aread
+    headers:
+      User-Agent:
+      - Faraday v2.7.6
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 13 Aug 2024 08:16:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-store
+      Vary:
+      - Accept
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - bef9fa34-c7b6-4628-89a5-440b48c39bdd
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"0b5388279f6c4c980d5cf6cfc6bda06d"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.561889'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R)
+      Server:
+      - nginx + Phusion Passenger(R)
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
         invoices:write customers:read customers:write organizations:read","created_at":1723537011}'
-    recorded_at: Tue, 13 Aug 2024 08:16:51 GMT
-  - request:
-      method: get
-      uri: https://api.jortt.nl/customers/999
-      body:
-        encoding: US-ASCII
-        string: ''
-      headers:
-        User-Agent:
-          - Faraday v2.7.6
-        Accept-Encoding:
-          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-        Accept:
-          - "*/*"
-    response:
-      status:
-        code: 422
-        message: Unprocessable Entity
-      headers:
-        Date:
-          - Tue, 13 Aug 2024 08:16:51 GMT
-        Content-Type:
-          - application/json
-        Content-Length:
-          - '225'
-        Connection:
-          - keep-alive
-        Server:
-          - Apache
-        Vary:
-          - X-Forwarded-For
-        Status:
-          - 422 Unprocessable Entity
-        Content-Security-Policy:
-          - 'default-src ''self'' ''unsafe-inline'' blob: data: *.acc.jortt.nl;     script-src
+  recorded_at: Tue, 13 Aug 2024 08:16:51 GMT
+- request:
+    method: get
+    uri: https://api.jortt.nl/v3/customers/999
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Tue, 13 Aug 2024 08:16:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '225'
+      Connection:
+      - keep-alive
+      Server:
+      - Apache
+      Vary:
+      - X-Forwarded-For
+      Status:
+      - 422 Unprocessable Entity
+      Content-Security-Policy:
+      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.acc.jortt.nl;     script-src
         ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.acc.jortt.nl *.googletagmanager.com
         *.uservoice.com inlinemanual.com *.google-analytics.com https://www.googleanalytics.com
         *.googleadservices.com bat.bing.com https://*.tapfiliate.com static.ads-twitter.com
@@ -119,10 +119,10 @@ http_interactions:
         https://app.inlinemanual.com https://*.jf79.net https://jf79.net https://analytics.twitter.com
         https://cdn.inlinemanual.com *.googlesyndication.com *.reddit.com *.cookiebot.com;     frame-ancestors
         ''self'' https://*.acc.jortt.nl files.acc.jortt.nl;'
-      body:
-        encoding: UTF-8
-        string: '{"error":{"code":422,"key":"params.invalid","message":"The parameters
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":422,"key":"params.invalid","message":"The parameters
         are invalid (either missing, not of the correct type or incorrect format).","details":[{"key":"is_invalid","param":"customer_id","message":"is
         invalid"}]}}'
-    recorded_at: Tue, 13 Aug 2024 08:16:51 GMT
+  recorded_at: Tue, 13 Aug 2024 08:16:51 GMT
 recorded_with: VCR 6.1.0

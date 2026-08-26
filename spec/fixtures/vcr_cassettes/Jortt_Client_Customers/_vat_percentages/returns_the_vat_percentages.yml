@@ -63,7 +63,7 @@ http_interactions:
   recorded_at: Fri, 17 Sep 2021 14:20:51 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=Jane%20Doe&is_private=true
@@ -119,7 +119,7 @@ http_interactions:
   recorded_at: Fri, 17 Sep 2021 14:20:52 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=John%20Doe&is_private=true
@@ -175,7 +175,7 @@ http_interactions:
   recorded_at: Fri, 17 Sep 2021 14:20:52 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/customers/546a86e8-7a57-4d46-9a81-09378a399dd9/vat-percentages
+    uri: https://api.jortt.nl/v3/customers/546a86e8-7a57-4d46-9a81-09378a399dd9/vat-percentages
     body:
       encoding: US-ASCII
       string: ''
@@ -225,11 +225,11 @@ http_interactions:
         ''self'' https://*.jortt.nl files.jortt.nl;'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"546a86e8-7a57-4d46-9a81-09378a399dd9","vat_percentages":{"standard_rate":"21.0","reduced_rate":["9.0","0.0"]}}}'
+      string: '{"data":{"id":"546a86e8-7a57-4d46-9a81-09378a399dd9","vats":[{"value":"0.21","category":null},{"value":"0.09","category":null},{"value":"0.00","category":null}]}}'
   recorded_at: Fri, 17 Sep 2021 14:20:52 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/546a86e8-7a57-4d46-9a81-09378a399dd9
+    uri: https://api.jortt.nl/v3/customers/546a86e8-7a57-4d46-9a81-09378a399dd9
     body:
       encoding: US-ASCII
       string: ''
@@ -279,7 +279,7 @@ http_interactions:
   recorded_at: Fri, 17 Sep 2021 14:20:52 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/474d305e-8c98-42ff-9b8d-16cd8b296200
+    uri: https://api.jortt.nl/v3/customers/474d305e-8c98-42ff-9b8d-16cd8b296200
     body:
       encoding: US-ASCII
       string: ''

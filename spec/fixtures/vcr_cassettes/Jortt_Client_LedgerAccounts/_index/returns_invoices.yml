@@ -63,7 +63,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/ledger_accounts/invoices
+    uri: https://api.jortt.nl/v3/ledger_accounts/invoices
     body:
       encoding: US-ASCII
       string: ''

@@ -5,21 +5,29 @@ require 'securerandom'
 
 describe Jortt::Client, :vcr do
   context 'client credentials grant type' do
-    let(:scope) { 'invoices:read invoices:write customers:read customers:write organizations:read' }
+    # The scope the client asks for. Mirrors the default in Jortt::Client#initialize,
+    # so widening that default has to be an explicit change here too.
+    let(:requested_scope) do
+      'invoices:read invoices:write customers:read customers:write organizations:read ' \
+        'expenses:read expenses:write'
+    end
+    # The scope the authorization server granted back, as recorded in the cassette.
+    # An OAuth provider may grant less than was asked for, so this is asserted separately.
+    let(:granted_scope) { 'invoices:read invoices:write customers:read customers:write organizations:read' }
     let!(:client) { described_class.new(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
 
     it 'requests access token' do
       expect(WebMock).to have_requested(:post, 'https://app.jortt.nl/oauth-provider/oauth/token').with(
         body: {
           grant_type: 'client_credentials',
-          scope: scope,
+          scope: requested_scope,
         },
       )
     end
 
     it 'configures oauth2 client' do
       expect(client.token.options[:header_format]).to start_with 'Bearer'
-      expect(client.token.params['scope']).to eq scope
+      expect(client.token.params['scope']).to eq granted_scope
       expect(client.token.token).to eq 'access_token'
       expect(client.token.expires_at).to be_within(1).of((Time.now + 7200).to_i)
     end
@@ -67,7 +75,7 @@ describe Jortt::Client, :vcr do
     it 'uses access token in requests to API' do
       client.customers.show('9afcd96e-caf8-40a1-96c9-1af16d0bc804')
 
-      expect(WebMock).to have_requested(:get, 'https://api.jortt.nl/customers/9afcd96e-caf8-40a1-96c9-1af16d0bc804').with(
+      expect(WebMock).to have_requested(:get, 'https://api.jortt.nl/v3/customers/9afcd96e-caf8-40a1-96c9-1af16d0bc804').with(
         headers: {
           Authorization: "Bearer #{access_token}",
         },

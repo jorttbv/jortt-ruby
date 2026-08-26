@@ -10,14 +10,14 @@ module Jortt # :nodoc:
     # @see { Jortt::Client.tradenames }
     class Tradenames < Base
       ##
-      # Returns all tradenames using the GET /tradenames endpoint.
-      # https://developer.jortt.nl/#list-tradenames
+      # Returns all tradenames using the GET /v3/tradenames endpoint.
+      # https://developer.jortt.nl/#v3-list-tradenames
       #
       # @example
       #   client.tradenames.index
       #
       def index
-        client.get(make_path('/tradenames'))
+        client.get(make_path('/v3/tradenames'))
       end
     end
   end

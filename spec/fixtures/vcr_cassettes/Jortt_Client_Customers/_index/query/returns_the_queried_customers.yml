@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/cd2213ba-8df0-4cd5-84e0-e48505c005ba
+    uri: https://api.jortt.nl/v3/customers/cd2213ba-8df0-4cd5-84e0-e48505c005ba
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:02:48 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/e0d81f53-91b1-46fb-8822-66cd9c95074b
+    uri: https://api.jortt.nl/v3/customers/e0d81f53-91b1-46fb-8822-66cd9c95074b
     body:
       encoding: US-ASCII
       string: ''
@@ -157,7 +157,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:23 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=Jane%20Doe&is_private=true
@@ -210,7 +210,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:23 GMT
 - request:
     method: post
-    uri: https://api.jortt.nl/customers
+    uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
       string: customer_name=John%20Doe&is_private=true
@@ -263,7 +263,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:23 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/customers?page=1&query=Search%20target
+    uri: https://api.jortt.nl/v3/customers?page=1&query=Search%20target
     body:
       encoding: US-ASCII
       string: ''
@@ -312,11 +312,11 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"21a81a13-312f-4914-886b-75746c300a92","is_private":true,"customer_name":"Search
         target","address_street":null,"address_postal_code":null,"address_city":null,"address_country_code":"NL","address_country_name":"Nederland","address_extra_information":null,"shift_vat":null,"vat_number":null,"coc_number":null,"initials":null,"first_name":null,"last_name":null,"date_of_birth":null,"citizen_service_number":null,"attn":null,"phonenumber":null,"website":null,"email":"stephan+jortt-gem-customer@zilverline.com","cc_emails":[],"email_salutation":"Geachte
-        heer, mevrouw,","additional_information":"","payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}],"_links":{"previous":null,"next":null,"self":{"href":"https://api.jortt.nl/customers?query=Search%20target\u0026page=1","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
+        heer, mevrouw,","additional_information":"","payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}],"_links":{"previous":null,"next":null,"self":{"href":"https://api.jortt.nl/v3/customers?query=Search%20target&page=1","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
   recorded_at: Thu, 24 Sep 2020 15:03:23 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/customers?page=1&query=Search%20target
+    uri: https://api.jortt.nl/v3/customers?page=1&query=Search%20target
     body:
       encoding: US-ASCII
       string: ''
@@ -365,11 +365,11 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"21a81a13-312f-4914-886b-75746c300a92","is_private":true,"customer_name":"Search
         target","address_street":null,"address_postal_code":null,"address_city":null,"address_country_code":"NL","address_country_name":"Nederland","address_extra_information":null,"shift_vat":null,"vat_number":null,"coc_number":null,"initials":null,"first_name":null,"last_name":null,"date_of_birth":null,"citizen_service_number":null,"attn":null,"phonenumber":null,"website":null,"email":"stephan+jortt-gem-customer@zilverline.com","cc_emails":[],"email_salutation":"Geachte
-        heer, mevrouw,","additional_information":"","payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}],"_links":{"previous":null,"next":null,"self":{"href":"https://api.jortt.nl/customers?query=Search%20target\u0026page=1","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
+        heer, mevrouw,","additional_information":"","payment_term":30,"invoice_language":"nl","payment_method_invoice":"pay_later","reference":null,"mollie_direct_debit_status":null,"mollie_customer_id":null,"mollie_mandate_id":null}],"_links":{"previous":null,"next":null,"self":{"href":"https://api.jortt.nl/v3/customers?query=Search%20target&page=1","type":"application/json"},"documentation":{"href":"https://developer.jortt.nl/#pagination","type":"text/html"}}}'
   recorded_at: Thu, 24 Sep 2020 15:03:23 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/f63041f8-3975-4287-a236-5e45ecf476d1
+    uri: https://api.jortt.nl/v3/customers/f63041f8-3975-4287-a236-5e45ecf476d1
     body:
       encoding: US-ASCII
       string: ''
@@ -416,7 +416,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:23 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/customers/478a105a-07b7-450a-abec-b3438b703d5b
+    uri: https://api.jortt.nl/v3/customers/478a105a-07b7-450a-abec-b3438b703d5b
     body:
       encoding: US-ASCII
       string: ''

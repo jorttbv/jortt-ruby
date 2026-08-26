@@ -73,25 +73,29 @@ describe Jortt::Client::Expenses do
       stub_request(:get, "https://api.jortt.nl/v3/expenses/id/#{id}")
         .to_return(
           headers: {content_type: 'application/json'},
-          body: {data: {id: id, supplier_name: 'Acme Corp'}}.to_json,
+          body: {data: {id: id, description: 'Office equipment'}}.to_json,
         )
     end
 
     it 'returns the expense' do
-      expect(client.expenses.show(id)).to include('supplier_name' => 'Acme Corp')
+      expect(client.expenses.show(id)).to include('description' => 'Office equipment')
     end
   end
 
   describe '#create' do
     let(:payload) do
       {
-        expense_date: '2026-01-15',
+        description: 'Office equipment',
+        ledger_account_id: '05ba2a61-a0cc-4736-9000-89fb361e85c8',
+        expense_type: 'cost',
         vat_date: '2026-01-15',
-        supplier_name: 'Acme Corp',
-        line_items: [
+        delivery_period: '2026-01-01',
+        vat_type: 'btw_type_leverancier_uit_nl',
+        raw_total_amount: {amount: '121.00', currency: 'EUR'},
+        vat_line_items: [
           {
-            amount: {value: '100.00', currency: 'EUR'},
-            vat_percentage: '21.0',
+            vat: {value: '0.21', category: nil},
+            vat_amount: {amount: '21.00', currency: 'EUR'},
           },
         ],
       }
@@ -118,7 +122,17 @@ describe Jortt::Client::Expenses do
 
   describe '#update' do
     let(:id) { '9afcd96e-caf8-40a1-96c9-1af16d0bc804' }
-    let(:payload) { {description: 'Updated'} }
+    let(:payload) do
+      {
+        description: 'Updated description',
+        ledger_account_id: '05ba2a61-a0cc-4736-9000-89fb361e85c8',
+        expense_type: 'cost',
+        vat_date: '2026-01-15',
+        delivery_period: '2026-01-01',
+        vat_type: 'btw_type_leverancier_uit_nl',
+        raw_total_amount: {amount: '121.00', currency: 'EUR'},
+      }
+    end
 
     before do
       stub_request(:post, "https://api.jortt.nl/v3/expenses/id/#{id}")
@@ -138,7 +152,7 @@ describe Jortt::Client::Expenses do
 
   describe '#attach_receipt' do
     let(:id) { '9afcd96e-caf8-40a1-96c9-1af16d0bc804' }
-    let(:payload) { {file_id: 'file-uuid'} }
+    let(:payload) { {receipt_id: '1aa9cd93-aa14-4184-ba01-1fa2776d2e2d'} }
 
     before do
       stub_request(:post, "https://api.jortt.nl/v3/expenses/id/#{id}/receipt")
