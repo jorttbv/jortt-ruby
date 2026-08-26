@@ -15,7 +15,7 @@ describe Jortt::Client::Error, :vcr do
         code: 422,
         key: 'params.invalid',
         message: 'The parameters are invalid (either missing, not of the correct type or incorrect format).',
-        details: [{'key' => 'is_invalid','param' => 'customer_id','message' => 'is invalid'}],
+        details: [{'key' => 'is_invalid', 'param' => 'customer_id', 'message' => 'is invalid'}],
       )
     end
   end
@@ -30,7 +30,14 @@ describe Jortt::Client::Error, :vcr do
         expect(error).to have_attributes(
           status: 502,
           message: 'Bad Gateway',
-          body: "<html>\n<head><title>502 Bad Gateway</title></head>\n<body>\n<center><h1>502 Bad Gateway</h1></center>\n</body>\n</html>\n",
+          body: <<~BODY,
+            <html>
+            <head><title>502 Bad Gateway</title></head>
+            <body>
+            <center><h1>502 Bad Gateway</h1></center>
+            </body>
+            </html>
+          BODY
         )
       end
     end

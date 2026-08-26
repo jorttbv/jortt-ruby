@@ -10,7 +10,7 @@ module Jortt # :nodoc:
             response.parsed.dig('error', 'key'),
             response.parsed.dig('error', 'message'),
             response.parsed.dig('error', 'details'),
-            )
+          )
         elsif response.status >= 500
           ServerError.new(response.status, response.response.reason_phrase, response.body)
         end

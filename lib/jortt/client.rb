@@ -17,6 +17,15 @@ module Jortt
   class Client
     SITE = 'https://api.jortt.nl'
     OAUTH_PROVIDER_URL = 'https://app.jortt.nl/oauth-provider/oauth'
+    DEFAULT_SCOPE = %w[
+      invoices:read
+      invoices:write
+      customers:read
+      customers:write
+      organizations:read
+      expenses:read
+      expenses:write
+    ].join(' ').freeze
 
     attr_accessor :token, :base_path
 
@@ -54,23 +63,23 @@ module Jortt
     def initialize(id, secret, opts = {})
       client = oauth2_client(id, secret, opts)
 
-      if opts[:access_token]
-        # Use authorization code grant type
-        @token = OAuth2::AccessToken.from_hash(
-          client,
-          {
-            scope: opts[:scope],
-            access_token: opts[:access_token],
-            refresh_token: opts[:refresh_token],
-            expires_at: opts[:expires_at],
-          },
-        )
-      else
-        # Use client credentials grant type
-        @token = client.client_credentials.get_token(
-          scope: opts[:scope] || 'invoices:read invoices:write customers:read customers:write organizations:read expenses:read expenses:write',
-        )
-      end
+      @token = if opts[:access_token]
+                 # Use authorization code grant type
+                 OAuth2::AccessToken.from_hash(
+                   client,
+                   {
+                     scope: opts[:scope],
+                     access_token: opts[:access_token],
+                     refresh_token: opts[:refresh_token],
+                     expires_at: opts[:expires_at],
+                   },
+                 )
+               else
+                 # Use client credentials grant type
+                 client.client_credentials.get_token(
+                   scope: opts[:scope] || DEFAULT_SCOPE,
+                 )
+               end
     end
 
     def oauth2_client(client_id, client_secret, opts = {})
@@ -170,11 +179,15 @@ module Jortt
     end
 
     def post(path, payload = {})
-      handle_response { token.post(path, body: payload.to_json, snaky: false, headers: { "Content-Type" => "application/json" }) }
+      handle_response do
+        token.post(path, body: payload.to_json, snaky: false, headers: {'Content-Type' => 'application/json'})
+      end
     end
 
     def put(path, payload = {})
-      handle_response { token.put(path, body: payload.to_json, snaky: false, headers: { "Content-Type" => "application/json" }) }
+      handle_response do
+        token.put(path, body: payload.to_json, snaky: false, headers: {'Content-Type' => 'application/json'})
+      end
     end
 
     def delete(path)

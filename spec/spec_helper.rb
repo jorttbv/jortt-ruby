@@ -35,5 +35,10 @@ def jortt_client(env = 'production')
     ENV['JORTT_OAUTH_PROVIDER_URL'] ||= 'https://app.acc.jortt.nl/oauth-provider/oauth'
   end
 
-  Jortt.client(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET'], site: ENV['JORTT_SITE_URL'], oauth_provider_url: ENV['JORTT_OAUTH_PROVIDER_URL'])
+  Jortt.client(
+    ENV['JORTT_CLIENT_ID'],
+    ENV['JORTT_CLIENT_SECRET'],
+    site: ENV['JORTT_SITE_URL'],
+    oauth_provider_url: ENV['JORTT_OAUTH_PROVIDER_URL'],
+  )
 end
