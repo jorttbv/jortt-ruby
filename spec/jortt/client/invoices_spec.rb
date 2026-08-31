@@ -70,7 +70,7 @@ describe Jortt::Client::Invoices, :vcr do
       subject { client.invoices.index(query: 'Search target') }
 
       it 'returns the queried invoices' do
-        expect(subject.first.dig('invoice_due_amount', 'value')).to eq('2415.16')
+        expect(subject.first.dig('invoice_due_amount', 'amount')).to eq('2415.16')
       end
     end
   end
@@ -117,7 +117,7 @@ describe Jortt::Client::Invoices, :vcr do
     subject { client.invoices.show(uuid) }
 
     it 'returns the invoice' do
-      expect(subject.dig('invoice_due_amount', 'value')).to eq('2415.16')
+      expect(subject.dig('invoice_due_amount', 'amount')).to eq('2415.16')
     end
   end
 

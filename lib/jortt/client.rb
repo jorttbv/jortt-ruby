@@ -17,6 +17,8 @@ module Jortt
   class Client
     SITE = 'https://api.jortt.nl'
     OAUTH_PROVIDER_URL = 'https://app.jortt.nl/oauth-provider/oauth'
+    # Jortt rejects a token request asking for scopes the application was not registered
+    # with, so adding a scope here breaks integrations that have not registered it.
     DEFAULT_SCOPE = %w[
       invoices:read
       invoices:write
@@ -24,7 +26,6 @@ module Jortt
       customers:write
       organizations:read
       expenses:read
-      expenses:write
     ].join(' ').freeze
 
     attr_accessor :token, :base_path
@@ -46,14 +47,15 @@ module Jortt
     #     refresh_token: "refresh-token",
     #     expires_at: 1657896798
     #   )
-    # @see https://developer.jortt.nl/#authorization-code-grant-type documentation on Authorization code grant type
+    # @see https://developer.jortt.nl/#intro-authorization-code-grant-type
+    #   documentation on Authorization code grant type
     #
     # @param [String] id Your Client ID
     # @param [String] secret Your Client Secret
     # @param [Hash] opts Options for the client
     # @option opts [String] :oauth_provider_url The base URL to the OAuth provider
     # @option opts [String] :site The base URL to the API
-    # @option opts [String] :scope The list of required scopes
+    # @option opts [String] :scope The list of required scopes, defaults to {DEFAULT_SCOPE}
     # @option opts [String] :access_token Authorized Access Token to the API
     # @option opts [String] :refresh_token Refresh Token to the API
     # @option opts [String] :expires_at The expiration time as an integer number of seconds since the Epoch

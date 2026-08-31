@@ -5,14 +5,11 @@ require 'securerandom'
 
 describe Jortt::Client, :vcr do
   context 'client credentials grant type' do
-    # The scope the client asks for. Mirrors the default in Jortt::Client#initialize,
-    # so widening that default has to be an explicit change here too.
     let(:requested_scope) do
-      'invoices:read invoices:write customers:read customers:write organizations:read ' \
-        'expenses:read expenses:write'
+      'invoices:read invoices:write customers:read customers:write organizations:read expenses:read'
     end
-    # The scope the authorization server granted back, as recorded in the cassette.
-    # An OAuth provider may grant less than was asked for, so this is asserted separately.
+    # Jortt echoes back what was requested; this differs only because the cassette predates
+    # expenses:read being added to the default and was never re-recorded.
     let(:granted_scope) { 'invoices:read invoices:write customers:read customers:write organizations:read' }
     let!(:client) { described_class.new(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
 
