@@ -21,7 +21,7 @@ describe Jortt::Client::Expenses do
     before do
       stub_request(
         :get,
-        'https://api.jortt.nl/v3/expenses?page=1&vat_date_from=20260101&vat_date_till=20260331',
+        'https://api.jortt.nl/v3/expenses?page=1&vat_date_from=2026-01-01&vat_date_till=2026-03-31',
       ).to_return(
         headers: {content_type: 'application/json'},
         body: {
@@ -32,7 +32,7 @@ describe Jortt::Client::Expenses do
 
       stub_request(
         :get,
-        'https://api.jortt.nl/v3/expenses?page=2&vat_date_from=20260101&vat_date_till=20260331',
+        'https://api.jortt.nl/v3/expenses?page=2&vat_date_from=2026-01-01&vat_date_till=2026-03-31',
       ).to_return(
         headers: {content_type: 'application/json'},
         body: {
@@ -44,8 +44,8 @@ describe Jortt::Client::Expenses do
 
     subject do
       client.expenses.index(
-        vat_date_from: '20260101',
-        vat_date_till: '20260331',
+        vat_date_from: '2026-01-01',
+        vat_date_till: '2026-03-31',
       )
     end
 

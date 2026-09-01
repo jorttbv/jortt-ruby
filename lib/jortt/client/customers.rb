@@ -17,8 +17,12 @@ module Jortt # :nodoc:
       # @example
       #   client.customers.index(query: 'Jane')
       #
+      # @param [String] query Search for customers that match this text. Give 3 characters or more
+      #
       def index(query: nil)
-        client.paginated(make_path('/v3/customers'), query: query)
+        params = {query: query}.compact
+
+        client.paginated(make_path('/v3/customers'), params)
       end
 
       ##
@@ -87,20 +91,25 @@ module Jortt # :nodoc:
       end
 
       ##
-      # Get vat percentages for a Customer using the
+      # Get the vats valid for a Customer using the
       # GET /v3/customers/{customer_id}/vat-percentages endpoint.
       # https://developer.jortt.nl/#v3-get-vat-percentages-for-a-customer-by-id-v2
       #
-      # Returns the vats valid for the Customer as a flat list:
+      # The path still contains +vat-percentages+, but the endpoint no longer returns named
+      # percentages. The endpoint returns a flat list of vats. Each +value+ is a fraction:
       #
       #   { "id" => "...", "vats" => [{ "value" => "0.21", "category" => nil }] }
       #
       # @example
-      #   client.customers.vat_percentages("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
+      #   client.customers.vats("9afcd96e-caf8-40a1-96c9-1af16d0bc804")
       #
-      def vat_percentages(id)
+      def vats(id)
         client.get(make_path("/v3/customers/#{id}/vat-percentages"))
       end
+
+      # @deprecated Use {#vats}. Version 7.0 renamed this method, because the endpoint no
+      #   longer returns percentages.
+      alias vat_percentages vats
     end
   end
 end

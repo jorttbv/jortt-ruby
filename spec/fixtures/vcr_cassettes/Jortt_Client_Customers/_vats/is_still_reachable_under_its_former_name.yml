@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread%20invoices%3Awrite%20customers%3Aread%20customers%3Awrite%20organizations%3Aread%20expenses%3Aread
+    headers:
+      User-Agent:
+      - Faraday v2.14.3
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 Aug 2026 14:42:08 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-store
+      Vary:
+      - Accept
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_client", error_description="Client
+        verificatie is mislukt door onbekende klant, geen client authenticatie opgegeven,
+        of een niet-ondersteunde authenticatie methode."
+      X-Request-Id:
+      - 2fc9983a-189d-412b-b503-91e388e6c367
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 0f0656e015969f214cbb02d6f2a23f6a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - AMS58-P4
+      X-Amz-Cf-Id:
+      - M1Zr8f7iL_4MhRSh9kt_WGk3_qCsDDWVe6B53axoIA9BJptS0RvcoA==
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_client","error_description":"Client verificatie is
+        mislukt door onbekende klant, geen client authenticatie opgegeven, of een
+        niet-ondersteunde authenticatie methode."}'
+  recorded_at: Mon, 31 Aug 2026 14:42:08 GMT
+- request:
+    method: post
+    uri: https://app.jortt.nl/oauth-provider/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=invoices%3Aread%20invoices%3Awrite%20customers%3Aread%20customers%3Awrite%20organizations%3Aread%20expenses%3Aread
+    headers:
+      User-Agent:
+      - Faraday v2.14.3
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 Aug 2026 14:42:08 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-store
+      Vary:
+      - Accept
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_client", error_description="Client
+        verificatie is mislukt door onbekende klant, geen client authenticatie opgegeven,
+        of een niet-ondersteunde authenticatie methode."
+      X-Request-Id:
+      - c41aca99-1ab0-4160-be01-73a21dfc39d5
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 2837e32f921e7e7517dd6f5461c37dfa.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - AMS58-P4
+      X-Amz-Cf-Id:
+      - xnWpXfZnuvOb_IwxGYdGDPzxdv4HXXFBxiKe-Eg1uiDnFflsuA7u4g==
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_client","error_description":"Client verificatie is
+        mislukt door onbekende klant, geen client authenticatie opgegeven, of een
+        niet-ondersteunde authenticatie methode."}'
+  recorded_at: Mon, 31 Aug 2026 14:42:08 GMT
+recorded_with: VCR 6.4.0

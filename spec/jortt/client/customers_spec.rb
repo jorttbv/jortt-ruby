@@ -36,7 +36,7 @@ describe Jortt::Client::Customers, :vcr do
     end
 
     context 'query' do
-      subject { client.customers.index(query: 'Search target') }
+      subject { client.customers.index(query: 'Search target').to_a }
 
       it 'returns the queried customers' do
         expect(subject.count).to eq(1)
@@ -107,10 +107,10 @@ describe Jortt::Client::Customers, :vcr do
     end
   end
 
-  describe '#vat_percentages' do
-    subject { client.customers.vat_percentages(jane) }
+  describe '#vats' do
+    subject { client.customers.vats(jane) }
 
-    it 'returns the vat percentages' do
+    it 'returns the vats' do
       expect(subject).to eq(
         {
           'id' => '546a86e8-7a57-4d46-9a81-09378a399dd9',

@@ -7,6 +7,12 @@ module Jortt # :nodoc:
     ##
     # Exposes the operations available for a collection of expenses.
     #
+    # {#create}, {#update} and {#attach_receipt} need the +expenses:write+ scope.
+    # {Jortt::Client::DEFAULT_SCOPE} does not include this scope. First register the scope
+    # with Jortt. Then request the scope:
+    #
+    #   Jortt.client(id, secret, scope: "#{Jortt::Client::DEFAULT_SCOPE} expenses:write")
+    #
     # @see { Jortt::Client.expenses }
     # @see https://developer.jortt.nl/#tag-v3-expenses
     class Expenses < Base
@@ -19,9 +25,10 @@ module Jortt # :nodoc:
       #
       # Use +vat_date_from+ and +vat_date_till+ to filter by VAT date range.
       # Use +delivery_date_from+ and +delivery_date_till+ to filter by delivery period.
+      # Give each of these four dates in +YYYY-MM-DD+ format.
       #
       # @example
-      #   client.expenses.index(vat_date_from: '20260101', vat_date_till: '20260331')
+      #   client.expenses.index(vat_date_from: '2026-01-01', vat_date_till: '2026-03-31')
       #
       # @param [String] vat_date_from Filter expenses with vat_date on or after this date
       # @param [String] vat_date_till Filter expenses with vat_date on or before this date

@@ -5,26 +5,24 @@ require 'securerandom'
 
 describe Jortt::Client, :vcr do
   context 'client credentials grant type' do
-    let(:requested_scope) do
+    # This spec does not read DEFAULT_SCOPE. An update to DEFAULT_SCOPE requires an update here as well.
+    let(:scope) do
       'invoices:read invoices:write customers:read customers:write organizations:read expenses:read'
     end
-    # Jortt echoes back what was requested; this differs only because the cassette predates
-    # expenses:read being added to the default and was never re-recorded.
-    let(:granted_scope) { 'invoices:read invoices:write customers:read customers:write organizations:read' }
     let!(:client) { described_class.new(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
 
     it 'requests access token' do
       expect(WebMock).to have_requested(:post, 'https://app.jortt.nl/oauth-provider/oauth/token').with(
         body: {
           grant_type: 'client_credentials',
-          scope: requested_scope,
+          scope: scope,
         },
       )
     end
 
     it 'configures oauth2 client' do
       expect(client.token.options[:header_format]).to start_with 'Bearer'
-      expect(client.token.params['scope']).to eq granted_scope
+      expect(client.token.params['scope']).to eq scope
       expect(client.token.token).to eq 'access_token'
       expect(client.token.expires_at).to be_within(1).of((Time.now + 7200).to_i)
     end

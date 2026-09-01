@@ -129,7 +129,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"customer_id":"dc3b25a6-3242-4654-856b-bbf45c5e3e0a","send_method":"self","line_items":[{"description":"Your
-        product","vat":{"value":"0.21","category":null},"quantity":"4","amount":{"amount":"499","currency":"EUR"}}]}'
+        product","vat":{"value":"0.21","category":null},"quantity":"4","amount":{"amount":"499.00","currency":"EUR"}}]}'
     headers:
       User-Agent:
       - Faraday v2.7.6

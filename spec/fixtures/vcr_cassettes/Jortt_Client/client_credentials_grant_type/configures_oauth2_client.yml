@@ -5,7 +5,7 @@ http_interactions:
     uri: https://app.jortt.nl/oauth-provider/oauth/token
     body:
       encoding: UTF-8
-      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite+organizations%3Aread+expenses%3Aread
     headers:
       User-Agent:
       - Faraday v1.0.1
@@ -59,6 +59,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write organizations:read","created_at":1600959817}'
+        invoices:write customers:read customers:write organizations:read expenses:read","created_at":1600959817}'
   recorded_at: Thu, 24 Sep 2020 15:03:37 GMT
 recorded_with: VCR 6.0.0

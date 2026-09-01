@@ -263,7 +263,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:22 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/v3/customers?page=1&query
+    uri: https://api.jortt.nl/v3/customers?page=1
     body:
       encoding: US-ASCII
       string: ''

@@ -63,7 +63,7 @@ http_interactions:
   recorded_at: Thu, 24 Sep 2020 15:03:34 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/v3/invoices?invoice_status&page=1&query=Download%20test
+    uri: https://api.jortt.nl/v3/invoices?page=1&query=Download%20test
     body:
       encoding: US-ASCII
       string: ''

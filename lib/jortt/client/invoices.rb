@@ -20,8 +20,13 @@ module Jortt # :nodoc:
       # @example
       #   client.invoices.index(query: 'Jane')
       #
+      # @param [String] query Search for invoices that match this text. Give 3 characters or more
+      # @param [String] invoice_status Filter by status: +sent+, +draft+, +unpaid+, +late+ or +paid+
+      #
       def index(query: nil, invoice_status: nil)
-        client.paginated(make_path('/v3/invoices'), query: query, invoice_status: invoice_status)
+        params = {query: query, invoice_status: invoice_status}.compact
+
+        client.paginated(make_path('/v3/invoices'), params)
       end
 
       ##

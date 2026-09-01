@@ -10,37 +10,74 @@ Check https://developer.jortt.nl/ for more info.
 
 ## Upgrading to 7.0
 
-Every request now goes to the `/v3` API. The unversioned endpoints this gem previously used
-are being discontinued along with `/v1`.
+Every request now goes to the `/v3` API endpoint. Jortt discontinues the unversioned and `/v1`
+endpoints that this gem previously used in 5.x and 6.x.
 
-Most resources moved path only, so their request and response bodies are
-unchanged. Two of them changed shape and need code changes on your side:
+The new paths are internal to this gem, so your code does not change, however there are three data format
+changes below which might require attention. If a request uses one of these old field name, the API rejects the
+request and this gem raises an error. A read of one of these old keys will be silent: i.e. the key is absent, so the
+read returns `nil`. It is advised to search your code for the old names and make the appropriate updates.
 
-**Invoice line items** (`invoices.create`, and the line items returned by
-`invoices.index` / `invoices.show`):
+### 1. Money objects use `amount` instead of `value`
 
-| before | after |
+Each amount uses a new key in requests and in responses:
+
+| before 7.0 | 7.0 |
 | --- | --- |
-| `number_of_units: "4"` | `quantity: "4"` |
-| `amount_per_unit: { value:, currency: }` | `amount: { amount:, currency: }` |
-| `vat_percentage: "21.0"` | `vat: { value: "0.21", category: nil }` |
+| `{value: "12.34", currency: "EUR"}` | `{amount: "12.34", currency: "EUR"}` |
 
-`description`, `quantity`, `amount` and `vat` are all required, and `vat.value`
-is a fraction rather than a percentage. On responses, `total_amount_excl_vat` is
-now `total_amount_ex_vat`.
-
-**Customer VAT percentages** (`customers.vat_percentages`):
+On an invoice, this change applies to `invoice_total`, `invoice_total_incl_vat`,
+`invoice_due_amount` and each line item amount:
 
 ```ruby
-# before
-{ "id" => "...", "vat_percentages" => { "standard_rate" => "21.0", "reduced_rate" => ["9.0", "0.0"] } }
+# before 7.0
+invoice.dig('invoice_due_amount', 'value')
 
-# after
-{ "id" => "...", "vats" => [{ "value" => "0.21", "category" => nil }, ...] }
+# 7.0
+invoice.dig('invoice_due_amount', 'amount')
 ```
 
-The `vat_percentages` hash of named rates becomes a `vats` array of objects. As
-with invoice line items, `value` is a fraction rather than a percentage.
+### 2. Invoice line items
+
+These changes apply to `invoices.create` and line items in the responses from `invoices.index` and `invoices.show`:
+
+| before 7.0 | 7.0 |
+| --- | --- |
+| `units: 4` | `quantity: "4"` |
+| `amount_per_unit: {value:, currency:}` | `amount: {amount:, currency:}` |
+| `vat: 21.0` | `vat: {value: "0.21", category: nil}` |
+| `total_amount_excl_vat: {value:, currency:}` | `total_amount_ex_vat: {amount:, currency:}` |
+
+- `total_amount_ex_vat` is in responses only. In a line item, each number is a string.
+
+- `vat` requires care. The value is now a fraction, and not a percentage:
+
+| percentage (before 7.0) | fraction (7.0) |
+| --- | --- |
+| `21.0` | `"0.21"` |
+| `9.0` | `"0.09"` |
+| `0.0` | `"0.00"` |
+
+The fields `description`, `quantity`, `amount` and `vat` are required fields when creating an invoice.
+
+### 3. Customer VAT percentages
+
+| before 7.0 | 7.0 |
+| --- | --- |
+| `customers.vat_percentages` | `customers.vats` |
+| `vat_percentages: {standard_rate:, reduced_rate:}` | `vats: [{value:, category:}]` |
+
+The old method name is still available however as a deprecated alias.
+
+```ruby
+# before 7.0
+{"id" => "...", "vat_percentages" => {"standard_rate" => "21.0", "reduced_rate" => ["9.0", "0.0"]}}
+
+# 7.0
+{"id" => "...", "vats" => [{"value" => "0.21", "category" => nil}, ...]}
+```
+
+`value` requires care. It is now a fraction, and not a percentage.
 
 ## Usage examples
 
@@ -65,15 +102,21 @@ You can use the [oauth2 gem](https://github.com/oauth-xx/oauth2) to request an a
 
 ### Customers
 
-All customers (`jortt.customers.index`) returns an enumerator that pages through every customer:
+`jortt.customers.index` returns a lazy enumerator. The enumerator requests each page of
+customers in turn. Call `.to_a`, or iterate the enumerator, to read the records. Each iteration
+starts again at the first page, so assign the array from `.to_a` if you read the records twice.
+
 ```ruby
-[{
-  "id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
-  "is_private": true,
-  "customer_name": "Jortt",
-  "address_street": "Rozengracht 75a",
-  ...
-}]
+jortt.customers.index.to_a
+# => [{
+#      "id" => "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+#      "is_private" => true,
+#      "customer_name" => "Jortt",
+#      "address_street" => "Rozengracht 75a",
+#      ...
+#    }]
+
+jortt.customers.index(query: 'Jortt').each { |customer| puts customer['customer_name'] }
 ```
 
 Adding customers:
@@ -89,42 +132,49 @@ jortt.customers.create(
 Get invoices by ID (`jortt.invoices.show('934d59dd-76f6-4716-9e0f-82a618e1be21')`) returns:
 ```ruby
 {
-  "invoice_id": "934d59dd-76f6-4716-9e0f-82a618e1be21",
-  "recipient": {
-    "company_name": "Zilverline B.V.",
-    "attn": null,
-    "address": {
-      "street": "Cruquisweg 109F",
-      "city": "Amsterdam",
-      "postal_code": "1111SX",
-      "country": {
-        "code": "NL",
-        "name": "Nederland"
-      }
-    },
-    "email": "ben@jortt.nl",
-    "customer_id": "e1c5e15b-e34e-423e-a291-4ed43226a190",
-    "extra_information": null,
-    ...
-  }
+  "id" => "934d59dd-76f6-4716-9e0f-82a618e1be21",
+  "invoice_status" => "sent",
+  "invoice_number" => "202009-226",
+  "invoice_date" => "2020-09-24",
+  "invoice_due_date" => "2020-10-24",
+  "invoice_total" => {"amount" => "1996.00", "currency" => "EUR"},
+  "invoice_total_incl_vat" => {"amount" => "2415.16", "currency" => "EUR"},
+  "invoice_due_amount" => {"amount" => "2415.16", "currency" => "EUR"},
+  "customer_id" => "e1c5e15b-e34e-423e-a291-4ed43226a190",
+  "customer_company_name" => "Zilverline B.V.",
+  "customer_attn" => nil,
+  "customer_address_street" => "Cruquisweg 109F",
+  "customer_address_city" => "Amsterdam",
+  "customer_address_postal_code" => "1111SX",
+  "customer_address_country_code" => "NL",
+  "customer_address_country_name" => "Nederland",
+  "line_items" => [
+    {
+      "description" => "Your product",
+      "quantity" => "4",
+      "amount" => {"amount" => "499.00", "currency" => "EUR"},
+      "vat" => {"value" => "0.21", "category" => nil},
+      "total_amount_ex_vat" => {"amount" => "499.00", "currency" => "EUR"},
+      "ledger_account_id" => "05ba2a61-a0cc-4736-9000-89fb361e85c8"
+    }
+  ],
   ...
 }
 ```
 
+The customer details are flat fields with a `customer_` prefix.
 
 Searching invoices (`jortt.invoices.index(query: '202001-002')`) returns:
 ```ruby
 [{
-  "id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
-  "invoice_status": "draft",
-  "customer_id": "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
-  "invoice_number": "202001-002",
-  "invoice_date": "2020-02-23",
+  "id" => "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+  "invoice_status" => "draft",
+  "customer_id" => "f8fd3e4e-da1c-43a7-892f-1410ac13e38a",
+  "invoice_number" => "202001-002",
+  "invoice_date" => "2020-02-23",
   ...
 }]
-
 ```
-
 
 Adding invoices:
 ```ruby
@@ -155,6 +205,62 @@ jortt.invoices.create(
   ],
   reference: "123"
 )
+```
+
+### Expenses
+
+`jortt.expenses.index` returns an enumerator. The enumerator requests each page of expenses in
+turn. These filters are optional: `vat_date_from`, `vat_date_till`, `delivery_date_from`,
+`delivery_date_till` and `expense_type`. The `expense_type` filter accepts `cost`, `income` or
+`balance`. Give each date in `YYYY-MM-DD` format.
+
+```ruby
+jortt.expenses.index(vat_date_from: '2026-01-01', vat_date_till: '2026-03-31')
+jortt.expenses.show('9afcd96e-caf8-40a1-96c9-1af16d0bc804')
+```
+
+`jortt.expenses.create`, `.update` and `.attach_receipt` need the `expenses:write` scope, which
+the default scope does **not** include. First register the scope with Jortt, because Jortt
+rejects a token request for a scope that it does not hold for your application. Then give the
+scope to the client:
+
+```ruby
+jortt = Jortt.client(id, secret, scope: "#{Jortt::Client::DEFAULT_SCOPE} expenses:write")
+```
+
+When you create an expense, you must give `description`, `ledger_account_id`, `expense_type`,
+`vat_date`, `delivery_period`, `vat_type` and `raw_total_amount`:
+
+```ruby
+jortt.expenses.create(
+  description: "Office equipment",
+  ledger_account_id: "05ba2a61-a0cc-4736-9000-89fb361e85c8",
+  expense_type: "cost",
+  vat_date: "2026-01-15",
+  delivery_period: "2026-01-01",
+  vat_type: "btw_type_leverancier_uit_nl",
+  raw_total_amount: {amount: "121.00", currency: "EUR"},
+  vat_line_items: [
+    {
+      vat: {value: "0.21", category: nil},
+      vat_amount: {amount: "21.00", currency: "EUR"}
+    }
+  ]
+)
+```
+
+`jortt.expenses.update(id, payload)` takes the same fields, and the same fields are required.
+Send the complete expense, and not only the fields that changed.
+
+`jortt.expenses.attach_receipt(id, receipt_id: '...')` attaches a file to an expense. First
+upload the file with `POST /v3/files/attachment_upload`.
+
+### Other resources
+
+```ruby
+jortt.ledger_accounts.index  # the ledger accounts for invoice line items
+jortt.organizations.me       # the organization that owns the credentials
+jortt.tradenames.index       # the tradenames of the organization
 ```
 
 ## Development

@@ -18,7 +18,7 @@ describe Jortt::Client::Invoices, :vcr do
             body: {access_token: 'abc'}.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/v3/invoices?invoice_status&page=1&query')
+        stub_request(:get, 'https://api.jortt.nl/v3/invoices?page=1')
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
@@ -27,7 +27,7 @@ describe Jortt::Client::Invoices, :vcr do
             }.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/v3/invoices?invoice_status&page=2&query')
+        stub_request(:get, 'https://api.jortt.nl/v3/invoices?page=2')
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
@@ -36,7 +36,7 @@ describe Jortt::Client::Invoices, :vcr do
             }.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/v3/invoices?invoice_status&page=3&query')
+        stub_request(:get, 'https://api.jortt.nl/v3/invoices?page=3')
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
@@ -55,10 +55,16 @@ describe Jortt::Client::Invoices, :vcr do
       it 'seamlessly returns results from the other pages' do
         expect(subject.to_a.count).to eq(5)
       end
+
+      it 'starts again at the first page when enumerated a second time' do
+        subject.to_a
+
+        expect(subject.to_a.count).to eq(5)
+      end
     end
 
     context 'invoice_status' do
-      subject { client.invoices.index(invoice_status: 'sent') }
+      subject { client.invoices.index(invoice_status: 'sent').to_a }
 
       it 'returns those invoices' do
         expect(subject.count).to be > 0

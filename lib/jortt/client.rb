@@ -206,17 +206,23 @@ module Jortt
     end
 
     def paginated(path, params = {})
-      page = 1
-
       Enumerator.new do |yielder|
+        page = 1
+
         loop do
-          response = token.get(path, params: params.merge(page: page)).parsed
+          response = get_page(path, params.merge(page: page))
           response['data'].each { |item| yielder << item }
           break if response['_links']['next'].nil?
 
           page += 1
         end
       end
+    end
+
+    private
+
+    def get_page(path, params)
+      token.get(path, params: params, snaky: false).parsed
     rescue OAuth2::Error => e
       raise Error.from_response(e.response)
     end
