@@ -5,11 +5,14 @@ require 'securerandom'
 
 describe Jortt::Client, :vcr do
   context 'client credentials grant type' do
-    let(:scope) { 'invoices:read invoices:write customers:read customers:write organizations:read' }
-    let!(:client) { described_class.new(ENV['JORTT_CLIENT_ID'], ENV['JORTT_CLIENT_SECRET']) }
+    # This spec does not read DEFAULT_SCOPE. An update to DEFAULT_SCOPE requires an update here as well.
+    let(:scope) do
+      'invoices:read invoices:write customers:read customers:write organizations:read expenses:read'
+    end
+    let!(:client) { jortt_client }
 
     it 'requests access token' do
-      expect(WebMock).to have_requested(:post, 'https://app.jortt.nl/oauth-provider/oauth/token').with(
+      expect(WebMock).to have_requested(:post, "#{jortt_oauth_provider_url}/token").with(
         body: {
           grant_type: 'client_credentials',
           scope: scope,
@@ -42,13 +45,21 @@ describe Jortt::Client, :vcr do
 
   context 'authorization code grant type' do
     let(:scope) { 'invoices:read organizations:read' }
-    let(:access_token) { SecureRandom.hex(10) }
     let(:refresh_token) { SecureRandom.hex(10) }
     let(:expires_at) { (Time.now + 7200).to_i }
+    # Any string would prove the client stores what it is handed, but a fabricated token and a
+    # made up customer both make the recorded request fail, which is a poor fixture. Borrow a
+    # token the provider issued and a customer that exists, so the recording is a real 200.
+    let(:api) { jortt_client }
+    let(:access_token) { api.token.token }
+    let(:customer_id) { api.customers.create(is_private: true, customer_name: 'Jane Doe').fetch('id') }
+    after { api.customers.delete(customer_id) }
     let!(:client) do
       described_class.new(
         ENV['JORTT_CLIENT_ID'],
         ENV['JORTT_CLIENT_SECRET'],
+        site: jortt_site_url,
+        oauth_provider_url: jortt_oauth_provider_url,
         scope: scope,
         access_token: access_token,
         refresh_token: refresh_token,
@@ -65,9 +76,11 @@ describe Jortt::Client, :vcr do
     end
 
     it 'uses access token in requests to API' do
-      client.customers.show('9afcd96e-caf8-40a1-96c9-1af16d0bc804')
+      client.customers.show(customer_id)
 
-      expect(WebMock).to have_requested(:get, 'https://api.jortt.nl/customers/9afcd96e-caf8-40a1-96c9-1af16d0bc804').with(
+      expect(WebMock).to have_requested(
+        :get, "#{jortt_site_url}/v3/customers/#{customer_id}"
+      ).with(
         headers: {
           Authorization: "Bearer #{access_token}",
         },

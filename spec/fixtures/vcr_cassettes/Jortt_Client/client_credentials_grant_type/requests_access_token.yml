@@ -5,10 +5,10 @@ http_interactions:
     uri: https://app.jortt.nl/oauth-provider/oauth/token
     body:
       encoding: UTF-8
-      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+      string: grant_type=client_credentials&scope=invoices%3Aread%20invoices%3Awrite%20customers%3Aread%20customers%3Awrite%20organizations%3Aread%20expenses%3Aread
     headers:
       User-Agent:
-      - Faraday v1.0.1
+      - Faraday v2.14.3
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -20,45 +20,39 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Date:
-      - Thu, 24 Sep 2020 15:03:37 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Cache-Control:
-      - private, no-store
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Pragma:
-      - no-cache
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - dfa7330e-2975-4637-8d0b-fee35ed40cac
-      X-Download-Options:
-      - noopen
-      Etag:
-      - W/"97e5c8d5cedcea8cd8407a1a0a6f21c1"
       X-Frame-Options:
       - SAMEORIGIN
-      X-Runtime:
-      - '0.319627'
+      X-Xss-Protection:
+      - '0'
       X-Content-Type-Options:
       - nosniff
-      X-Powered-By:
-      - Phusion Passenger
-      Server:
-      - nginx + Phusion Passenger
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept
+      Etag:
+      - W/"9a986ed7df12491536f3c36b9ce75c80"
+      X-Request-Id:
+      - 628e9670-e3ca-4cb0-ae3d-485667ed61f2
+      X-Runtime:
+      - '0.026275'
+      Server-Timing:
+      - cache_increment.active_support;dur=0.57, start_processing.action_controller;dur=0.00,
+        sql.active_record;dur=15.20, instantiation.active_record;dur=0.02, start_transaction.active_record;dur=0.01,
+        transaction.active_record;dur=6.07, process_action.action_controller;dur=23.74
+      Content-Length:
+      - '229'
     body:
       encoding: UTF-8
       string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600959817}'
-  recorded_at: Thu, 24 Sep 2020 15:03:37 GMT
-recorded_with: VCR 6.0.0
+        invoices:write customers:read customers:write organizations:read expenses:read","created_at":1788256185}'
+  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
+recorded_with: VCR 6.4.0

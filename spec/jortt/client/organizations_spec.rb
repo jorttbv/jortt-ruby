@@ -10,8 +10,8 @@ describe Jortt::Client::Organizations, :vcr do
 
     it 'returns the logged in organization' do
       expect(subject).to include(
-        'id' => '29d26011-51ed-418d-a9f2-2e55349d37d6',
-        'company_name' => 'jortt-ruby gem',
+        'id' => '2af412cf-23f8-4b0d-9df2-a1afaf0ce67f',
+        'company_name' => 'Jortt MKB B.V.',
       )
     end
   end

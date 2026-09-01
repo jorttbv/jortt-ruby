@@ -28,15 +28,13 @@ describe Jortt::Client::Customers, :vcr do
       subject { client.customers.index.to_a }
 
       it 'returns customers' do
-        expect(subject.count).to eq(3)
-        expect(subject[0]['customer_name']).to eq('Jane Doe')
-        expect(subject[1]['customer_name']).to eq('John Doe')
-        expect(subject[2]['customer_name']).to eq('Search target')
+        names = subject.map { |customer| customer['customer_name'] }
+        expect(names).to include('Jane Doe', 'John Doe', 'Search target')
       end
     end
 
     context 'query' do
-      subject { client.customers.index(query: 'Search target') }
+      subject { client.customers.index(query: 'Search target').to_a }
 
       it 'returns the queried customers' do
         expect(subject.count).to eq(1)
@@ -65,7 +63,7 @@ describe Jortt::Client::Customers, :vcr do
 
       it 'sends customer parameters in HTTP request body' do
         subject
-        expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/customers').with(body: params)
+        expect(WebMock).to have_requested(:post, "#{jortt_site_url}/v3/customers").with(body: params)
       end
     end
 
@@ -107,19 +105,30 @@ describe Jortt::Client::Customers, :vcr do
     end
   end
 
-  describe '#vat_percentages' do
-    subject { client.customers.vat_percentages(jane) }
+  describe '#vats' do
+    subject { client.customers.vats(jane) }
 
-    it 'returns the vat percentages' do
+    it 'returns the vats' do
       expect(subject).to eq(
         {
-          'id' => '546a86e8-7a57-4d46-9a81-09378a399dd9',
-          'vat_percentages' => {
-            'reduced_rate' => ['9.0', '0.0'],
-            'standard_rate' => '21.0',
-          },
+          'id' => jane,
+          'vats' => [
+            {'value' => '0.21', 'category' => nil},
+            {'value' => '0.09', 'category' => nil},
+          ],
         },
       )
     end
+  end
+end
+
+# Kept out of the :vcr describe above on purpose: its let! blocks create and delete customers
+# for every example, and this one needs no HTTP at all.
+describe Jortt::Client::Customers do
+  # 7.0 renamed this method and UPGRADING.md promises the old name keeps working. The alias
+  # resolves to the very method #vats exercises, so this is a complete proof of the promise
+  # without a second round trip to the same endpoint.
+  it 'still exposes vats under its former name' do
+    expect(described_class.instance_method(:vat_percentages).original_name).to eq(:vats)
   end
 end

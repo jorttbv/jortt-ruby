@@ -11,9 +11,9 @@ describe Jortt::Client::LedgerAccounts, :vcr do
     it 'returns invoices' do
       expect(subject.count).to be > 0
       expect(subject.first).to eq(
-        'ledger_account_id' => '05a59e27-489f-466d-adf7-fc06f576d4ec',
+        'ledger_account_id' => 'e52678ce-3d4e-4602-afb9-e825c245f716',
         'name' => 'Omzet',
-        'parent_ledger_account_id' => '105ea7d7-8bb5-499e-9823-8324826b6563',
+        'parent_ledger_account_id' => '802de112-06b1-454b-b865-504027f44144',
         'selectable' => false,
       )
     end
