@@ -160,7 +160,7 @@ jortt.invoices.show('934d59dd-76f6-4716-9e0f-82a618e1be21')
 #      "line_items" => [
 #        {
 #          "description" => "Your product",
-#          "quantity" => "4",
+#          "quantity" => "4.0",
 #          "amount" => {"amount" => "499.00", "currency" => "EUR"},
 #          "vat" => {"value" => "0.21", "category" => nil},
 #          "total_amount_ex_vat" => {"amount" => "499.00", "currency" => "EUR"},

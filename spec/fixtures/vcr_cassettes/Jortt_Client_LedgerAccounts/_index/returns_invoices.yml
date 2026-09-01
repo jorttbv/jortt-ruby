@@ -5,10 +5,10 @@ http_interactions:
     uri: https://app.jortt.nl/oauth-provider/oauth/token
     body:
       encoding: UTF-8
-      string: grant_type=client_credentials&scope=invoices%3Aread+invoices%3Awrite+customers%3Aread+customers%3Awrite
+      string: grant_type=client_credentials&scope=invoices%3Aread%20invoices%3Awrite%20customers%3Aread%20customers%3Awrite%20organizations%3Aread%20expenses%3Aread
     headers:
       User-Agent:
-      - Faraday v1.0.1
+      - Faraday v2.14.3
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -20,47 +20,41 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Date:
-      - Thu, 24 Sep 2020 15:03:35 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Cache-Control:
-      - private, no-store
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Pragma:
-      - no-cache
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - d83ae9ab-c629-46a3-8536-3d48345bbc24
-      X-Download-Options:
-      - noopen
-      Etag:
-      - W/"0fb39157c79bce6700240fe1ea97876e"
       X-Frame-Options:
       - SAMEORIGIN
-      X-Runtime:
-      - '0.333943'
+      X-Xss-Protection:
+      - '0'
       X-Content-Type-Options:
       - nosniff
-      X-Powered-By:
-      - Phusion Passenger
-      Server:
-      - nginx + Phusion Passenger
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept
+      Etag:
+      - W/"4e90a9e392e4005c93338def0c0c4b8f"
+      X-Request-Id:
+      - 27e608fe-3f97-4b78-8e78-354a512ec3b2
+      X-Runtime:
+      - '0.017596'
+      Server-Timing:
+      - cache_increment.active_support;dur=0.28, start_processing.action_controller;dur=0.00,
+        sql.active_record;dur=6.66, instantiation.active_record;dur=0.10, start_transaction.active_record;dur=0.00,
+        transaction.active_record;dur=6.79, process_action.action_controller;dur=15.28
+      Content-Length:
+      - '229'
     body:
       encoding: UTF-8
       string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write","created_at":1600959815}'
-  recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
+        invoices:write customers:read customers:write organizations:read expenses:read","created_at":1788256185}'
+  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
 - request:
     method: get
     uri: https://api.jortt.nl/v3/ledger_accounts/invoices
@@ -69,7 +63,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Faraday v1.0.1
+      - Faraday v2.14.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -79,40 +73,15 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Date:
-      - Thu, 24 Sep 2020 15:03:35 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1011'
-      Connection:
-      - keep-alive
-      Server:
-      - Apache
-      Status:
-      - 200 OK
-      Content-Security-Policy:
-      - 'default-src ''self'' ''unsafe-inline'' blob: data: *.jortt.nl;     script-src
-        ''self'' ''unsafe-eval'' blob: ''unsafe-inline'' files.jortt.nl *.googletagmanager.com
-        *.uservoice.com inlinemanual.com *.google-analytics.com *.googleadservices.com
-        bat.bing.com tapfiliate.com static.ads-twitter.com tagmanager.google.com analytics.twitter.com
-        https://connect.facebook.net https://app.inlinemanual.com;     connect-src
-        ''self'' https://*.jortt.nl wss://*.jortt.nl analytics.inlinemanual.com files.jortt.nl
-        www.google-analytics.com stats.g.doubleclick.net file-storage-app-production.s3.eu-central-1.amazonaws.com
-        https://app.inlinemanual.com;     style-src ''self'' ''unsafe-inline'' fonts.googleapis.com
-        files.jortt.nl tagmanager.google.com https://app.inlinemanual.com;     font-src
-        ''self'' data: fonts.gstatic.com files.jortt.nl https://app.inlinemanual.com;     frame-src
-        ''self'' *.jortt.nl files.jortt.nl b.frstre.com beacon.tapfiliate.com jortt.uservoice.com
-        *.vimeo.com https://connect.facebook.net;     img-src ''self'' blob: data:
-        *.jortt.nl https://www.facebook.com files.jortt.nl www.google-analytics.com
-        stats.g.doubleclick.net www.google.nl www.google.com bat.bing.com googleads.g.doubleclick.net
-        https://www.googletagmanager.com https://widget.uservoice.com www.google.de
-        t.co *.gstatic.com https://ssl.google-analytics.com https://app.inlinemanual.com'
+      - '1179'
     body:
       encoding: UTF-8
-      string: '{"data":[{"ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","parent_ledger_account_id":"105ea7d7-8bb5-499e-9823-8324826b6563","name":"Omzet","selectable":false},{"ledger_account_id":"fcabf6bf-cccc-4a6d-b04e-7b2369d04a79","parent_ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","name":"Diverse
-        omzet","selectable":true},{"ledger_account_id":"05ba2a61-a0cc-4736-9000-89fb361e85c8","parent_ledger_account_id":"05a59e27-489f-466d-adf7-fc06f576d4ec","name":"Omzet
-        uit facturen","selectable":true},{"ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","parent_ledger_account_id":"986e5b45-dae6-48cc-b4c9-a2f30fbd7bfe","name":"Inkoopkosten","selectable":false},{"ledger_account_id":"424d222d-f8cb-4d38-82c0-24674a2dcf75","parent_ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","name":"Inkoop","selectable":true},{"ledger_account_id":"a5c08fb4-0a22-4f53-9ee2-d7682bba10f7","parent_ledger_account_id":"92cb5ad4-e2e7-4c41-8e17-bf7db69c7b9a","name":"Uitbesteed
-        werk","selectable":true}]}'
-  recorded_at: Thu, 24 Sep 2020 15:03:35 GMT
-recorded_with: VCR 6.0.0
+      string: '{"data":[{"ledger_account_id":"e52678ce-3d4e-4602-afb9-e825c245f716","parent_ledger_account_id":"802de112-06b1-454b-b865-504027f44144","name":"Omzet","selectable":false},{"ledger_account_id":"4892a527-fdaa-48b8-b6de-03932e92f2cb","parent_ledger_account_id":"e52678ce-3d4e-4602-afb9-e825c245f716","name":"Diverse
+        omzet","selectable":true},{"ledger_account_id":"e2086a35-62a8-4dca-bc77-0fd20be8639a","parent_ledger_account_id":"e52678ce-3d4e-4602-afb9-e825c245f716","name":"Omzet
+        uit facturen","selectable":true},{"ledger_account_id":"df8d7eb6-5f93-4920-b5f9-f88700d382d0","parent_ledger_account_id":"2bb80f69-e152-4ad7-8875-eeeb28203d0e","name":"Inkoop","selectable":true},{"ledger_account_id":"e9c964c4-90e0-4a36-9587-a94d0b370cc3","parent_ledger_account_id":"2bb80f69-e152-4ad7-8875-eeeb28203d0e","name":"Uitbesteed
+        werk","selectable":true},{"ledger_account_id":"364d9ea5-546f-4d33-82e5-174786992978","parent_ledger_account_id":"7976e23f-b11e-45cc-9456-941d5c98141e","name":"Verkoopkosten","selectable":true},{"ledger_account_id":"2bb80f69-e152-4ad7-8875-eeeb28203d0e","parent_ledger_account_id":"ca81a45a-8bb4-4aae-ae46-65184f2b28fb","name":"Inkoopkosten","selectable":false}]}'
+  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
+recorded_with: VCR 6.4.0
