@@ -86,8 +86,9 @@ jortt = Jortt.client(
 | `jortt.tradenames` | `index` |
 
 `customers.index`, `invoices.index` and `expenses.index` are paginated, and return an
-enumerator that fetches pages on demand. Every other method returns the parsed response body,
-except `customers.delete`, which returns `true`.
+enumerator that fetches pages on demand. Methods whose response carries no data return `true`:
+`customers.update`, `customers.delete`, `customers.direct_debit_mandate`, `expenses.update`
+and `expenses.attach_receipt`. Every other method returns the parsed response body.
 
 ## Usage examples
 
