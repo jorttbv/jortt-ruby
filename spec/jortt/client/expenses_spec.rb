@@ -135,15 +135,16 @@ describe Jortt::Client::Expenses do
     end
 
     before do
+      # The real endpoint responds 200 with a JSON `null` body rather than 204.
       stub_request(:post, "#{jortt_site_url}/v3/expenses/id/#{id}")
         .to_return(
           headers: {content_type: 'application/json'},
-          body: {data: {id: id}}.to_json,
+          body: 'null',
         )
     end
 
     it 'POSTs to the expense id endpoint' do
-      client.expenses.update(id, payload)
+      expect(client.expenses.update(id, payload)).to eq(true)
 
       expect(WebMock).to have_requested(:post, "#{jortt_site_url}/v3/expenses/id/#{id}")
         .with(body: payload.to_json)
@@ -155,18 +156,43 @@ describe Jortt::Client::Expenses do
     let(:payload) { {receipt_id: '1aa9cd93-aa14-4184-ba01-1fa2776d2e2d'} }
 
     before do
+      # The real endpoint responds 200 with a JSON `null` body rather than 204.
       stub_request(:post, "#{jortt_site_url}/v3/expenses/id/#{id}/receipt")
         .to_return(
           headers: {content_type: 'application/json'},
-          body: {data: {}}.to_json,
+          body: 'null',
         )
     end
 
     it 'POSTs to the receipt endpoint' do
-      client.expenses.attach_receipt(id, payload)
+      expect(client.expenses.attach_receipt(id, payload)).to eq(true)
 
       expect(WebMock).to have_requested(:post, "#{jortt_site_url}/v3/expenses/id/#{id}/receipt")
         .with(body: payload.to_json)
+    end
+
+    context 'when the receipt is already attached to another expense' do
+      before do
+        # This error is a bare string under `error`, unlike the object other errors carry.
+        stub_request(:post, "#{jortt_site_url}/v3/expenses/id/#{id}/receipt")
+          .to_return(
+            status: 422,
+            headers: {content_type: 'application/json'},
+            body: {error: 'receipt is already attached to another expense'}.to_json,
+          )
+      end
+
+      it 'raises JorttError' do
+        expect { client.expenses.attach_receipt(id, payload) }.to raise_error do |error|
+          expect(error).to be_an_instance_of(Jortt::Client::JorttError)
+          expect(error).to have_attributes(
+            code: 422,
+            key: nil,
+            message: 'receipt is already attached to another expense',
+            details: [],
+          )
+        end
+      end
     end
   end
 end

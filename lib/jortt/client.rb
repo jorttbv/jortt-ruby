@@ -199,7 +199,10 @@ module Jortt
 
     def handle_response
       response = yield
-      return true if response.status == 204
+
+      # Some endpoints signal success without a body: a 204, or a 200 with a JSON
+      # `null` body, e.g. POST /v3/expenses/id/{id}. There is no data then, just success.
+      return true unless response.parsed.is_a?(Hash)
 
       response.parsed.fetch('data')
     rescue OAuth2::Error => e

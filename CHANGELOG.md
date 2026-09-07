@@ -54,6 +54,11 @@ Every request now targets the `/v3` API, which renames several fields. See
   free-text search, so passing it raises `ArgumentError`. Filter by date range or
   `expense_type` instead.
 
+### Fixed
+
+- A `4xx` response carrying a bare message string under `error` instead of the usual error
+  object raises `Jortt::Client::JorttError`, where it used to raise `TypeError`.
+
 ## [6.1.0] - 2021-09-29
 
 ### Added
