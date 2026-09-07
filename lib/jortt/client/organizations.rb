@@ -10,14 +10,15 @@ module Jortt # :nodoc:
     # @see { Jortt::Client.organizations }
     class Organizations < Base
       ##
-      # Returns the Organization associated with the credentials.
-      # https://developer.jortt.nl/#jortt-api-organizations
+      # Returns the Organization associated with the credentials
+      # using the GET /v3/organizations/me endpoint.
+      # https://developer.jortt.nl/#v3-get-the-organization-associated-with-the-api-credentials
       #
       # @example
       #   client.organizations.me
       #
       def me
-        client.get(make_path('/organizations/me'))
+        client.get(make_path('/v3/organizations/me'))
       end
     end
   end

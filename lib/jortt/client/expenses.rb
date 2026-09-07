@@ -7,6 +7,12 @@ module Jortt # :nodoc:
     ##
     # Exposes the operations available for a collection of expenses.
     #
+    # {#create}, {#update} and {#attach_receipt} need the +expenses:write+ scope.
+    # {Jortt::Client::DEFAULT_SCOPE} does not include this scope. First register the scope
+    # with Jortt. Then request the scope:
+    #
+    #   Jortt.client(id, secret, scope: "#{Jortt::Client::DEFAULT_SCOPE} expenses:write")
+    #
     # @see { Jortt::Client.expenses }
     # @see https://developer.jortt.nl/#tag-v3-expenses
     class Expenses < Base
@@ -19,22 +25,21 @@ module Jortt # :nodoc:
       #
       # Use +vat_date_from+ and +vat_date_till+ to filter by VAT date range.
       # Use +delivery_date_from+ and +delivery_date_till+ to filter by delivery period.
+      # Give each of these four dates in +YYYY-MM-DD+ format.
       #
       # @example
-      #   client.expenses.index(vat_date_from: '20260101', vat_date_till: '20260331')
+      #   client.expenses.index(vat_date_from: '2026-01-01', vat_date_till: '2026-03-31')
       #
-      # @param [String] query Free-text search query
       # @param [String] vat_date_from Filter expenses with vat_date on or after this date
       # @param [String] vat_date_till Filter expenses with vat_date on or before this date
       # @param [String] delivery_date_from Filter expenses with delivery_period on or after this date
       # @param [String] delivery_date_till Filter expenses with delivery_period on or before this date
-      # @param [String] expense_type Filter by expense type
+      # @param [String] expense_type Filter by expense type: +cost+, +income+ or +balance+
       #
-      def index(query: nil, vat_date_from: nil, vat_date_till: nil,
+      def index(vat_date_from: nil, vat_date_till: nil,
                 delivery_date_from: nil, delivery_date_till: nil,
                 expense_type: nil)
         params = {
-          query: query,
           vat_date_from: vat_date_from,
           vat_date_till: vat_date_till,
           delivery_date_from: delivery_date_from,
@@ -60,16 +65,23 @@ module Jortt # :nodoc:
       # Creates an Expense using the POST /v3/expenses endpoint.
       # https://developer.jortt.nl/#v3-create-an-expense
       #
+      # +description+, +ledger_account_id+, +expense_type+, +vat_date+,
+      # +delivery_period+, +vat_type+ and +raw_total_amount+ are required.
+      # +expense_type+ is one of +cost+, +income+ or +balance+, and +vat_type+ is
+      # one of the +btw_type_*+ values listed in the API documentation.
+      #
       # @example
       #   client.expenses.create(
-      #     expense_date: '2026-01-15',
-      #     vat_date: '2026-01-15',
-      #     supplier_name: 'Office Supplies B.V.',
       #     description: 'Office equipment',
-      #     line_items: [{
-      #       amount: { value: '100.00', currency: 'EUR' },
-      #       vat_percentage: '21.0',
-      #       ledger_account_id: 'ledger-uuid'
+      #     ledger_account_id: '05ba2a61-a0cc-4736-9000-89fb361e85c8',
+      #     expense_type: 'cost',
+      #     vat_date: '2026-01-15',
+      #     delivery_period: '2026-01-01',
+      #     vat_type: 'btw_type_leverancier_uit_nl',
+      #     raw_total_amount: { amount: '121.00', currency: 'EUR' },
+      #     vat_line_items: [{
+      #       vat: { value: '0.21', category: nil },
+      #       vat_amount: { amount: '21.00', currency: 'EUR' }
       #     }]
       #   )
       #
@@ -81,10 +93,21 @@ module Jortt # :nodoc:
       # Updates an Expense using the POST /v3/expenses/id/{id} endpoint.
       # https://developer.jortt.nl/#v3-update-an-expense
       #
+      # Takes the same fields as {#create}, and the same fields are required, so
+      # send the complete Expense rather than only the fields that changed.
+      #
       # @example
       #   client.expenses.update(
       #     "9afcd96e-caf8-40a1-96c9-1af16d0bc804",
-      #     { description: 'Updated description' }
+      #     {
+      #       description: 'Updated description',
+      #       ledger_account_id: '05ba2a61-a0cc-4736-9000-89fb361e85c8',
+      #       expense_type: 'cost',
+      #       vat_date: '2026-01-15',
+      #       delivery_period: '2026-01-01',
+      #       vat_type: 'btw_type_leverancier_uit_nl',
+      #       raw_total_amount: { amount: '121.00', currency: 'EUR' }
+      #     }
       #   )
       #
       def update(id, payload)
@@ -95,10 +118,13 @@ module Jortt # :nodoc:
       # Attaches a receipt to an Expense using the POST /v3/expenses/id/{id}/receipt endpoint.
       # https://developer.jortt.nl/#v3-attach-a-receipt-to-an-expense
       #
+      # +receipt_id+ is the identifier of a file uploaded through
+      # POST /v3/files/attachment_upload.
+      #
       # @example
       #   client.expenses.attach_receipt(
       #     "9afcd96e-caf8-40a1-96c9-1af16d0bc804",
-      #     { file_id: 'file-uuid' }
+      #     { receipt_id: '1aa9cd93-aa14-4184-ba01-1fa2776d2e2d' }
       #   )
       #
       def attach_receipt(id, payload)

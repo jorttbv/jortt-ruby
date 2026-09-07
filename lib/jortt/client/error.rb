@@ -5,12 +5,12 @@ module Jortt # :nodoc:
     class Error < StandardError # :nodoc:
       def self.from_response(response)
         if (400...500).include? response.status
-          JorttError.new(
-            response.parsed.dig('error', 'code'),
-            response.parsed.dig('error', 'key'),
-            response.parsed.dig('error', 'message'),
-            response.parsed.dig('error', 'details'),
-            )
+          error = response.parsed['error'] if response.parsed.is_a?(Hash)
+          # A few endpoints put a bare message string under `error` rather than the
+          # usual object, e.g. POST /v3/expenses/id/{id}/receipt on a duplicate receipt.
+          error = {'code' => response.status, 'message' => error} unless error.is_a?(Hash)
+
+          JorttError.new(error['code'], error['key'], error['message'], error['details'])
         elsif response.status >= 500
           ServerError.new(response.status, response.response.reason_phrase, response.body)
         end
@@ -24,7 +24,7 @@ module Jortt # :nodoc:
         @code = code
         @key = key
         @message = message
-        @details = details
+        @details = details || []
 
         super(error_message)
       end

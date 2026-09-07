@@ -12,31 +12,31 @@ describe Jortt::Client::Invoices, :vcr do
       before do
         VCR.turn_off!
 
-        stub_request(:any, 'https://app.jortt.nl/oauth-provider/oauth/token')
+        stub_request(:any, "#{jortt_oauth_provider_url}/token")
           .to_return(
             headers: {content_type: 'application/json'},
             body: {access_token: 'abc'}.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/invoices?invoice_status&page=1&query')
+        stub_request(:get, "#{jortt_site_url}/v3/invoices?page=1")
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
               'data': [{id: 1}, {id: 2}],
-              _links: {next: 'https://api.jortt.nl/invoices?page=2'},
+              _links: {next: "#{jortt_site_url}/v3/invoices?page=2"},
             }.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/invoices?invoice_status&page=2&query')
+        stub_request(:get, "#{jortt_site_url}/v3/invoices?page=2")
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
               data: [{id: 3}, {id: 4}],
-              _links: {next: 'https://api.jortt.nl/invoices?page=3'},
+              _links: {next: "#{jortt_site_url}/v3/invoices?page=3"},
             }.to_json,
           )
 
-        stub_request(:get, 'https://api.jortt.nl/invoices?invoice_status&page=3&query')
+        stub_request(:get, "#{jortt_site_url}/v3/invoices?page=3")
           .to_return(
             headers: {content_type: 'application/json'},
             body: {
@@ -55,10 +55,16 @@ describe Jortt::Client::Invoices, :vcr do
       it 'seamlessly returns results from the other pages' do
         expect(subject.to_a.count).to eq(5)
       end
+
+      it 'starts again at the first page when enumerated a second time' do
+        subject.to_a
+
+        expect(subject.to_a.count).to eq(5)
+      end
     end
 
     context 'invoice_status' do
-      subject { client.invoices.index(invoice_status: 'sent') }
+      subject { client.invoices.index(invoice_status: 'sent').to_a }
 
       it 'returns those invoices' do
         expect(subject.count).to be > 0
@@ -70,7 +76,7 @@ describe Jortt::Client::Invoices, :vcr do
       subject { client.invoices.index(query: 'Search target') }
 
       it 'returns the queried invoices' do
-        expect(subject.first.dig('invoice_due_amount', 'value')).to eq('2415.16')
+        expect(subject.first.dig('invoice_due_amount', 'amount')).to eq('2415.16')
       end
     end
   end
@@ -83,13 +89,16 @@ describe Jortt::Client::Invoices, :vcr do
         send_method: 'self',
         line_items: [
           {
-            vat: 21,
-            amount_per_unit: {
-              value: 499,
+            description: 'Your product',
+            quantity: '4',
+            amount: {
+              amount: '499.00',
               currency: 'EUR',
             },
-            units: 4,
-            description: 'Your product',
+            vat: {
+              value: '0.21',
+              category: nil,
+            },
           },
         ],
       }
@@ -105,7 +114,7 @@ describe Jortt::Client::Invoices, :vcr do
 
     it 'sends invoice content in HTTP request body' do
       subject
-      expect(WebMock).to have_requested(:post, 'https://api.jortt.nl/invoices').with(body: params)
+      expect(WebMock).to have_requested(:post, "#{jortt_site_url}/v3/invoices").with(body: params)
     end
   end
 
@@ -114,7 +123,7 @@ describe Jortt::Client::Invoices, :vcr do
     subject { client.invoices.show(uuid) }
 
     it 'returns the invoice' do
-      expect(subject.dig('invoice_due_amount', 'value')).to eq('2415.16')
+      expect(subject.dig('invoice_due_amount', 'amount')).to eq('2415.16')
     end
   end
 
@@ -122,8 +131,11 @@ describe Jortt::Client::Invoices, :vcr do
     let(:uuid) { client.invoices.index(query: 'Download test').first.fetch('id') }
     subject { client.invoices.download(uuid) }
 
+    # The storage host belongs to Jortt's infrastructure, not to this client, and differs per
+    # environment the cassettes are recorded against. Assert the shape instead.
     it 'returns the invoice download link' do
-      expect(subject.fetch('download_location')).to match(%r{https://files\.jortt\.nl/.*})
+      expect(subject.fetch('download_location')).to match(%r{\Ahttps?://})
+      expect(subject.fetch('download_location')).to include('.pdf')
     end
   end
 

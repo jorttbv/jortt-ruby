@@ -63,7 +63,7 @@ http_interactions:
   recorded_at: Mon, 11 Jul 2022 18:12:16 GMT
 - request:
     method: get
-    uri: https://api.jortt.nl/tradenames
+    uri: https://api.jortt.nl/v3/tradenames
     body:
       encoding: US-ASCII
       string: ''

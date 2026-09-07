@@ -39,28 +39,28 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"5a07365c68c723b0c0f9b2710e9513e8"
+      - W/"09df664b0a1289121032dab9e03705f9"
       X-Request-Id:
-      - d30d7ee0-beb3-4d81-b32b-b411a0fe2ca4
+      - 757cf166-271b-4452-8856-2afd021ed169
       X-Runtime:
-      - '0.019019'
+      - '0.043393'
       Server-Timing:
-      - cache_increment.active_support;dur=0.29, start_processing.action_controller;dur=0.00,
-        sql.active_record;dur=7.45, instantiation.active_record;dur=0.03, start_transaction.active_record;dur=0.00,
-        transaction.active_record;dur=7.18, process_action.action_controller;dur=16.39
+      - cache_increment.active_support;dur=1.10, start_processing.action_controller;dur=0.00,
+        sql.active_record;dur=13.01, instantiation.active_record;dur=0.38, start_transaction.active_record;dur=0.00,
+        transaction.active_record;dur=8.08, process_action.action_controller;dur=27.84
       Content-Length:
       - '229'
     body:
       encoding: UTF-8
       string: '{"access_token":"access_token","token_type":"Bearer","expires_in":7200,"scope":"invoices:read
-        invoices:write customers:read customers:write organizations:read expenses:read","created_at":1788256185}'
-  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
+        invoices:write customers:read customers:write organizations:read expenses:read","created_at":1788264019}'
+  recorded_at: Tue, 01 Sep 2026 12:00:19 GMT
 - request:
     method: post
     uri: https://api.jortt.nl/v3/customers
     body:
       encoding: UTF-8
-      string: '{"is_private":true,"customer_name":"John Doe"}'
+      string: '{"is_private":true,"customer_name":"Jane Doe"}'
     headers:
       User-Agent:
       - Faraday v2.14.3
@@ -81,40 +81,11 @@ http_interactions:
       - '54'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"a469329f-fed5-4b8a-8d90-b741db1898c9"}}'
-  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
-- request:
-    method: post
-    uri: https://api.jortt.nl/v3/invoices
-    body:
-      encoding: UTF-8
-      string: '{"customer_id":"a469329f-fed5-4b8a-8d90-b741db1898c9","send_method":"self","line_items":[{"description":"Your
-        product","quantity":"4","amount":{"amount":"499.00","currency":"EUR"},"vat":{"value":"0.21","category":null}}]}'
-    headers:
-      User-Agent:
-      - Faraday v2.14.3
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '54'
-    body:
-      encoding: UTF-8
-      string: '{"data":{"id":"17e57b92-81a9-41f1-a83c-d97bf676a5af"}}'
-  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
+      string: '{"data":{"id":"78cc01d2-2287-40e8-b5e0-b049036fd868"}}'
+  recorded_at: Tue, 01 Sep 2026 12:00:19 GMT
 - request:
     method: delete
-    uri: https://api.jortt.nl/v3/customers/a469329f-fed5-4b8a-8d90-b741db1898c9
+    uri: https://api.jortt.nl/v3/customers/78cc01d2-2287-40e8-b5e0-b049036fd868
     body:
       encoding: US-ASCII
       string: ''
@@ -133,5 +104,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 01 Sep 2026 09:49:45 GMT
+  recorded_at: Tue, 01 Sep 2026 12:00:19 GMT
 recorded_with: VCR 6.4.0
